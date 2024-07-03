@@ -16,6 +16,10 @@
         width: 100%;
         height: 100vh;
         background-color: $primary;
+
+        @include breakpoint-min-width('s') {
+            background-color: red;
+        }
     }
 
 </style>

@@ -1,7 +1,6 @@
 @use "sass:map";
-@import "_variables";
 
-
+// media-query
 @mixin breakpoint-min-width($key) {
     $size: map-get($breakpoints, $key);
   
