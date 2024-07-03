@@ -1,0 +1,16 @@
+@use "sass:map";
+@import "_variables";
+
+
+@mixin breakpoint-min-width($key) {
+    $size: map-get($breakpoints, $key);
+  
+    @if ($size) {
+    /* On screens that are $size or less */
+      @media only screen and (min-width: $size) {
+        @content;
+      }
+    } @else {
+      @error '`#{$key}` does not exist in the $breakpoints';
+    }
+  }

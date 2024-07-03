@@ -1,1 +1,11 @@
+// colors
 $primary: blue;
+
+// breakpoints
+$breakpoints: (
+    s: 576px, 
+    md: 768px, 
+    lg: 992px, 
+    xl: 1200px
+);
+// @debug map.get($breakpoints, "s"); => 576
