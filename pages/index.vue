@@ -9,7 +9,8 @@
                 ref="section1"
                 class="section section1"
             >
-
+                <NavBar textColor="$night-blue" />
+                <h1>The Mind Retreat</h1>
             </section>
         </div>
     </div>
@@ -20,7 +21,6 @@
     .section {
         height: 100vh;
         max-width: 100%;
-        padding: 1rem 4rem;
         box-sizing: border-box;
         color: $black;
 

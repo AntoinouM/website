@@ -1,0 +1,175 @@
+$bar-height: 4px;
+$bar-gap: 8px;
+$mobile-font-size: 1.4rem;
+$mobile-gap: $spacer-6;
+
+.nav-wrapper {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: $navbar-height;
+    z-index: 100;
+
+    @include breakpoint-max-width(md) {
+        background-color: $egg-white;
+    }
+}
+
+.navbar {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+    padding: 0 $spacer-4;
+
+    @include breakpoint-max-width(md) {
+        justify-content: space-between;
+    }
+}
+
+.navbar > img {
+    width: auto;
+    height: $navbar-height * 0.7;
+}
+
+.mobileNav {
+    @include breakpoint-max-width(md) {
+        transform: translate(0%)!important;
+    }
+  }
+
+.navbar > ul {
+    display: flex;
+    gap: $spacer-6;
+    list-style: none;
+    justify-content: space-evenly;
+    padding: 0;
+
+    @include breakpoint-max-width(md) {
+        position: fixed;
+        top: $navbar-height * 2;
+        left: 0;
+        flex-direction: column;
+        gap: $mobile-gap;
+        padding-top: $spacer-6;
+        justify-content: start;
+        align-items: center;
+        overflow: hidden;
+        width: 100%;
+        height: calc(100dvh - $navbar-height);
+        text-align: center;
+        background-color: $egg-white;
+        transform: translate(-101%);
+        padding: 0;
+    }
+}
+
+.nav-items-second {
+    @include breakpoint-max-width(md) {
+        top: calc(($mobile-font-size * 2.5) + ($mobile-gap * 2) + $navbar-height * 2);
+    }
+}
+
+.nav-items {
+    transform: translate(0);
+    transition: transform 0.7s ease-out, width 0.7s ease-out;
+}
+
+.nav-item > li {
+    @include breakpoint-max-width(md) {
+        width: 100%;
+    }
+}
+
+.nav-item > a {
+  padding: 0 $spacer-2;
+  text-decoration: none;
+  transition: color .3s ease-out;
+
+  @include breakpoint-max-width(md) {
+    font-size: $mobile-font-size;
+  }
+}
+
+.nav-item a:hover {
+    color: $olive-green;
+}
+
+// burger menu
+.menu-toggle {
+    position: relative;
+    display: none;
+    height: ($bar-height * 3) + ($bar-height * 2);
+    width: calc(($navbar-height * 0.7));
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+  
+  @include breakpoint-max-width(md) {
+      display: block;
+  }
+}
+
+.menu-toggle .bar {
+    display: inherit;
+    position: absolute;
+    height: $bar-height;
+    width: 100%;
+    background: $primary;
+    border-radius: $bar-height;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+}
+
+.menu-toggle .bar:nth-child(1) {
+    top: 0px;
+  }
+  
+.menu-toggle .bar:nth-child(2), .menu-toggle .bar:nth-child(3) {
+    top: $bar-height + $bar-gap;
+}
+  
+.menu-toggle .bar:nth-child(4) {
+    top: ($bar-height + $bar-gap) * 2;
+}
+  
+.menu-toggle.open .bar:nth-child(1) {
+    top: $bar-height + $bar-gap;
+    width: 0%;
+    left: 50%;
+}
+  
+.menu-toggle.open .bar:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+  
+.menu-toggle.open .bar:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.menu-toggle.open .bar:nth-child(4) {
+    top: $bar-height + $bar-gap;
+    width: 0%;
+    left: 50%;
+}

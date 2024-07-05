@@ -11,3 +11,44 @@
     font-weight: 700;
     src: url('../../public/Font/Montserrat-VariableFont_wght.ttf') format('truetype');
 }
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    color: $night-blue;
+}
+
+@mixin font-classes($sizes, $line-height) {
+    @each $index, $size in $sizes {
+        h#{$index},
+        .h#{$index} {
+            font-weight: bold;
+            font-size: $size;
+            line-height: map-get($line-height, $index);
+        }
+
+        .p#{$index} {
+            font-weight: normal;
+            font-size: $size;
+            line-height: map-get($line-height, $index);
+        }
+    }
+
+    * {
+        font-family: 'Montserrat', sans-serif;
+        font-size: map-get($sizes, 4);
+        line-height: map-get($line-height, 4);
+    }
+}
+
+// Mobile
+@include font-classes($font-size-phone, $line-height-phone);
+
+// Tablets
+@media (min-width: map-get($breakpoints, md)) {
+    @include font-classes($font-size-tablet, $line-height-tablet);
+}
+
+// Desktop
+@media (min-width: map-get($breakpoints, lg)) {
+    @include font-classes($font-size-desktop, $line-height-desktop);
+}

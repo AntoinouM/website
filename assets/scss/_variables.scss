@@ -1,3 +1,5 @@
+@use "sass:map";
+
 /* COLORS */
 
 // black & white
@@ -74,6 +76,11 @@ $line-height-phone: (
     4: 1.2,
     5: 1.2,
 );
+
+/* SPACERS AND UNITS */
+
+// navbar
+$navbar-height: 3.5rem;
 
 // Spacer
 $spacer-1: 4px;
