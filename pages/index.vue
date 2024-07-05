@@ -4,22 +4,40 @@
 
 <template>
     <div>
-        <div class="container">
+        <div>
+            <section 
+                ref="section1"
+                class="section section1"
+            >
 
+            </section>
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
     
-    .container {
-        width: 100%;
+    .section {
         height: 100vh;
-        background-color: $primary;
+        max-width: 100%;
+        padding: 1rem 4rem;
+        box-sizing: border-box;
+        color: $black;
 
-        @include breakpoint-min-width('s') {
-            background-color: red;
+        @include breakpoint-max-width(s) {
+            height: fit-content;
         }
+    }
+
+    .section1 {
+        background-color: $egg-white;
+        background-image: url('/public/Cover/bali2.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: bottom -10em center;  
+
+        /* fix backgrounbd for parallax*/
+        background-attachment: fixed;
     }
 
 </style>
