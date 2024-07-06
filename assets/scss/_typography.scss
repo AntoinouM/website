@@ -1,3 +1,6 @@
+$material-symbols-font-path: '~/material-symbols/';
+@import 'material-symbols/rounded.css';
+
 @font-face {
     font-family: 'Montserrat';
     font-style: NORMAL;
@@ -15,6 +18,17 @@
 * {
     font-family: 'Montserrat', sans-serif;
     color: $night-blue;
+}
+
+.material-symbols-rounded,
+.icon {
+    font-family: 'Material Symbols Rounded', system-ui;
+    font-size: 24px;
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
 }
 
 @mixin font-classes($sizes, $line-height) {
