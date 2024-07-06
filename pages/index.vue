@@ -10,7 +10,10 @@
                 class="section section1"
             >
                 <NavBar textColor="$night-blue" />
-                <h1>The Mind Retreat</h1>
+                <div class="content-container">
+                    <h3 class="text title text-white">The Mind Retreat</h3>
+                    <div class="text quote text-white">Discover transformation and peace at <i class="text-white">The Mind Retreats</i> – your perfect mental health escape in Bali.</div>
+                </div>
             </section>
         </div>
     </div>
@@ -38,6 +41,25 @@
 
         /* fix backgrounbd for parallax*/
         background-attachment: fixed;
+    }
+
+    .content-container{
+        width: 100%;
+        margin-top: 40%;
+    }
+
+    .text-white{
+        color: $egg-white;
+    }
+
+    .title{
+        text-align: center;
+    }
+
+    .quote{
+        text-align: center;
+        filter: drop-shadow(0 0 0.75rem black);
+        padding: 0 $spacer-10;
     }
 
 </style>
