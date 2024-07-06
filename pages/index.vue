@@ -15,6 +15,17 @@
                     <div class="text quote text-white">Discover transformation and peace at <i class="text-white">The Mind Retreats</i> – your perfect mental health escape in Bali.</div>
                 </div>
             </section>
+            <section
+                ref="section2"
+                class="section section2"
+            >
+                <GridContainer
+                    :nbCol="12"
+                    :nbRow="6"
+                >
+
+                </GridContainer>
+            </section>
         </div>
     </div>
 </template>

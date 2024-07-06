@@ -34,7 +34,48 @@
 </template>
 
 <style lang="scss" scoped>
-    
 
+  .nav-wrapper{
+    position: relative;
+    display: inline-block;
+  }
+    
+  .nav-wrapper::after{
+    content: '';
+    display: block;
+    margin: auto;
+    height: 1px;
+    width: 0%;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+    animation-timeline: view();
+    animation-range-start: calc(100dvh - $navbar-height);
+    animation-range-end: calc(100dvh);
+    animation-name: draw-border;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+  }
+
+  @keyframes draw-border {
+    from {
+      width: 0%;
+      background: transparent;
+    }
+    to {
+      width: 100%;
+      background: $night-blue;
+    }
+  }
+
+  @keyframes remove-border {
+    from {
+      width: 100%;
+      background: $night-blue;
+    }
+    to {
+      width: 0%;
+      background: transparent;
+    }
+  }
 
 </style>
