@@ -4,6 +4,10 @@
 @import 'typography';
 @import 'navbar';
 
+// sections
+@import '/assets/scss/_sections/section1';
+@import '/assets/scss/_sections/section2';
+
 // global styling
 * {
     scroll-behavior: smooth;

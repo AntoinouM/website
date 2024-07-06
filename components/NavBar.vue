@@ -50,7 +50,7 @@
     transition: width .5s ease, background-color .5s ease;
     animation-timeline: view();
     animation-range-start: calc(100dvh - $navbar-height);
-    animation-range-end: calc(100dvh);
+    animation-range-end: calc(100dvh * 0.99);
     animation-name: draw-border;
     animation-fill-mode: forwards;
     animation-timing-function: linear;

@@ -43,47 +43,4 @@
         }
     }
 
-    .section1 {
-        background-color: $egg-white;
-        background-image: url('/public/Cover/bali2.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: bottom -10em center;  
-
-        /* fix backgrounbd for parallax*/
-        background-attachment: fixed;
-    }
-
-    .content-container{
-        width: 100%;
-        height: calc(100dvh - $navbar-height);
-        display: grid;
-        grid-template-columns: 20% 1fr 20%;
-        grid-template-rows: repeat(4, 1fr);
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
-    }
-
-    .text-white{
-        color: $egg-white;
-    }
-
-    .title{
-        grid-column: 2 / 3;
-        grid-row: 3 / 4;
-        justify-self: center;
-        text-align: center;
-        align-self: start;
-    }
-
-    .quote{
-        grid-column: 2 / 3;
-        grid-row: 3 / 4;
-        text-align: center;
-        filter: drop-shadow(0 0 0.4rem black);
-        justify-self: stretch;
-        align-self: end;
-
-    }
-
 </style>
