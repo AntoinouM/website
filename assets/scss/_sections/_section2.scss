@@ -1,3 +1,23 @@
-.section2{
-    
+.description {
+    grid-column: 2 / span 6;
+    grid-row: 2 / span 6;
+    justify-self: center;
+    align-self: center;
+    text-align: justify;
+    font-size: 16px;
+    line-height: 1.4;
+    color: hsl(from $olive-green h s l / .8);
+
+     @include breakpoint-max-width(md) {
+        grid-row: 2 / span 7;
+        grid-column: 2 / span 11;
+    }
+}
+
+.description-heading {
+    margin: 0;
+    line-height: 1.8;
+    text-align: center;
+    color: $olive-green;
+
 }
