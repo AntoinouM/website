@@ -73,25 +73,17 @@
     grid-column: 1 / span 5;
 
     @include breakpoint-max-width(md) {
-        grid-column: 1 / span 12;
+        grid-column: span 12;
     }
 
     &-therapist {
-        grid-row: 5 / span 1;
+        grid-row: -3 / span 1;
         align-self: end;
-
-        @include breakpoint-max-width(md) {
-            grid-row: 1 / span 1;
-        }
     }
 
     &-retreats {
-        grid-row: 6 / span 1;
+        grid-row: -1 / span 1;
         align-self: center;
-
-        @include breakpoint-max-width(md) {
-            grid-row: 2 / span 1;
-        }
     }
 }
 
