@@ -10,13 +10,17 @@
     let section3Observer = undefined;
     let percentageValue = ref(0);
 
+    const negativePercentage = computed(() => {
+        return `${100-percentageValue.value.value}%`
+    })
+    const positivePercentage = computed(() => {
+        return `${percentageValue.value.value}%`
+    })
+
     onMounted(() => {
 
-        section3Observer = getScrollValueOfElement(section3.value, percentageValue.value, null);
+        section3Observer = getScrollValueOfElement(section3.value, null);
         percentageValue.value = toRaw(section3Observer.scrollVal);
-        window.onscroll = (e) => {
-            console.log(percentageValue.value)
-        }
 
         // Cleanup observer on unmount
         onBeforeUnmount(() => {
@@ -53,10 +57,9 @@
                 </div>
             </section>
             <section ref="section3" class="section section3">
-                <div class="label topLeft"> {{ percentageValue }} % </div>
-                <div class="label topRight"> {{ percentageValue }} % </div>
-                <div class="label bottomLeft"> {{ percentageValue }} % </div>
-                <div class="label bottomRight"> {{ percentageValue }} % </div>
+                <div class="section3-wrapper">
+
+                </div>
             </section>
             <section ref="section4" class="section section4">
     
@@ -66,13 +69,25 @@
 </template>
 
 <style lang="scss" scoped>
-.section {
-    height: 100vh;
-    max-width: 100%;
-    box-sizing: border-box;
-    color: $black;
-    @include breakpoint-max-width(md) {
-        height: fit-content;
+
+    .section {
+        height: 100vh;
+        max-width: 100%;
+        box-sizing: border-box;
+        color: $black;
+        @include breakpoint-max-width(md) {
+            height: fit-content;
+        }
     }
-}
+
+    .section3-wrapper, .section3 {
+        border-top-left-radius: 50% calc(v-bind(negativePercentage) * 0.12);
+        border-top-right-radius: 50% calc(v-bind(negativePercentage) * 0.12);
+    }
+
+    .section3-wrapper {
+        border-bottom-left-radius: 50% calc(v-bind(negativePercentage) * 0.12);
+        border-bottom-right-radius: 50% calc(v-bind(negativePercentage) * 0.12);
+    }
+
 </style>
