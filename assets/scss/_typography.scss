@@ -17,7 +17,6 @@ $material-symbols-font-path: '~/material-symbols/';
 
 * {
     font-family: 'Montserrat', sans-serif;
-    color: $night-blue;
 }
 
 .material-symbols-rounded,
@@ -30,6 +29,63 @@ $material-symbols-font-path: '~/material-symbols/';
         'GRAD' 0,
         'opsz' 24;
 }
+
+.display1 {
+    font-weight: 400;
+    font-size: 4.235em;
+    line-height: 1.129;
+    letter-spacing: -0.022;
+}
+
+.display1 {
+    font-weight: 400;
+    font-size: 2.618em;
+    line-height: 1.272;
+    letter-spacing: -0.022;
+}
+
+.title1 {
+    font-weight: 400;
+    font-size: 2.058em;
+    line-height: 1.272;
+    letter-spacing: -0.022;
+}
+
+.title2 {
+    font-weight: 400;
+    font-size: 1.618em;
+    line-height: 1.272;
+    letter-spacing: -0.02;
+}
+
+.title3 {
+    font-weight: 400;
+    font-size: 1.272em;
+    line-height: 1.272;
+    letter-spacing: -0.017;
+}
+
+.heading {
+    font-weight: 600;
+    font-size: 1.129em;
+    line-height: 1.272;
+    letter-spacing: -0.014;
+}
+
+.subheading {
+    font-weight: 400;
+    font-size: 0.085em;
+    line-height: 1.272;
+    letter-spacing: -0.007;
+}
+
+.body {
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1.618;
+    letter-spacing: -0.011;
+}
+
 
 @mixin font-classes($sizes, $line-height) {
     @each $index, $size in $sizes {

@@ -86,6 +86,7 @@ $mobile-gap: $spacer-6;
   padding: 0 $spacer-2;
   text-decoration: none;
   transition: color .3s ease-out;
+  color: $night-blue;
 
   @include breakpoint-max-width(md) {
     font-size: $mobile-font-size;

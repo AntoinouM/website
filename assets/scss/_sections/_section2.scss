@@ -1,23 +1,97 @@
-.description {
-    grid-column: 2 / span 6;
-    grid-row: 2 / span 6;
-    justify-self: center;
+.section2 {
+    @include generate-grid(12, 8, 0px);
+    grid-template-areas: 
+    "col1-header col1-header col1-header col1-header col1-header col1-header gutter-header col2-header col2-header col2-header col2-header col2-header"
+    "col1 col1 col1 col1 col1 col1 gutter col2 col2 col2 col2 col2"
+    "col1 col1 col1 col1 col1 col1 gutter col2 col2 col2 col2 col2"
+    "col1 col1 col1 col1 col1 col1 gutter col2 col2 col2 col2 col2"
+    "col1 col1 col1 col1 col1 col1 gutter col2 col2 col2 col2 col2"
+    "col1 col1 col1 col1 col1 col1 gutter col2 col2 col2 col2 col2"
+    "col1 col1 col1 col1 col1 col1 gutter col2 col2 col2 col2 col2"
+    "col1-footer col1-footer col1-footer col1-footer col1-footer col1-footer gutter-footer col2-footer col2-footer col2-footer col2-footer col2-footer"
+    ; 
+
+    @include breakpoint-max-width(md) {
+        grid-template-areas: 
+        "col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top"
+        "col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top"
+        "col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top"
+        "col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top"
+        "col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top"
+        "col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top col1-top"
+        "col1-bot col1-bot col1-bot col1-bot col1-bot col1-bot col1-bot col1-bot col1-bot col1-bot col1-bot col1-bot"
+        "col1-bot col1-bot col1-bot col1-bot col1-bot col1-bot col1-bot col1-bot col1-bot col1-bot col1-bot col1-bot"
+        ; 
+    }
+ }
+
+ .description {
+    grid-area: col1;
     align-self: center;
+    color: $olive-green;
+
+    @include breakpoint-max-width(md) {
+        grid-area: col1-top;
+    }
+ }
+
+.description-content {
     text-align: justify;
     font-size: 16px;
     line-height: 1.4;
-    color: hsl(from $olive-green h s l / .8);
+}
 
-     @include breakpoint-max-width(md) {
-        grid-row: 2 / span 7;
-        grid-column: 2 / span 11;
+.banner{
+    grid-area: col2;
+    justify-self: stretch;
+    align-self: stretch;
+
+    display: grid;
+    grid-template: subgrid / subgrid;
+
+    @include breakpoint-max-width(md) {
+        grid-area: col1-bot;
     }
 }
 
-.description-heading {
-    margin: 0;
-    line-height: 1.8;
-    text-align: center;
-    color: $olive-green;
+.block {
+    display: block;
+    height: 100%;
+    width: 100%;
+    grid-column: 1 / span 5;
+    grid-row: 1 / span 6;
+    background: linear-gradient($olive-green, $salmon-red);
+    background: linear-gradient(in lch, $olive-green, $salmon-red);
 
+    @include breakpoint-max-width(md) {
+        display: none;
+    }
 }
+
+.btn {
+    justify-self: center;
+    grid-column: 1 / span 5;
+
+    @include breakpoint-max-width(md) {
+        grid-column: 1 / span 12;
+    }
+
+    &-therapist {
+        grid-row: 5 / span 1;
+        align-self: end;
+
+        @include breakpoint-max-width(md) {
+            grid-row: 1 / span 1;
+        }
+    }
+
+    &-retreats {
+        grid-row: 6 / span 1;
+        align-self: center;
+
+        @include breakpoint-max-width(md) {
+            grid-row: 2 / span 1;
+        }
+    }
+}
+

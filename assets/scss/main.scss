@@ -3,10 +3,12 @@
 @import 'mixins';
 @import 'typography';
 @import 'navbar';
+@import 'buttons';
 
 // sections
 @import '/assets/scss/_sections/section1';
 @import '/assets/scss/_sections/section2';
+@import '/assets/scss/_sections/section3';
 
 // global styling
 * {

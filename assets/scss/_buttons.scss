@@ -1,0 +1,25 @@
+.btn-primary {
+    min-width: fit-content;
+    justify-content: space-between;
+    font-size: 18px;
+    align-items: center;
+    display: flex;
+
+    background: transparent;
+    border: none;
+    border-bottom: 6px solid $night-blue;
+    color: $night-blue;
+    width: 260px;
+    max-width: 280px;
+    text-wrap: nowrap;
+    padding: $spacer-2;
+    cursor: pointer;
+
+    transition: all 0.3s linear;
+
+    &:hover {
+        color: $sunset-red;
+        border-bottom: 2px solid $sunset-red;
+        transform: scaleX(1.05);
+    }
+}
