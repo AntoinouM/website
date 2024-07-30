@@ -1,11 +1,97 @@
 .section3{
     position: relative;
-    height: 500px !important;
+    height: fit-content !important;
     background-color: $egg-white;
 }
 
 .section3-wrapper {
+    @include generate-grid(4, 4, $spacer-6);
+    grid-template-areas: 
+        "col1 col2 col2 col2"
+        "col1 col2 col2 col2"
+        "col1 col2 col2 col2"
+        "col1 col2 col2 col2"
+    ; 
+
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
     background-color: $olive-green;
+    justify-content: space-between;
+    padding-top: $spacer-10;
+    padding-bottom: $spacer-10;
+
+    @include breakpoint-max-width(md) {
+        @include generate-grid(4, 1, $spacer-6);
+        grid-template-areas: 
+            "col1 col1 col1 col1"
+        ; 
+    }
+}
+
+.section3-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: $egg-white;
+
+    /* position */
+    grid-area: col1;
+    align-self: center;
+
+    &::before {
+        content: '';
+        position: absolute;
+        background-color: $egg-white;
+        height: 6px;
+        width: 30%;
+    }
+
+    @include breakpoint-max-width(md) {
+        grid-row: 1 / span 1;
+    }
+}
+
+.section3-content > h3 {
+    margin-top: $spacer-6;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.section3-content > h2 {
+    margin-top: $spacer-3;
+    margin-bottom: $spacer-3;
+}
+
+.cards-wrapper {
+    grid-area: col2;
+    align-self: center;
+    height: fit-content;
+    width: 100%;
+
+    /* display props*/
+    display: flex;
+    gap: $spacer-8;
+    overflow-x: scroll;
+
+    @include breakpoint-max-width(md) {
+        grid-area: col1;
+        grid-row: 2 / span 3;
+        align-self: start;
+        justify-self: center;
+
+        /* display props*/
+        display: grid;
+        gap: $spacer-6;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @include breakpoint-max-width(s) {
+        /* display props*/
+        grid-template-columns: 1fr;
+    }
+}
+
+.card-wrapper {
+    width: fit-content;
+    height: fit-content;
 }

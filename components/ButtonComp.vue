@@ -9,6 +9,10 @@
             type: String,
             default: 'btn-primary'
         },
+        width: {
+            type: String,
+            default: '260px'
+        }
     })
 
 </script>
@@ -28,5 +32,9 @@
 </template>
 
 <style lang="scss" scoped>
-    
+
+    .btn-container {
+        width: v-bind(width) !important;
+    }
+
 </style>
