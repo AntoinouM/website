@@ -26,18 +26,21 @@
 
 .btn-secondary {
     cursor: pointer;
+    box-sizing: border-box;
     margin-top: 1.5rem;
     padding: 0.75rem 1.5rem;
-    font-size: 0.65rem;
+    font-size: 0.55rem;
     font-weight: bold;
     letter-spacing: 0.025rem;
     text-transform: uppercase;
     color: $egg-white;
-    background-color: $night-blue;
+    background-color: $black;
     border: none;
+    transition: all 500ms linear;
     
     &:hover {
-      background-color: lighten(black, 5%);
+      background-color: $grey-90;
+      transform: scale(0.9);
     }
     
     &:focus {

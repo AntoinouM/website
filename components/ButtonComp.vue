@@ -26,7 +26,7 @@
             class="btn-container"
         >
             {{ props.content }}
-            <span class="icon">arrow_forward</span>
+            <span v-if="props.btnType === 'btn-primary'" class="icon">arrow_forward</span>
         </div>
     </div>
     
