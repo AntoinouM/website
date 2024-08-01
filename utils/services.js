@@ -12,19 +12,19 @@ const services =
             name: 'Breath workshop',
             description: 'We will introduce you to the breathing practice and various techniques to enhance your wellbeing.',
             button: '',
-            image: '../public/Services/culture.webp'
+            image: '/Services/culture.webp'
         },
         {
             name: 'Hypnotherapy',
             description: 'With our licensed therapist, you will take back control and improve your wellbeing.',
             button: '',
-            image: 'public/Services/Yoga.webp'
+            image: '/Services/Yoga.webp'
         },
         {
             name: 'True Bali Oasis',
             description: 'Join us in our remote retreat to feel the true life of Balinese people.',
             button: '',
-            image: 'public/Services/Yoga.webp'
+            image: '/Services/culture.webp'
         },
     ]
 

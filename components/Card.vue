@@ -18,9 +18,11 @@
 
     const card = ref(undefined);
     const btnWidth = ref(undefined);
+    const img = ref(undefined)
 
     onMounted(() => {
         btnWidth.value = card.value.getBoundingClientRect().width * 0.7 + 'px';
+        img.value = `url(${props.imageUrl})`
     })
 
 </script>
@@ -77,7 +79,7 @@
 
 
         /* background image */
-        background-image: url('/public/Services/Yoga.webp');
+        background-image: v-bind(img);
         background-position: center;
         background-size: auto 100%;
 
