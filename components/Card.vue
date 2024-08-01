@@ -155,48 +155,48 @@
         backdrop-filter: blur(2px);
     }
 
-    // @media (hover: hover) {
-    //     .card:after {
-    //         transform: translateY(0);
-    //     }
+    @media (hover: hover) {
+        .card:after {
+            transform: translateY(0);
+        }
         
-    //     .content {
-    //         transform: translateY(calc(100% - 4.5rem));
+        .content {
+            transform: translateY(calc(100% - 4.5rem));
             
-    //         > *:not(.title4) {
-    //         opacity: 0;
-    //         transform: translateY(1rem);
-    //         transition:
-    //             transform $transition-delay $transition-timing,
-    //             opacity $transition-delay $transition-timing;
-    //         }
-    //     }
+            > *:not(.title4) {
+            opacity: 0;
+            transform: translateY(1rem);
+            transition:
+                transform $transition-delay $transition-timing,
+                opacity 0 $transition-timing;
+            }
+        }
         
-    //     .card:hover,
-    //     .card:focus-within {
-    //         align-items: center;
+        .card:hover,
+        .card:focus-within {
+            align-items: center;
 
-    //         &:before { transform: translateY(-4%); }
-    //         &:after { transform: translateY(-50%); }
+            &:before { transform: translateY(-4%); }
+            &:after { transform: translateY(-50%); }
 
-    //         .content {
-    //         transform: translateY(0);
+            .content {
+            transform: translateY(0);
 
-    //         > *:not(.title4) {
-    //             opacity: 1;
-    //             transform: translateY(0);
-    //             transition-delay: calc($transition-delay / 8);
-    //         }
-    //         }
-    //     }
+            > *:not(.title4) {
+                opacity: 1;
+                transform: translateY(0);
+                transition-delay: calc($transition-delay / 8);
+            }
+            }
+        }
         
-    //     .card:focus-within {
-    //         &:before,
-    //         &:after,
-    //         .content,
-    //         .content > *:not(.title4) {
-    //         transition-duration: 0s;
-    //         }
-    //     }
-    // }
+        .card:focus-within {
+            &:before,
+            &:after,
+            .content,
+            .content > *:not(.title4) {
+            transition-duration: 0s;
+            }
+        }
+    }
 </style>
