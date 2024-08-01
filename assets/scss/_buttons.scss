@@ -23,3 +23,25 @@
         transform: scaleX(1.05);
     }
 }
+
+.btn-secondary {
+    cursor: pointer;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.65rem;
+    font-weight: bold;
+    letter-spacing: 0.025rem;
+    text-transform: uppercase;
+    color: $egg-white;
+    background-color: $night-blue;
+    border: none;
+    
+    &:hover {
+      background-color: lighten(black, 5%);
+    }
+    
+    &:focus {
+      outline: 1px dashed $sunset-red;
+      outline-offset: 3px;
+    }
+}
