@@ -18,8 +18,7 @@
     box-sizing: border-box;
     background-color: $olive-green;
     justify-content: space-between;
-    padding-top: $spacer-10;
-    padding-bottom: $spacer-10;
+    padding: $spacer-10 0 $spacer-10 $spacer-10;
 
     @include breakpoint-max-width(md) {
         @include generate-grid(4, 1, $spacer-6);
@@ -68,6 +67,8 @@
     align-self: center;
     height: fit-content;
     width: 100%;
+    padding: 0 $spacer-8 0 $spacer-8;
+    box-sizing: border-box;
 
     /* display props*/
     display: flex;
