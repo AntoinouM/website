@@ -17,5 +17,6 @@ export default defineNuxtConfig({
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: "Website of the amazing 'The Mind Retreat' healing project." },
     ],
-  }
+  },
+  modules: ["vue3-carousel-nuxt"]
 })
