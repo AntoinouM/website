@@ -4,14 +4,14 @@ $mobile-font-size: 1.4rem;
 $mobile-gap: $spacer-6;
 
 .nav-wrapper {
-    position: relative;
-    top: 0;
     width: 100%;
     height: $navbar-height;
     z-index: 100;
+    grid-area: navbar / section;
 
     @include breakpoint-max-width(md) {
         background-color: $egg-white;
+        grid-area: section / section;
     }
 }
 
@@ -48,16 +48,17 @@ $mobile-gap: $spacer-6;
 
     @include breakpoint-max-width(md) {
         position: fixed;
-        top: $navbar-height * 2;
+        top: 0;
         left: 0;
         flex-direction: column;
         gap: $mobile-gap;
-        padding-top: $spacer-6;
+        padding-top: calc($navbar-height + $spacer-4) !important;
+        margin-top: 0;
         justify-content: start;
         align-items: center;
         overflow: hidden;
         width: 100%;
-        height: calc(100dvh - $navbar-height);
+        height: 100dvh;
         text-align: center;
         background-color: $egg-white;
         transform: translate(-101%);
@@ -85,16 +86,18 @@ $mobile-gap: $spacer-6;
 .nav-item > a {
   padding: 0 $spacer-2;
   text-decoration: none;
-  transition: color .3s ease-out;
-  color: $night-blue;
+  transition: all .3s ease-out;
+  color: $egg-white;
 
   @include breakpoint-max-width(md) {
     font-size: $mobile-font-size;
+    color: $black;
   }
 }
 
 .nav-item a:hover {
-    color: $olive-green;
+    color: $salmon-red;
+    font-size: 1.02em;
 }
 
 // burger menu

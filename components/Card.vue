@@ -47,7 +47,7 @@
 
 <style lang="scss" scoped>
 
-    $transition-delay: 700ms;
+    $transition-delay: 800ms;
     $transition-timing: cubic-bezier(0.19, 1, 0.22, 1);
 
     .card {
@@ -128,7 +128,7 @@
             hsla(0, 0%, 0%, 0.790) 100%
             );
             transform: translateY(-50%);
-            transition: transform calc(var($transition-delay) * 2) var($transition-timing);
+            transition: transform calc(var($transition-delay) * 1.5) var($transition-timing);
         }
     }
 

@@ -33,9 +33,12 @@
         <div>
             <section ref="section1" class="section section1">
                 <NavBar textColor="$night-blue" />
+                <video autoplay muted loop class="video-banner">
+                    <source src="/Cover/video-bali-ricefields.mp4" type="video/mp4">
+                </video>
                 <div class="content-container">
-                    <h3 class="text title text-white">The Mind Retreat</h3>
-                    <div class="text quote text-white">Discover transformation and peace at <i class="text-white">The Mind Retreats</i> – your perfect mental health escape in Bali.</div>
+                    <h3 class="text title">The Mind Retreat</h3>
+                    <div class="text quote">Discover transformation and peace at <i class="text-white">The Mind Retreats</i> – your perfect mental health escape in Bali.</div>
                 </div>
             </section>
             <section ref="section2" class="section section2">
