@@ -42,6 +42,7 @@
 }
 
 .banner{
+    position: relative;
     grid-area: col2;
     justify-self: stretch;
     align-self: stretch;
@@ -54,14 +55,42 @@
     }
 }
 
+.line {
+    background-color: $olive-green;
+    position: absolute;
+
+    @include breakpoint-max-width(md) {
+        display: none;
+    }
+}
+
+.line-horizontal {
+    $width-h-line: 100%;
+
+    top: $spacer-4;
+    left: -$width-h-line;
+    width: $width-h-line;
+    height: $line-height-md;
+}
+
+.line-vertical {
+    $width-v-line: 100%;
+
+    width: $line-height-md;
+    height: $width-v-line;
+    bottom: calc($width-v-line / -2);
+    left: 50%;
+    z-index: 0;
+}
+
 .block {
     display: block;
     height: 100%;
     width: 100%;
     grid-column: 1 / span 5;
     grid-row: 1 / span 6;
-    background: linear-gradient($olive-green, $salmon-red);
-    background: linear-gradient(in lch, $olive-green, $salmon-red);
+    background: center / cover no-repeat url('/Cover/tishna-abi.webp');
+    z-index: 1;
 
     @include breakpoint-max-width(md) {
         display: none;

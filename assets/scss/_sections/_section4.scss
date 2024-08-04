@@ -1,3 +1,53 @@
 .section4 {
     background-color: $egg-white;
+    padding: $spacer-6 $spacer-8;
+
+    /* grid setting */
+    display: grid;
+    grid-template-columns: 
+        [section-start] 20%
+        [carousel-start] 1fr
+        [carousel-middle] 1fr
+        [section-end carousel-end];
+    grid-template-rows: 
+        [section-start] 1fr
+        [section-end];
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.carousel__wrapper {
+    grid-area: section / carousel;
+    justify-self: stretch;
+    align-self: stretch;
+
+    @include breakpoint-max-width(s) {
+        display: none;
+    }
+
+    @include breakpoint-max-width(md) {
+        grid-area: section / section;
+    }
+}
+
+.section4-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: $night-blue;
+    margin-bottom: $spacer-10;
+    height: 40%;
+
+    /* position */
+    align-self: end;
+
+    &::before {
+        content: '';
+        position: absolute;
+        background-color: $night-blue;
+        height: $line-height-xlg;
+        width: 30%;
+    }
+
 }

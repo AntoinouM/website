@@ -2,6 +2,7 @@
 
     import getScrollValueOfElement from '~/utils/utilsFunctions';
     import services from '~/utils/services';
+    import carousel from '~/utils/carousel.js'
 
     const section1 = ref(null);
     const section2 = ref(null);
@@ -11,12 +12,25 @@
     let section3Observer = undefined;
     let percentageValue = ref(0);
 
+    let section4Description = ref(undefined);
+
     const negativePercentage = computed(() => {
         return `${100-percentageValue.value.value}%`
     })
+
+    function updateDescriptionSection4(newD) {
+        console.log(newD)
+        section4Description.value = newD;
+    }
+
     onMounted(() => {
+
+        // define border effect for section3
         section3Observer = getScrollValueOfElement(section3.value, null);
         percentageValue.value = toRaw(section3Observer.scrollVal);
+
+        // define description of image from section4 carousel
+        section4Description.value = Object.values(carousel.slides)[0].description;
 
         // Cleanup observer on unmount
         onBeforeUnmount(() => {
@@ -50,6 +64,8 @@
                 </div>
                 <div class="banner">
                     <span class="block"></span>
+                    <span class="line line-horizontal"></span>
+                    <span class="line line-vertical"></span>
                     <ButtonComp class="btn btn-therapist" :content="'Discover the Therapist'" :btnType="'btn-primary'" />
                     <ButtonComp class="btn btn-retreats" :content="'Discover the Retreats'" :btnType="'btn-primary'" />
                 </div>
@@ -74,6 +90,15 @@
                 </div>
             </section>
             <section ref="section4" class="section section4">
+                <div class="section4-content">
+                        <h3 class="heading">The Location</h3>
+                        <p class="body">{{ section4Description }}</p>
+                        <ButtonComp class="btn" :content="'Explore the resort'" :btnType="'btn-primary'" />
+                    </div>
+                <CarouselElement
+                    class="carousel__wrapper"
+                    @active-slide-change="updateDescriptionSection4"
+                />
             </section>
         </div>
     </div>
