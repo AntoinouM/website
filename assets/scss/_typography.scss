@@ -105,8 +105,8 @@ $material-symbols-font-path: '~/material-symbols/';
 
     * {
         font-family: 'Montserrat', sans-serif;
-        font-size: map-get($sizes, 4);
-        line-height: map-get($line-height, 4);
+        font-size: map-get($sizes, 5);
+        line-height: map-get($line-height, 5);
     }
 }
 
