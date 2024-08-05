@@ -16,6 +16,10 @@
     grid-row-gap: 0px;
 }
 
+.view {
+    grid-area: section / carousel;
+}
+
 .carousel__wrapper {
     grid-area: section / carousel;
     justify-self: stretch;

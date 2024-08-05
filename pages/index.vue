@@ -91,14 +91,11 @@
             </section>
             <section ref="section4" class="section section4">
                 <div class="section4-content">
-                        <h3 class="heading">The Location</h3>
-                        <p class="body">{{ section4Description }}</p>
-                        <ButtonComp class="btn" :content="'Explore the resort'" :btnType="'btn-primary'" />
-                    </div>
-                <CarouselElement
-                    class="carousel__wrapper"
-                    @active-slide-change="updateDescriptionSection4"
-                />
+                    <h3 class="heading">The Location</h3>
+                    <p class="body">{{ section4Description }}</p>
+                    <ButtonComp class="btn" :content="'Explore the resort'" :btnType="'btn-primary'" />
+                </div>
+                <SwiperComp/>
             </section>
         </div>
     </div>

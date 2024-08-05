@@ -12,8 +12,8 @@
   "dependencies": {
     "material-symbols": "^0.21.0",
     "nuxt": "^3.12.3",
-    "vue": "latest",
-    "vue3-carousel-nuxt": "^1.1.2"
+    "swiper": "^11.1.9",
+    "vue": "latest"
   },
   "devDependencies": {
     "@nuxtjs/style-resources": "^1.2.2",

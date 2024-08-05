@@ -10,6 +10,11 @@ export default defineNuxtConfig({
       }
     }
   },
+  vue: {
+    compilerOptions: { 
+      isCustomElement: (tag) => tag.startsWith("swiper-"),
+    },
+  },
   head: {
     title: 'The Mind Retreat',
     meta: [
@@ -18,5 +23,4 @@ export default defineNuxtConfig({
       { hid: 'description', name: 'description', content: "Website of the amazing 'The Mind Retreat' healing project." },
     ],
   },
-  modules: ["vue3-carousel-nuxt"]
 })
