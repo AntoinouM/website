@@ -1,5 +1,10 @@
 <script setup>
 
+    onMounted(async() => {
+        const files = await getAssets('Cover');
+        console.log(files)
+    });
+   
 </script>
 
 <template>
@@ -31,12 +36,11 @@
 
     .section1 {
         background-color: $egg-white;
-        background-image: url('/public/Cover/bali2.png');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: bottom -10em center;  
 
-        /* fix backgrounbd for parallax*/
+        /* fix background for parallax*/
         background-attachment: fixed;
     }
 
