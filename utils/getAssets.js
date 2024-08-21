@@ -1,4 +1,3 @@
-
 export default async function (p) {
 
   const response = await fetch(`/api/images?folder=${p}`);

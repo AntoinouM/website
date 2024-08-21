@@ -1,9 +1,47 @@
 <script setup>
 
     onMounted(async() => {
-        const files = await getAssets('Cover');
-        console.log(files)
+        const files = await getAssets('Resort');
+        handleImages(files, 'Resort').then((val) => console.log(val))
     });
+
+    function handleImages(imagesNames, dir) {
+        return new Promise((resolve, reject) => {
+            const listOfPromises = [];
+
+            for (let i in imagesNames) {
+                let imageName = imagesNames[i];
+                
+                listOfPromises.push(
+                    handleImage(imageName, dir).then((val) =>
+                        console.log(val)
+                    )
+                )
+            }
+
+
+            Promise.all(listOfPromises)
+                .then(() => resolve(`All resources have been loaded (${imagesNames.length} images`))
+                .catch((e) => reject(`${e}`));
+        })
+    }
+
+    function handleImage(imageName, dir) {
+        return new Promise((resolve, reject) => {
+            const imageInfos = {
+                key: imageName.substring(0, imageName.indexOf('.')),
+                src: `/${dir}/${imageName}`,
+            }
+
+            const image = new Image();
+
+            image.onload = () => {resolve(`Image ${imageInfos.key} loaded.`)};
+            image.onerror = () => {reject(`Impossible to load image ${imageInfos.key} from (${imageInfos.src}).`)};
+
+            image.src = imageInfos.src;
+        
+        })
+    }
    
 </script>
 
