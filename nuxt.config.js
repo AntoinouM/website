@@ -17,5 +17,11 @@ export default defineNuxtConfig({
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: "Website of the amazing 'The Mind Retreat' healing project." },
     ],
+  },
+  runtimeConfig: {
+    public: {
+      baseURL: process.env.BASE_URL,
+      deployURL: process.env.DEPLOY_URL,
+    }
   }
 })

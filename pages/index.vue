@@ -1,9 +1,23 @@
 <script setup>
+    import ResourceManager from '~/utils/ResourcesManager/ResourceManager';
 
-    onMounted(async() => {
-        const files = await getAssets('Resort');
-        handleImages(files, 'Resort').then((val) => console.log(val))
-    });
+
+    const resourceLoader = new ResourceManager();
+
+    resourceLoader.addEventListener("start", () => {
+        console.log("Resource loading starts")
+    })
+    resourceLoader.addEventListener("progress", (e) => {
+        // e.detail.totalResources display total resources to load
+        // e.detail.loadedResources display loaded resources
+        // e.detail.percentage display percentage
+        console.log("Progress", e.detail)
+    })
+    resourceLoader.addEventListener("end", () => {
+        console.log("Resource loading ended")
+    })
+    resourceLoader.manageResources('images', 'Resort');
+
 
     function handleImages(imagesNames, dir) {
         return new Promise((resolve, reject) => {
@@ -18,7 +32,6 @@
                     )
                 )
             }
-
 
             Promise.all(listOfPromises)
                 .then(() => resolve(`All resources have been loaded (${imagesNames.length} images`))
