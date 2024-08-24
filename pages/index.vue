@@ -1,61 +1,35 @@
 <script setup>
     import ResourceManager from '~/utils/ResourcesManager/ResourceManager';
 
+    const listOfResources = [
+        'agung.webp',
+        'drone-view-close.webp',
+        'rooftop.webp',
+    ]
+
+    const duplicate = [
+        'agung.webp',
+        'pool-front.webp'
+    ]
+
 
     const resourceLoader = new ResourceManager();
 
-    resourceLoader.addEventListener("start", () => {
-        console.log("Resource loading starts")
-    })
-    resourceLoader.addEventListener("progress", (e) => {
-        // e.detail.totalResources display total resources to load
-        // e.detail.loadedResources display loaded resources
-        // e.detail.percentage display percentage
-        console.log("Progress", e.detail)
-    })
-    resourceLoader.addEventListener("end", () => {
-        console.log("Resource loading ended")
-    })
-    resourceLoader.manageResources('images', 'Resort');
+    // resourceLoader.addEventListener("start", () => {
+    //     console.log("Resource loading starts")
+    // })
+    // resourceLoader.addEventListener("progress", (e) => {
+    //     // e.detail.totalResources display total resources to load
+    //     // e.detail.loadedResources display loaded resources
+    //     // e.detail.percentage display percentage
+    //     console.log("Progress", e.detail.percentage)
+    // })
+    // resourceLoader.addEventListener("end", () => {
+    //     console.log("Resource loading ended")
+    // })
+    resourceLoader.declareResources('images', 'Resort');
+    resourceLoader.declareResources('images', 'Resort', duplicate);
 
-
-    function handleImages(imagesNames, dir) {
-        return new Promise((resolve, reject) => {
-            const listOfPromises = [];
-
-            for (let i in imagesNames) {
-                let imageName = imagesNames[i];
-                
-                listOfPromises.push(
-                    handleImage(imageName, dir).then((val) =>
-                        console.log(val)
-                    )
-                )
-            }
-
-            Promise.all(listOfPromises)
-                .then(() => resolve(`All resources have been loaded (${imagesNames.length} images`))
-                .catch((e) => reject(`${e}`));
-        })
-    }
-
-    function handleImage(imageName, dir) {
-        return new Promise((resolve, reject) => {
-            const imageInfos = {
-                key: imageName.substring(0, imageName.indexOf('.')),
-                src: `/${dir}/${imageName}`,
-            }
-
-            const image = new Image();
-
-            image.onload = () => {resolve(`Image ${imageInfos.key} loaded.`)};
-            image.onerror = () => {reject(`Impossible to load image ${imageInfos.key} from (${imageInfos.src}).`)};
-
-            image.src = imageInfos.src;
-        
-        })
-    }
-   
 </script>
 
 <template>
