@@ -11,6 +11,10 @@ export default class ResourceManager extends EventTarget {
     _totalResources;
     /** @type {Array} */
     _loadedResources;
+    /** @type {Set} */
+    _imagesFormats;
+    /** @type {Set} */
+    _videosFormats;
 
 
     constructor() {
@@ -20,6 +24,8 @@ export default class ResourceManager extends EventTarget {
         this._videos = new LabeledArray('videos');
         this._loadedResources = [];
         this._totalResources = 0;
+        this._imagesFormats = new Set(['apng', 'avif', 'gif', 'jpg', 'jpeg', 'jfif', 'pjpeg', 'pjp', 'png', 'svg', 'webp']);
+        this._videosFormats = new Set(['mp4', 'mpg', 'mpg-1', 'mpg-2', 'mpg-4', 'mov', 'avi', 'wmf', 'asf', 'mkv', 'webm', 'flf']);
     }
 
     // GETTERS
@@ -181,9 +187,9 @@ export default class ResourceManager extends EventTarget {
 
 
     // METHODS
-    /** @param {String} name */
-    toKey(name) {
-        return name.substring(0, name.indexOf('.'));
+    /** @param {String} str */
+    toKey(str) {
+        return str.substring(0, str.indexOf('.'));
     }
 
     /** @param {String|null} directory */
@@ -193,6 +199,12 @@ export default class ResourceManager extends EventTarget {
         directory ? src = `/${directory}/${name}` : src = `/${name}`
         return src;
     }
+
+    /** @param {String} str */
+    getFormat(str) {
+        return str.split('.').pop();
+    }
+
 
     /** @param {String} message */
     cl(message) {

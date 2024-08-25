@@ -53,4 +53,9 @@ export default class Resource {
         set src(src) {
             this._src = src;
         }
+
+        /** @param {String} type */
+        set src(type) {
+            this._type = type;
+        }
 }
