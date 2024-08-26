@@ -8,24 +8,50 @@ export default class Resource {
         _src;
         /** @type {String} */
         _directory;
+        /** @type {String} */
+        _format;
+        /** @type {Map} */
+        _formatsList;
+
 
         /**
-         * @param {String} type
+         * @param {String} format
          * @param {String} key
          * @param {String} src
          * @param {String} directory
          */
-        constructor(type, key, src, directory) {
-            this._type = type;
+        constructor(format, key, src, directory) {
+            this._format = format;
             this._key = key;
             this._src = src;
             this._directory = directory;
+            this._formatsList = new Map()
+
+            this.init();    
+        }
+
+        init() {
+            this._formatsList.set(
+                'image',
+                new Set(['apng', 'avif', 'gif', 'jpg', 'jpeg', 'jfif', 'pjpeg', 'pjp', 'png', 'svg', 'webp'])
+            )
+            this._formatsList.set(
+                'video',
+                new Set(['mp4', 'mpg', 'mpg-1', 'mpg-2', 'mpg-4', 'mov', 'avi', 'wmf', 'asf', 'mkv', 'webm', 'flf'])
+            )
+
+            this.type = this.returnFormat(this.format)
         }
     
         // GETTERS
         /** @returns {String} */
         get type() {
             return this._type;
+        }
+
+        /** @returns {String} */
+        get format() {
+            return this._format;
         }
     
         /** @returns {String} */
@@ -42,6 +68,11 @@ export default class Resource {
         get directory() {
             return this._directory;
         }
+
+        /** @returns {Map} */
+        get formatsList() {
+            return this._formatsList;
+        }
     
         // SETTERS
         /** @param {String} key */
@@ -55,7 +86,23 @@ export default class Resource {
         }
 
         /** @param {String} type */
-        set src(type) {
+        set type(type) {
             this._type = type;
+        }
+
+        // METHODS
+        /**
+         * @param {String} formatStr
+         * @returns {String|undefined}
+         */
+        returnFormat(formatStr) {
+            for (let [key, value] of this.formatsList) {
+                if (value.has(formatStr)) {
+                    return key;
+                }
+
+                console.log(`Resource '${this.key}' has a non-recognized format: ${this.format}.`)
+                return undefined;
+            }
         }
 }

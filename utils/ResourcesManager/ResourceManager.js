@@ -1,46 +1,38 @@
-import LabeledArray from "./LabeledArray";
 import Resource from "./Resource";
 
 export default class ResourceManager extends EventTarget {
 
-    /** @type {LabeledArray} */
+    /** @type {Map} */
     _images;
-    /** @type {LabeledArray} */
+    /** @type {Map} */
     _videos;
     /** @type {Number} */
     _totalResources;
-    /** @type {Array} */
+    /** @type {Map} */
     _loadedResources;
-    /** @type {Set} */
-    _imagesFormats;
-    /** @type {Set} */
-    _videosFormats;
-
 
     constructor() {
         super();
 
-        this._images = new LabeledArray('images');
-        this._videos = new LabeledArray('videos');
-        this._loadedResources = [];
+        this._images = new Map();
+        this._videos = new Map();
+        this._loadedResources = new Map();
         this._totalResources = 0;
-        this._imagesFormats = new Set(['apng', 'avif', 'gif', 'jpg', 'jpeg', 'jfif', 'pjpeg', 'pjp', 'png', 'svg', 'webp']);
-        this._videosFormats = new Set(['mp4', 'mpg', 'mpg-1', 'mpg-2', 'mpg-4', 'mov', 'avi', 'wmf', 'asf', 'mkv', 'webm', 'flf']);
     }
 
     // GETTERS
 
-    /** @returns {LabeledArray} */
+    /** @returns {Map} */
     get images() {
         return this._images;
     }
 
-    /** @returns {LabeledArray} */
+    /** @returns {Map} */
     get videos() {
         return this._videos;
     }
 
-    /** @returns {Array} */
+    /** @returns {Map} */
     get loadedResources() {
         return this._loadedResources;
     }
@@ -56,8 +48,8 @@ export default class ResourceManager extends EventTarget {
         this._totalResources += n;
     }
 
-    manageResources(type, directory, listOfElements) {
-        this.declareResources(type, directory, listOfElements).then(() => this.handleResourcesLoading())
+    manageResources(directory, listOfElements) {
+        this.declareResources(directory, listOfElements).then(() => this.handleResourcesLoading())
     }
 
     /**
@@ -67,7 +59,7 @@ export default class ResourceManager extends EventTarget {
         * @returns {Promise<String>}
     */
     // load resources
-    async declareResources(type, directory, listOfElements) {
+    async declareResources(directory, listOfElements) {
 
         return new Promise(async(resolve, reject) => {
 
@@ -80,34 +72,38 @@ export default class ResourceManager extends EventTarget {
             }
 
             if (files.length === 0) {
-                console.log(`No files in folder /${directory}.`)
+                console.log(`No files in folder '/${directory}'.`)
                 return;
             }
-    
-            switch (type) {
-                case 'images': {
-                    checkFiles: for (let i in files) {
-                        let imageName = files[i];
 
-                        // check if key is already declared
-                        if (this.images.keysSet.has(this.toKey(imageName))) continue checkFiles;
+            checkFiles: for (let i in files) {
+                let resourceName = files[i];
+                // check if key is already declared
+                if (
+                    this.images.has(this.toKey(resourceName)) ||
+                    this.videos.has(this.toKey(resourceName))
+                ) 
+                {
+                    continue checkFiles;
+                }
 
-                        let image = new Resource('image', this.toKey(imageName), this.toSrc(imageName, directory), directory);
-                        
-                        this.images.array.push(image);
-                        this.images.keysSet.add(image.key);          
+                let resource = new Resource(this.getFormat(resourceName), this.toKey(resourceName), this.toSrc(resourceName, directory), directory);
+
+                if (!resource.type) continue checkFiles;
+                
+                switch (resource.type) {
+                    case 'image': {
+                        this.images.set(resource.key, resource);  
+                        break;
                     }
-                    break;
-                }
-                case 'videos': {
-                    console.log('videos')
-                    break;
-                }
-                default: {
-                    console.log(`Type of resources not recognized in /${directory}`)
-                }
-            } 
-            this.totalResources = files.length
+                    case 'video': {
+                        this.videos.set(resource.key, resource);  
+                        break;
+                    }
+                }   
+            }
+
+            this.totalResources = this.images.size + this.videos.size;
             resolve(`${files.length} files declared.`);
         })
     }
@@ -124,19 +120,17 @@ export default class ResourceManager extends EventTarget {
 
             const promisesList = [];
 
-            for (let i in this.images.array) {
-
-                let image = this.images.array[i];
+            this.images.forEach((value, key) => {
                 promisesList.push(
-                    this.handleSingleResourceLoading(image)
+                    this.handleSingleResourceLoading(value)
                 )
-            }
+            });
 
             this.dispatchEvent(new CustomEvent("start"));
             Promise.all(promisesList)
                 .then(() => {
                     this.dispatchEvent(new CustomEvent("end"));
-                    resolve(`All resources have been loaded (${this.images.array.length} images`)
+                    resolve(`All resources have been loaded (${this.images.size} images`)
                 })
                 .catch((e) => reject(`${e}`));
         })
@@ -147,7 +141,6 @@ export default class ResourceManager extends EventTarget {
      * @returns {Promise<String>}
     */
     handleSingleResourceLoading(resource) {
-
         return new Promise((resolve, reject) => {
 
             const instance = this;
@@ -157,7 +150,7 @@ export default class ResourceManager extends EventTarget {
                     const image = new Image();
 
                     image.onload = () => {
-                        instance.addLoadedResource(resource);
+                        instance.loadedResources.set(resource.key, resource)
                         instance.emitProgress(); // track progress of promise
                         resolve(`Image ${resource.key} loaded.`)
                     };
@@ -179,8 +172,8 @@ export default class ResourceManager extends EventTarget {
         this.dispatchEvent(new CustomEvent("progress", {
             detail: {
                 totalResources: this.totalResources,
-                loadedResources: this.loadedResources.length,
-                percentage: (this.loadedResources.length / this.totalResources) * 100
+                loadedResources: this.loadedResources.size,
+                percentage: (this.loadedResources.size / this.totalResources) * 100
             }
         }));
     }

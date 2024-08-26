@@ -15,20 +15,20 @@
 
     const resourceLoader = new ResourceManager();
 
-    // resourceLoader.addEventListener("start", () => {
-    //     console.log("Resource loading starts")
-    // })
-    // resourceLoader.addEventListener("progress", (e) => {
-    //     // e.detail.totalResources display total resources to load
-    //     // e.detail.loadedResources display loaded resources
-    //     // e.detail.percentage display percentage
-    //     console.log("Progress", e.detail.percentage)
-    // })
-    // resourceLoader.addEventListener("end", () => {
-    //     console.log("Resource loading ended")
-    // })
-    resourceLoader.declareResources('images', 'Resort');
-    resourceLoader.declareResources('images', 'Resort', duplicate);
+    resourceLoader.addEventListener("start", () => {
+        console.log("Resource loading starts")
+    })
+    resourceLoader.addEventListener("progress", (e) => {
+        // e.detail.totalResources display total resources to load
+        // e.detail.loadedResources display loaded resources
+        // e.detail.percentage display percentage
+        console.log("Progress", e.detail.percentage)
+    })
+    resourceLoader.addEventListener("end", () => {
+        console.log("Resource loading ended")
+    })
+    resourceLoader.declareResources('Resort').then(() => console.log(resourceLoader.images));
+    
 
 </script>
 
