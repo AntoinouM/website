@@ -22,12 +22,14 @@
         // e.detail.totalResources display total resources to load
         // e.detail.loadedResources display loaded resources
         // e.detail.percentage display percentage
-        console.log("Progress", e.detail.percentage)
+        console.log("Progress", e.detail)
     })
-    resourceLoader.addEventListener("end", () => {
-        console.log("Resource loading ended")
+    resourceLoader.addEventListener("end", (e) => {
+        console.log("End", e.detail)
     })
-    resourceLoader.declareResources('Resort').then(() => console.log(resourceLoader.images));
+    resourceLoader.manageResources('Resort').then((value) => {
+        console.log(value);
+    })
     
 
 </script>

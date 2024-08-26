@@ -48,8 +48,18 @@ export default class ResourceManager extends EventTarget {
         this._totalResources += n;
     }
 
+    /**
+     * @param {String} directory 
+     * @param {Array} listOfElements 
+     * @returns {Promise<String>}
+     */
     manageResources(directory, listOfElements) {
-        this.declareResources(directory, listOfElements).then(() => this.handleResourcesLoading())
+        return new Promise ((resolve, reject) => {
+            this.declareResources(directory, listOfElements)
+                .then(() => {
+                    this.handleResourcesLoading().then((value) => {resolve(value)}) 
+                })    
+        })
     }
 
     /**
@@ -113,24 +123,38 @@ export default class ResourceManager extends EventTarget {
         * @returns {Promise<String>}
     */
     handleResourcesLoading() {
-
-        if (!import.meta.client) return;
-
         return new Promise((resolve, reject) => {
+
+            if (!import.meta.client) return;
 
             const promisesList = [];
 
-            this.images.forEach((value, key) => {
-                promisesList.push(
-                    this.handleSingleResourceLoading(value)
-                )
-            });
+            this.dispatchEvent(new CustomEvent("start", {
+                detail: {
+                    resourcesLoaded: false
+                }
+            }));
 
-            this.dispatchEvent(new CustomEvent("start"));
+            if (this.images.size !== 0) {
+                this.images.forEach((value, key) => {
+                    promisesList.push(
+                        this.handleSingleResourceLoading(value)
+                    )
+                });
+            }
+
+            if (this.videos.size !== 0) {
+                this.videos.forEach((value, key) => {
+                    promisesList.push(
+                        this.handleSingleResourceLoading(value)
+                    )
+                });
+            }
+
             Promise.all(promisesList)
                 .then(() => {
-                    this.dispatchEvent(new CustomEvent("end"));
-                    resolve(`All resources have been loaded (${this.images.size} images`)
+                    this.emitEnd();
+                    resolve(`All resources have been loaded (${this.images.size} images, ${this.videos.size} videos)`)
                 })
                 .catch((e) => reject(`${e}`));
         })
@@ -174,6 +198,19 @@ export default class ResourceManager extends EventTarget {
                 totalResources: this.totalResources,
                 loadedResources: this.loadedResources.size,
                 percentage: (this.loadedResources.size / this.totalResources) * 100
+            }
+        }));
+    }
+
+    emitEnd() {
+        this.dispatchEvent(new CustomEvent("end", {
+            detail: {
+                images: this.images,
+                videos: this.videos,
+                nbImages: this.images.size,
+                nbVideos: this.videos.size,
+                resourceLoaded: true,
+                message: `All resources have been loaded (${this.images.size} images, ${this.videos.size} videos)`
             }
         }));
     }
