@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "nuxt": "^3.12.3",
+    "swiper": "^11.1.10",
     "vue": "latest"
   },
   "devDependencies": {
