@@ -58,7 +58,8 @@ export default class ResourceManager extends EventTarget {
             this.declareResources(directory, listOfElements)
                 .then(() => {
                     this.handleResourcesLoading().then((value) => {resolve(value)}) 
-                })    
+                }
+            )
         })
     }
 
@@ -129,11 +130,7 @@ export default class ResourceManager extends EventTarget {
 
             const promisesList = [];
 
-            this.dispatchEvent(new CustomEvent("start", {
-                detail: {
-                    resourcesLoaded: false
-                }
-            }));
+            this.emitStart();
 
             if (this.images.size !== 0) {
                 this.images.forEach((value, key) => {
@@ -190,6 +187,15 @@ export default class ResourceManager extends EventTarget {
                 default: this.cl(`Resource ${resource.src} type is not recognized.`)
             }
         })
+    }
+
+    emitStart() {
+        this.dispatchEvent(new CustomEvent("start", {
+            detail: {
+                resourcesLoaded: false,
+                message: `Resource loading starts (${this.images.size + this.videos.size} resources.)`
+            }
+        }));
     }
 
     emitProgress() {

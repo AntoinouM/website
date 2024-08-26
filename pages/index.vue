@@ -15,8 +15,8 @@
 
     const resourceLoader = new ResourceManager();
 
-    resourceLoader.addEventListener("start", () => {
-        console.log("Resource loading starts")
+    resourceLoader.addEventListener("start", (e) => {
+        console.log(e.detail.message)
     })
     resourceLoader.addEventListener("progress", (e) => {
         // e.detail.totalResources display total resources to load
@@ -25,11 +25,9 @@
         console.log("Progress", e.detail)
     })
     resourceLoader.addEventListener("end", (e) => {
-        console.log("End", e.detail)
+        console.log(e.detail.message)
     })
-    resourceLoader.manageResources('Resort').then((value) => {
-        console.log(value);
-    })
+    resourceLoader.manageResources('Resort');
     
 
 </script>
