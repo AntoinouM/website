@@ -1,18 +1,6 @@
 <script setup>
     import ResourceManager from '~/utils/ResourcesManager/ResourceManager';
 
-    const listOfResources = [
-        'agung.webp',
-        'drone-view-close.webp',
-        'rooftop.webp',
-    ]
-
-    const duplicate = [
-        'agung.webp',
-        'pool-front.webp'
-    ]
-
-
     const resourceLoader = new ResourceManager();
 
     resourceLoader.addEventListener("start", (e) => {
