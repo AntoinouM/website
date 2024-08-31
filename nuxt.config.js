@@ -23,6 +23,7 @@ export default defineNuxtConfig({
       { hid: 'description', name: 'description', content: "Website of the amazing 'The Mind Retreat' healing project." },
     ],
   },
+  modules: ['nuxt-swiper'],
   runtimeConfig: {
     public: {
       baseURL: process.env.BASE_URL,

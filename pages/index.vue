@@ -6,14 +6,10 @@
 
     onMounted(() => {
         resourceLoader.addEventListener('end', (e) => {
-            e.detail.images.forEach((value, key) => {
-                imgArr.value.push(value.src)
-            })
-            console.log(imgArr.value)
+            console.log(resourceLoader.getFilteredArray('Cover'))
         })
 
-        resourceLoader.manageResources('Resort');
-
+        resourceLoader.manageResources('Cover');
     })
 
     
