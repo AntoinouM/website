@@ -12,6 +12,8 @@ export default class Resource {
         _format;
         /** @type {Map} */
         _formatsList;
+        /** @type {String} */
+        _description;
 
 
         /**
@@ -40,7 +42,7 @@ export default class Resource {
                 new Set(['mp4', 'mpg', 'mpg-1', 'mpg-2', 'mpg-4', 'mov', 'avi', 'wmf', 'asf', 'mkv', 'webm', 'flf'])
             )
 
-            this.type = this.returnFormat(this.format)
+            this.type = this.returnType(this.format)
         }
     
         // GETTERS
@@ -73,6 +75,11 @@ export default class Resource {
         get formatsList() {
             return this._formatsList;
         }
+
+        /** @returns {String} */
+        get description() {
+            return this._description;
+        }
     
         // SETTERS
         /** @param {String} key */
@@ -90,19 +97,27 @@ export default class Resource {
             this._type = type;
         }
 
+        /** @param {String} description */
+        set description(description) {
+            this._description = description;
+        }
+
         // METHODS
         /**
          * @param {String} formatStr
          * @returns {String|undefined}
          */
-        returnFormat(formatStr) {
+        returnType(formatStr) {
+            let rscType = undefined;
+
             for (let [key, value] of this.formatsList) {
                 if (value.has(formatStr)) {
-                    return key;
+                    rscType = key;
                 }
-
-                console.log(`Resource '${this.key}' has a non-recognized format: ${this.format}.`)
-                return undefined;
             }
+
+            if (rscType === undefined) console.log(`Resource '${this.key}' has a non-recognized format: ${this.format}.`)
+                
+            return rscType;
         }
 }

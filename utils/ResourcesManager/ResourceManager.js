@@ -172,7 +172,7 @@ export default class ResourceManager extends EventTarget {
 
                     image.onload = () => {
                         instance.loadedResources.set(resource.key, resource)
-                        instance.emitProgress(); // track progress of promise
+                        instance.emitProgress();
                         resolve(`Image ${resource.key} loaded.`)
                     };
                     image.onerror = () => {reject(`Impossible to load image ${resource.key} from (${resource.src}).`)};
@@ -181,6 +181,18 @@ export default class ResourceManager extends EventTarget {
                     break;
                 }
                 case 'video': {
+                    const video = document.createElement("video");
+
+                    video.onloadeddata = function () {
+                        instance.loadedResources.set(resource.key, resource)
+                        instance.emitProgress();
+                        resolve(`Video ${resource.key} loaded.`)
+                    };
+
+                    video.onerror = () => {reject(`Impossible to load video ${resource.key} from (${resource.src}).`)};
+
+                    video.src = resource.src;
+                    video.load();
 
                     break;
                 }
@@ -189,6 +201,32 @@ export default class ResourceManager extends EventTarget {
         })
     }
 
+    /**
+     * 
+     * @param {String} p 
+     * @returns {Array|null}
+     */
+    getFilteredArray(p) {
+        let generalArray = Array.from(this.images.values()).concat(Array.from(this.videos.values()))
+
+        // check for directory
+        let array = generalArray.filter((resource) => resource.directory === p);
+        if (array.length !== 0) { // match for directory
+            return array
+        }
+        
+        // check for type as no match for directory
+        array = generalArray.filter((resource) => resource.type === p);
+        if (array.length !== 0) {
+            return array
+        }
+
+        // no match for either directory or type
+        console.log(`No resources matching directory or type: '${p}'.`)
+        return null;
+    }
+
+    // EMITS METHODS - CUSTOMEVENTS
     emitStart() {
         this.dispatchEvent(new CustomEvent("start", {
             detail: {
