@@ -2,20 +2,20 @@
     import ResourceManager from '~/utils/ResourcesManager/ResourceManager';
 
     const resourceLoader = new ResourceManager();
+    const imgArr = ref([])
 
-    resourceLoader.addEventListener("start", (e) => {
-        console.log(e.detail.message)
+    onMounted(() => {
+        resourceLoader.addEventListener('end', (e) => {
+            e.detail.images.forEach((value, key) => {
+                imgArr.value.push(value.src)
+            })
+            console.log(imgArr.value)
+        })
+
+        resourceLoader.manageResources('Resort');
+
     })
-    resourceLoader.addEventListener("progress", (e) => {
-        // e.detail.totalResources display total resources to load
-        // e.detail.loadedResources display loaded resources
-        // e.detail.percentage display percentage
-        console.log("Progress", e.detail)
-    })
-    resourceLoader.addEventListener("end", (e) => {
-        console.log(e.detail.message)
-    })
-    resourceLoader.manageResources('Resort');
+
     
 
 </script>
@@ -27,7 +27,8 @@
                 ref="section1"
                 class="section section1"
             >
-
+                <TestComp
+                />
             </section>
         </div>
     </div>

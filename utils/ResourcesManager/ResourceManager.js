@@ -215,7 +215,7 @@ export default class ResourceManager extends EventTarget {
                 videos: this.videos,
                 nbImages: this.images.size,
                 nbVideos: this.videos.size,
-                resourceLoaded: true,
+                resourcesLoaded: true,
                 message: `All resources have been loaded (${this.images.size} images, ${this.videos.size} videos)`
             }
         }));
