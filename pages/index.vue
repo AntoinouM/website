@@ -3,13 +3,15 @@
 
     const resourceLoader = new ResourceManager();
     const imgArr = ref([])
+    const resourcesLoaded = ref(false);
 
     onMounted(() => {
         resourceLoader.addEventListener('end', (e) => {
-            console.log(resourceLoader.getFilteredArray('Cover'))
+            imgArr.value = resourceLoader.getFilteredArray('Resort');
+            console.log(imgArr.value)
+            resourcesLoaded.value = true;
         })
-
-        resourceLoader.manageResources('Cover');
+        resourceLoader.manageResources('Resort');
     })
 
     
@@ -23,8 +25,20 @@
                 ref="section1"
                 class="section section1"
             >
-                <TestComp
-                />
+                <div class="swiper-container">
+                    <Swiper
+                        :modules="[SwiperAutoplay, SwiperNavigation, SwiperPagination]"
+                        :slides-per-view="2.5"
+                        :loop="true"
+                        :navigation="true"
+                        :centeredSlides="true"
+                        :lazy="true"
+                    >
+                        <SwiperSlide v-for="resource in imgArr" :key="resource.key">
+                        <img :src="resource.src" :alt="resource.key">
+                        </SwiperSlide>
+                    </Swiper>
+                </div>
             </section>
         </div>
     </div>
@@ -52,6 +66,23 @@
 
         /* fix background for parallax*/
         background-attachment: fixed;
+    }
+
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+        border: 1px dotted red;
+    }
+
+    .swiper {
+        width: inherit;
+        height: inherit;
+    }
+
+    .swiper-slide-active {
+        display: block;
+        width: 50% !important;
+        height: auto !important;
     }
 
 </style>
