@@ -1,0 +1,39 @@
+.section5 {
+    background-color: $olive-green;
+    color: $salmon-red !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5em;
+}
+
+.form-container {
+    width: 60%;
+    height: fit-content;
+
+    display: flex;
+    gap: $spacer-9;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    @include breakpoint-max-width(md) {
+        width: 75%;
+    }
+
+    @include breakpoint-max-width(s) {
+        width: 90%;
+        gap: $spacer-6;
+    }
+}
+
+.names {
+    display: flex;
+    gap: $spacer-3;
+    width: 100%;
+
+    @include breakpoint-max-width(s) {
+        flex-direction: column;
+        gap: $spacer-6;
+    }
+}

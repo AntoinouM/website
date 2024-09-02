@@ -51,7 +51,7 @@
     }
 
     .carousel__item {
-        height: 70%;
+        height: 50%;
         width: auto;
         color: $black;
         font-size: 20px;

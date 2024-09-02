@@ -8,18 +8,63 @@
     const section2 = ref(null);
     const section3 = ref(null);
     const section4 = ref(null);
+    const section5 = ref(null);
 
     let section3Observer = undefined;
     let percentageValue = ref(0);
 
     let section4Description = ref(undefined);
 
+    let retreatsOptions = [
+        {
+            id: 1,
+            name: 'Self love Woman retreat',
+            start: new Date().setFullYear(2025, 4, 17),
+            end: new Date().setFullYear(2025, 4, 27),
+        },        
+        {
+            id: 2,
+            name: 'Your Problem solved retreat (all gender)',
+            start: new Date().setFullYear(2025, 5, 5),
+            end: new Date().setFullYear(2025, 5, 15),
+        },
+        {
+            id: 3,
+            name: 'Empowered Women retreat',
+            start: new Date().setFullYear(2025, 5, 20),
+            end: new Date().setFullYear(2025, 5, 30),
+        },
+    ]
+    let selectRetreat = ref(retreatsOptions[0].id)
+
+    let accommodationOptions = [
+        {
+            name: 'Earth - Single Room',
+            price: '1300 €',
+        },
+        {
+            name: 'Sun - Single Room',
+            price: '1500 €',
+        },
+        {
+            name: 'Moon - Single Room',
+            price: '1400 €',
+        },
+        {
+            name: 'Stars - Double Room',
+            price: '2500 €',
+        },
+        {
+            name: 'No accommodation',
+            price: '900 €',
+        },
+    ]
+
     const negativePercentage = computed(() => {
         return `${100-percentageValue.value.value}%`
     })
 
     function updateDescriptionSection4(newD) {
-        console.log(newD)
         section4Description.value = newD;
     }
 
@@ -99,6 +144,23 @@
                     class="carousel__wrapper"
                     @active-slide-change="updateDescriptionSection4"
                 />
+            </section>
+            <section ref="section5" class="section section5">
+                <div class="title1">GET IN TOUCH</div>
+                <div class="form-container">
+                    <div class="names">
+                        <InputText type="text" label="First name"/>
+                        <InputText type="text" label="Last name"/>
+                    </div>
+                    <InputText type="email" label="Email"/>
+                    <USelectMenu 
+                        v-model="selectRetreat"
+                        :options="retreatsOptions"
+                        placeholder="Select a retreat"
+                        value-attribute="id"
+                        option-attribute="name"
+                    />
+                </div>
             </section>
         </div>
     </div>
