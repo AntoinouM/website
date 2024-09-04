@@ -23,8 +23,6 @@
                 ref="section1"
                 class="section section1"
             >
-                <TestComp
-                />
             </section>
         </div>
     </div>

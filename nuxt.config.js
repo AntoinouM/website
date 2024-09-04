@@ -10,11 +10,6 @@ export default defineNuxtConfig({
       }
     }
   },
-  vue: {
-    compilerOptions: { 
-      isCustomElement: (tag) => tag.startsWith("swiper-"),
-    },
-  },
   head: {
     title: 'The Mind Retreat',
     meta: [
@@ -23,7 +18,6 @@ export default defineNuxtConfig({
       { hid: 'description', name: 'description', content: "Website of the amazing 'The Mind Retreat' healing project." },
     ],
   },
-  modules: ['nuxt-swiper'],
   runtimeConfig: {
     public: {
       baseURL: process.env.BASE_URL,
