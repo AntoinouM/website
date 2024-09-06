@@ -3,6 +3,7 @@
 
     const resourceLoader = new ResourceManager();
     const imgArr = ref([])
+    const loadedImg = ref(false)
 
     onMounted(() => {
         resourceLoader.addEventListener('end', (e) => {
@@ -12,7 +13,7 @@
         resourceLoader.manageResources('Cover');
     })
 
-    
+
 
 </script>
 
@@ -23,6 +24,7 @@
                 ref="section1"
                 class="section section1"
             >
+                <img src="/Resort/Yoga.png" alt="Your Image">
             </section>
         </div>
     </div>
