@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <figure class="image">
-                    <img src="/public/Services/DSC08675.jpeg" alt="">
+                    <img src="/public/Services/DSC_2399.jpg" alt="">
                     <figcaption>Activity description</figcaption>
                 </figure>
             </article>
