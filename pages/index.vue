@@ -3,14 +3,12 @@
 
     const resourceLoader = new ResourceManager();
     const imgArr = ref([])
-    const loadedImg = ref(false)
 
     onMounted(() => {
         resourceLoader.addEventListener('end', (e) => {
-            console.log(resourceLoader.getFilteredArray('Cover'))
+            imgArr.value = resourceLoader.getFilteredArray('Resort');
         })
-
-        resourceLoader.manageResources('Cover');
+        resourceLoader.manageResources('Resort');
     })
 
 
@@ -24,7 +22,15 @@
                 ref="section1"
                 class="section section1"
             >
-                <img src="/Resort/Yoga.png" alt="Your Image">
+
+            </section>
+            <section 
+                ref="section2"
+                class="section section2"
+            >
+                <SwiperComp
+                    :imgArr="imgArr"
+                />
             </section>
         </div>
     </div>
@@ -44,14 +50,5 @@
         }
     }
 
-    .section1 {
-        background-color: $egg-white;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: bottom -10em center;  
-
-        /* fix background for parallax*/
-        background-attachment: fixed;
-    }
 
 </style>

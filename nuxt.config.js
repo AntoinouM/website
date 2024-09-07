@@ -8,7 +8,7 @@ export default defineNuxtConfig({
           additionalData: '@use "./assets/scss/_variables.scss" as *;'
         }
       }
-    }
+    },
   },
   head: {
     title: 'The Mind Retreat',

@@ -1,5 +1,13 @@
 <script setup>
 
+
+    const props = defineProps({
+        imgArr: {
+            type: Array,
+            required: true,
+        }
+    })
+
 </script>
 
 <template>
@@ -7,39 +15,22 @@
     <div class="swiper-container next">
         <div class="swiper-items-container">
             <article class="item">
-                <figure class="item-image">
-                    <img src="/public/Resort" alt="agung">
+                <div class="main-content">
+                    <div class="content">
+                        <h2>Activity title</h2>
+                        <p class="description">Eu consequat eu et quis laboris enim Lorem cupidatat. Enim minim consectetur veniam elit. Laborum aute labore reprehenderit ad non eiusmod ad cupidatat est reprehenderit eiusmod culpa ipsum. Elit eu sunt anim duis cupidatat est consequat et.</p>
+                    </div>
+                </div>
+                <figure class="image">
+                    <img src="/public/Services/DSC08675.jpeg" alt="">
+                    <figcaption>Activity description</figcaption>
                 </figure>
             </article>
-            <article class="item other_1">
-                <figure class="item-image">
-                    <img src="/public/Resort/drone-view-close.webp" alt="dronw">
-                </figure>
-            </article>
-            <article class="item active">
-                <figure class="item-image">
-                    <img src="/public/Resort/pool-back.webp" alt="pool">
-                </figure>
-            </article>
-            <article class="item other_2">
-                <figure class="item-image">
-                    <img src="/Resort/rooftop.webp" alt="pool">
-                </figure>
-            </article>
-            <article class="item">
-                <figure class="item-image">
-                    <img src="/Resort/tisna-abi.webp" alt="pool">
-                </figure>
-            </article>
-            <article class="item">
-                <figure class="item-image">
-                    <img src="/Resort/pool-front.webp" alt="pool">
-                </figure>
-            </article>
+
         </div>
         <div class="arrows">
-            <SwiperNavigationComp direction="prev"/>
-            <SwiperNavigationComp direction="next"/>
+            <SwiperNavigationComp ref="prevArrow" direction="prev"/>
+            <SwiperNavigationComp ref="nextArrow" direction="next"/>
         </div>
     </div>
     
@@ -49,11 +40,13 @@
 
     $item-width: 350px;
     $calculate: calc(3/2);
+    $border-color: $white;
     
     .swiper-container {
         width: 100%;
-        height: 100%;
+        height: 100vh;
         overflow: hidden;
+        position: relative;
     }
 
     .swiper-items-container {
@@ -78,7 +71,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 300px;
 
             &-image {
                 position: absolute;

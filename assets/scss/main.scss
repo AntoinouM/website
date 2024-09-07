@@ -3,6 +3,10 @@
 @import 'mixins';
 @import 'typography';
 
+// sections
+@import '/assets/sections/section1';
+@import '/assets/sections/section2';
+
 // global styling
 * {
     padding: 0;

@@ -111,7 +111,8 @@ export default class Resource {
             let rscType = undefined;
 
             for (let [key, value] of this.formatsList) {
-                if (value.has(formatStr)) {
+
+                if (value.has(formatStr.toLowerCase()) || value.has(formatStr.toUpperCase())) {
                     rscType = key;
                 }
             }
