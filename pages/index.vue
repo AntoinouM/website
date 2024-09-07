@@ -9,6 +9,7 @@
             imgArr.value = resourceLoader.getFilteredArray('Resort');
         })
         resourceLoader.manageResources('Resort');
+        resourceLoader.manageResources('Services');
     })
 
 
