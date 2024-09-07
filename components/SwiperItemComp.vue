@@ -138,7 +138,7 @@
     }
 
     .item.active .main-content {
-        animation: showContent 1s ease-in-out 1 forwards;
+        animation: showContent 1.2s ease-in-out 1 forwards;
     }
 
     @keyframes showContent {

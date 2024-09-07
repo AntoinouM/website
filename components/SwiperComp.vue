@@ -1,7 +1,9 @@
 <script setup>
 
     const swiper = ref(null);
+    const swiperContainer = ref(null);
     const swiperItems = ref([])
+    const swiperItemsImages = ref([]);
 
     let countItem;
     let active = 1;
@@ -19,9 +21,11 @@
     })
 
     onMounted(() => {
-        swiperItems.value = document.querySelectorAll('.swiper-item');
+        swiperItems.value = swiperContainer.value.children;
+        Array.from(swiperItems.value).forEach(item => {
+            swiperItemsImages.value.push(item.children[0].children[1].children[0])
+        })
         countItem = swiperItems.value.length;
-
     })
 
     function manageActiveIndex(e) {
@@ -31,6 +35,10 @@
             prev_active =active - 1 < 0 ? countItem -1 : active - 1;
             next_active =active + 1 >= countItem ? 0 : active + 1;
             changePositionArray()
+
+            swiperItemsImages.value.forEach((div) => {
+                resetAnim(div)
+            })
         } else {
             console.log('hi prev')
         }
@@ -50,12 +58,18 @@
         })
     }
 
+    function resetAnim(el) {
+        el.style.animation = 'none';
+        el.offsetWidth;
+        el.style.animation = ''
+    }
+
 </script>
 
 <template>
 
     <div ref="swiper" class="swiper-container next">
-        <div class="swiper-items-container">
+        <div ref="swiperContainer" class="swiper-items-container">
             <SwiperItemComp
                 v-for="(resource, index) in resources"
                 :key="resource.src"
