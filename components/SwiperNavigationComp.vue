@@ -16,8 +16,8 @@
 
 <template>
 
-    <div v-if="direction === 'next'" class="navigation-arrow">&#9002;</div>
-    <div v-else class="navigation-arrow">&#9001;</div>
+    <button v-if="direction === 'next'" class="navigation-arrow">&gt;</button>
+    <button v-else class="navigation-arrow">&lt;</button>
     
 </template>
 
@@ -25,15 +25,19 @@
     
     .navigation-arrow {
         color: v-bind(color);
-        width: fit-content;
-        font-size: 50px;
-        font-weight: 500;
+        background-color: transparent;
+        border: 1px solid v-bind(color);
+        font-family: monospace;
+        font-size: large;
+        font-weight: bold;
+        line-height: 0;
+        box-shadow: 0 10px 40px #5555;
         cursor: pointer;
 
-        transition: .15s;
+        transition: 0.5s;
 
         &:hover {
-            color: cyan;
+            background-color: #eee5;
         }
     }
 

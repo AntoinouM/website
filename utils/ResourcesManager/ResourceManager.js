@@ -63,6 +63,7 @@ export default class ResourceManager extends EventTarget {
         })
     }
 
+
     /**
         * @param {String} type
         * @param {String} directory

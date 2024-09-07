@@ -1,18 +1,21 @@
 <script setup>
+
     import ResourceManager from '~/utils/ResourcesManager/ResourceManager';
 
     const resourceLoader = new ResourceManager();
-    const imgArr = ref([])
+    
+    const resources = ref([]);
+    let servicesLoaded = ref(false);
+
 
     onMounted(() => {
         resourceLoader.addEventListener('end', (e) => {
-            imgArr.value = resourceLoader.getFilteredArray('Resort');
+            resources.value = resourceLoader.getFilteredArray('Services');
+            servicesLoaded.value = true;
         })
-        resourceLoader.manageResources('Resort');
-        resourceLoader.manageResources('Services');
+        resourceLoader.manageResources('Services')
     })
-
-
+    
 
 </script>
 
@@ -23,14 +26,14 @@
                 ref="section1"
                 class="section section1"
             >
-
             </section>
             <section 
                 ref="section2"
                 class="section section2"
             >
                 <SwiperComp
-                    :imgArr="imgArr"
+                    v-if="servicesLoaded"
+                    :resources="resources"
                 />
             </section>
         </div>
@@ -42,7 +45,6 @@
     .section {
         height: 100vh;
         max-width: 100%;
-        padding: 1rem 4rem;
         box-sizing: border-box;
         color: $black;
 
