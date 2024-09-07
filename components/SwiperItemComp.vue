@@ -2,6 +2,7 @@
 
     import Resource from '~/utils/ResourcesManager/Resource';
 
+    const imageEl = ref(null);
 
     const props = defineProps({
         resource: {
@@ -16,8 +17,10 @@
         imgStart: String,
     })
 
-    onMounted(() => {
-        
+    onUpdated(() => {
+        imageEl.value.style.animation = 'none';
+        void imageEl.value.style;
+        imageEl.value.style.animation = '';
     })
 
 </script>
@@ -35,8 +38,7 @@
                     </div>
                 </div>
                 <figure class="image-container">
-                    <div class="image" :style="{'background-image': `url(${resource.src})`}"></div>
-                    <figcaption>Activity description</figcaption>
+                    <div ref="imageEl" class="image" :style="{'background-image': `url(${resource.src})`}"></div>
                 </figure>
             </article>
     </div>
@@ -45,7 +47,7 @@
 
 <style lang="scss" scoped>
 
-    $item-width: 500px;
+    $item-width: 400px;
     $calculate: calc(3/2);
     $border-color: $white;
     
@@ -73,9 +75,9 @@
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-position: center;
-                opacity: 1;
-                filter: blur(5px) grayscale(60%);
-                -webkit-filter: blur(6px) grayscale(80%);
+                opacity: .7;
+                filter: blur(8px) grayscale(70%);
+                -webkit-filter: blur(8px) grayscale(70%);
 
                 & .content {
                     padding: 150px $spacer-4 $spacer-4 80px;
@@ -105,6 +107,11 @@
                     /* background image */
                     background-position: v-bind(imgStart);
                     background-size: cover;
+
+                    -webkit-box-shadow: -2px 5px 10px 0px rgba(0,0,0,0.6);
+                    -moz-box-shadow: -2px 5px 10px 0px rgba(0,0,0,0.6);
+                    box-shadow: -2px 5px 10px 0px rgba(0,0,0,0.6);
+
                 }
             }
         }
@@ -146,21 +153,20 @@
         z-index: 1;
     }
 
-    .item .image-container .image,
-    .item .image-container figcaption {
-        animation: effectNext .5s ease-in-out 1 forwards;
+    .item .image-container .image {
+        animation: effectNext .8s ease-in-out 1 forwards;
     }
 
     @keyframes effectNext {
         from {
             transform: translateX(calc(var(--transform-from)));
         } to {
-            transform: translateX(calc(var(--transform-from) - 500px));
+            transform: translateX(calc(var(--transform-from) - 400px));
         }
     }
 
     .item.active .image-container {
-        --transform-from: $item-width;
+        --transform-from: 400px;
     }
 
     .item.prev_active .image-container {
@@ -171,7 +177,7 @@
 
     .item.next_active .image-container {
         z-index: 3;
-        --transform-from: calc(500px * 2);
+        --transform-from: calc(400px * 2);
     }
 
 </style>

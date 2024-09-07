@@ -16,8 +16,8 @@
 
 <template>
 
-    <button v-if="direction === 'next'" class="navigation-arrow">&gt;</button>
-    <button v-else class="navigation-arrow">&lt;</button>
+    <button v-if="direction === 'next'" class="navigation-arrow" @click="$emit('clickEvent', 'next')">&gt;</button>
+    <button v-else class="navigation-arrow" @click="$emit('clickEvent', 'prev')">&lt;</button>
     
 </template>
 
@@ -27,6 +27,7 @@
         color: v-bind(color);
         background-color: transparent;
         border: 1px solid v-bind(color);
+        border-radius: 10px;
         font-family: monospace;
         font-size: large;
         font-weight: bold;

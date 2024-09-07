@@ -3,7 +3,7 @@
     import ResourceManager from '~/utils/ResourcesManager/ResourceManager';
 
     const resourceLoader = new ResourceManager();
-    
+
     const resources = ref([]);
     let servicesLoaded = ref(false);
 
@@ -35,6 +35,11 @@
                     v-if="servicesLoaded"
                     :resources="resources"
                 />
+            </section>
+            <section 
+                ref="section3"
+                class="section section3"
+            >
             </section>
         </div>
     </div>

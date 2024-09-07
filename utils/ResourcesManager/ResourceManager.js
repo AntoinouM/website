@@ -54,6 +54,26 @@ export default class ResourceManager extends EventTarget {
      * @returns {Promise<String>}
      */
     manageResources(directory, listOfElements) {
+        if (typeof directory === 'Array') {
+            // manage arr => promise.all
+        } else {
+            // manage single
+        }
+
+        return new Promise ((resolve, reject) => {
+            this.declareResources(directory, listOfElements)
+                .then(() => {
+                    this.handleResourcesLoading().then((value) => {resolve(value)}) 
+                }
+            )
+        })
+    }
+
+    manageResourcesArrayOfDir(directories, listOfElements) {
+
+    }
+
+    manageResourcesSingleDir(directory, listOfElements) {
         return new Promise ((resolve, reject) => {
             this.declareResources(directory, listOfElements)
                 .then(() => {

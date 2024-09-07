@@ -1,12 +1,14 @@
 <script setup>
 
-    
-
-    const prevArrow = ref(null);
-    const nextArrow = ref(null);
     const swiper = ref(null);
+    const swiperItems = ref([])
 
-    const arrTest = ref(['prev_active', 'active', 'next_active', null])
+    let countItem;
+    let active = 1;
+    let prev_active = null;
+    let next_active = null;
+
+    const positionArray = ref(['prev_active', 'active', 'next_active', null]);
     const arrTestPos = ref(['50%', '65%', '0%', '20%'])
 
     const props = defineProps({
@@ -17,8 +19,36 @@
     })
 
     onMounted(() => {
+        swiperItems.value = document.querySelectorAll('.swiper-item');
+        countItem = swiperItems.value.length;
 
     })
+
+    function manageActiveIndex(e) {
+        console.log(positionArray.value)
+        if (e === 'next') {
+            active =active + 1 >= countItem ? 0 : active + 1;
+            prev_active =active - 1 < 0 ? countItem -1 : active - 1;
+            next_active =active + 1 >= countItem ? 0 : active + 1;
+            changePositionArray()
+        } else {
+            console.log('hi prev')
+        }
+    }
+
+    function changePositionArray() {
+        let remainingIndexes = new Set([...Array(countItem).keys()]);
+        positionArray.value[active] = 'active';
+        remainingIndexes.delete(active);
+        positionArray.value[prev_active] = 'prev_active';
+        remainingIndexes.delete(prev_active);
+        positionArray.value[next_active] = 'next_active';
+        remainingIndexes.delete(next_active);
+
+        remainingIndexes.forEach((index) => {
+            positionArray.value[index] = null;
+        })
+    }
 
 </script>
 
@@ -29,15 +59,15 @@
             <SwiperItemComp
                 v-for="(resource, index) in resources"
                 :key="resource.src"
-                ref="swiperItem"
-                :position="arrTest[index]"
+                :ref="`item${index}`"
+                :position="positionArray[index]"
                 :imgStart="arrTestPos[index]"
                 :resource="resource"
             />
         </div>
         <div class="arrows">
-            <SwiperNavigationComp ref="prevArrow" color="#fff" direction="prev"/>
-            <SwiperNavigationComp ref="nextArrow" color="#fff" direction="next"/>
+            <SwiperNavigationComp color="#fff" direction="prev" @click-event="manageActiveIndex"/>
+            <SwiperNavigationComp color="#fff" direction="next" @click-event="manageActiveIndex"/>
         </div>
     </div>
     
@@ -45,13 +75,13 @@
 
 <style lang="scss" scoped>
     
-    $item-width: 500px;
+    $item-width: 400px;
     $calculate: calc(3/2);
     $border-color: rgba(255, 255, 255, 0.2);
 
     .swiper-container {
         width: 100%;
-        height: 100vh;
+        height: 60vh;
         overflow: hidden;
         position: relative;
     }
@@ -96,6 +126,7 @@
         width: calc(100% - calc($item-width * $calculate));
         height: fit-content;
         z-index: 10;
+        opacity: .6;
 
         display: grid;
         grid-template-columns: repeat(2, 40px);
