@@ -29,8 +29,10 @@
     })
 
     function manageActiveIndex(e) {
-        console.log(positionArray.value)
         if (e === 'next') {
+            swiper.value.classList.remove('prev');
+            swiper.value.classList.add('next');
+
             active =active + 1 >= countItem ? 0 : active + 1;
             prev_active =active - 1 < 0 ? countItem -1 : active - 1;
             next_active =active + 1 >= countItem ? 0 : active + 1;
@@ -40,7 +42,8 @@
                 resetAnim(div)
             })
         } else {
-            console.log('hi prev')
+            swiper.value.classList.remove('next');
+            swiper.value.classList.add('prev');
         }
     }
 
