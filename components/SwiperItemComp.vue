@@ -65,6 +65,14 @@
                 overflow: hidden;
                 position: relative;
 
+                @include breakpoint-max-width(lg) {
+                    grid-template-columns: calc(100% - calc(#{$swiper-item-width} * 0.8));
+                }
+                @include breakpoint-max-width(md) {
+                    grid-template-columns: 0;
+                    display: none;
+                }
+
                 &::before {
                     content: '';
                     position: absolute;
@@ -129,6 +137,16 @@
                 justify-content: end;
                 align-items: center;
 
+                @include breakpoint-max-width(lg) {
+                    width: calc(#{$swiper-item-width} * 0.8);
+                    left: calc(100% - calc(#{$swiper-item-width} * 0.8));
+                }
+
+                @include breakpoint-max-width(md) {
+                    width: 100%;
+                    left: 0;
+                }
+
                 & .image {
                     width: 90%;
                     height: 90%;
@@ -149,6 +167,11 @@
                     text-transform: uppercase;
                     letter-spacing: .2em;
                     margin-bottom: calc(#{$spacer-1} * -1);
+
+                    @include breakpoint-max-width(md) {
+                        text-align: center;
+                        width: 100%;
+                    }
                 }
             }
         }
@@ -202,6 +225,13 @@
     .next .item .image-container figcaption,
     .next .item .image-container .image {
         animation: effectNext .8s ease-in-out 1 forwards;
+
+        @include breakpoint-max-width(lg) {
+            animation: effectNextS .8s ease-in-out 1 forwards;
+        }
+        @include breakpoint-max-width(md) {
+            animation: effectNextMobile .8s ease-in-out 1 forwards;
+        }
     }
 
     @keyframes effectNext {
@@ -211,40 +241,96 @@
             transform: translateX(calc(var(--transform-from) - $swiper-item-width));
         }
     }
+    @keyframes effectNextS {
+        from {
+            transform: translateX(calc(var(--transform-from)));
+        } to {
+            transform: translateX(calc(var(--transform-from) - calc(#{$swiper-item-width} * 0.8)));
+        }
+    }
+    @keyframes effectNextMobile {
+        from {
+            transform: translateX(calc(var(--transform-from)));
+        } to {
+            transform: translateX(calc(var(--transform-from) - calc(100%)));
+        }
+    }
 
     .next .item.active .image-container {
         --transform-from: #{$swiper-item-width};
+
+        @include breakpoint-max-width(lg) {
+            --transform-from: calc(#{$swiper-item-width} * 0.8);
+        }
+
+        @include breakpoint-max-width(md) {
+            --transform-from: 100%;
+            z-index: 3;
+        }
     }
 
     .next .item.prev_active .image-container {
         z-index: 3;
         --transform-from: 0px;
         overflow: hidden;
+
+        @include breakpoint-max-width(md) {
+            --transform-from: -50px;
+            z-index: 2;
+        }
     }
 
     .next .item.next_active .image-container {
         z-index: 3;
         --transform-from: calc(#{$swiper-item-width} * 2);
+
+        @include breakpoint-max-width(lg) {
+            --transform-from: calc(#{$swiper-item-width} * 0.8 * 2);
+        }
+        @include breakpoint-max-width(md) {
+           display: none;
+        }
     }
 
     /* prev animation */
     .prev .item .image-container figcaption,
     .prev .item .image-container .image {
         animation: effectPrev .8s ease-in-out 1 forwards;
+
+        @include breakpoint-max-width(lg) {
+            animation: effectPrevS .8s ease-in-out 1 forwards;
+        }
+        @include breakpoint-max-width(md) {
+            animation: effectPrevMobile .8s ease-in-out 1 forwards;
+        }
     }
     .prev .item.active .image-container {
         --transform-from: calc(#{$swiper-item-width} * -1);
         overflow: hidden;
+
+        @include breakpoint-max-width(lg) {
+            --transform-from: calc(#{$swiper-item-width} * -0.8);
+        }
+        @include breakpoint-max-width(md) {
+            --transform-from: calc(100%);
+        }
     }
 
     .prev .item.prev_active .image-container {
         z-index: 3;
-        --transform-from: 0px;
+        --transform-from: 10%;
     }
 
     .prev .item.next_active .image-container {
         z-index: 3;
         --transform-from: #{$swiper-item-width};
+
+        @include breakpoint-max-width(lg) {
+            --transform-from: calc(#{$swiper-item-width} * 0.8);
+        }
+        @include breakpoint-max-width(md) {
+            --transform-from: calc(100%);
+        }
     }
 
     .prev .item.next_active .main-content {
@@ -256,6 +342,21 @@
             transform: translateX(calc(var(--transform-from)));
         } to {
             transform: translateX(calc(var(--transform-from) + #{$swiper-item-width}));
+        }
+    }
+
+    @keyframes effectPrevS {
+        from {
+            transform: translateX(calc(var(--transform-from)));
+        } to {
+            transform: translateX(calc(var(--transform-from) + calc(#{$swiper-item-width} * 0.8)));
+        }
+    }
+    @keyframes effectPrevMobile {
+        from {
+            transform: translateX(calc(var(--transform-from)));
+        } to {
+            transform: translateX(calc(var(--transform-from) + calc(100%)));
         }
     }
 

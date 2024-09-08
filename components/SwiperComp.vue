@@ -140,6 +140,12 @@
     .swiper-items-container {
         height: 100%;
         position: relative;
+
+        @include breakpoint-max-width(md) {
+            display: flex;
+            flex-direction: column;
+            height: 94%;
+        }
     
         &::before {
             position: absolute;
@@ -152,6 +158,15 @@
             border-right: 1px solid $border-color;
             z-index: 10;
             pointer-events: none;
+
+            @include breakpoint-max-width(lg) {
+                width: calc(#{$swiper-item-width} * 0.8);
+                left: calc(100% - #{$swiper-item-width} *0.8);
+            }
+            @include breakpoint-max-width(md) {
+                width: 100%;
+                left: 0;
+            }
         }
 
         &::after {
@@ -167,7 +182,6 @@
             opacity: .9;
             z-index: 10;
             pointer-events: none;
-
         }
     }
 
@@ -184,6 +198,16 @@
         grid-template-rows: 40px;
         justify-content: end;
         gap: 10px;
+
+        @include breakpoint-max-width(lg) {
+            width: calc(#{$swiper-item-width} * 0.8);
+        }
+        @include breakpoint-max-width(md) {
+            width: 100%;
+            position: relative;
+            grid-template-columns: repeat(2, 40px);
+            justify-content: center;
+        }
     }
 
 </style>
