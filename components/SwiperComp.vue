@@ -97,7 +97,7 @@
 
 <style lang="scss" scoped>
     
-    $item-width: 400px;
+    $item-width: calc(60vh * calc(2/3));
     $calculate: calc(3/2);
     $border-color: rgba(255, 255, 255, 0.2);
 

@@ -51,11 +51,7 @@
 
 <style lang="scss" scoped>
 
-    :root{
-        --item-width: 400px
-    }
-
-    $item-width: 400px;
+    $item-width: calc(60vh * calc(2/3));
     $calculate: calc(3/2);
     $border-color: $white;
     
@@ -200,7 +196,7 @@
     }
 
     .item.active .image-container {
-        --transform-from: 400px;
+        --transform-from: calc(60vh * calc(2/3));
     }
 
     .item.prev_active .image-container {
@@ -211,7 +207,7 @@
 
     .item.next_active .image-container {
         z-index: 3;
-        --transform-from: calc(400px * 2);
+        --transform-from: calc((60vh * calc(2/3)) * 2);
     }
 
 </style>
