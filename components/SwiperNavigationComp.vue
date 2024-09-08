@@ -27,7 +27,7 @@
         color: v-bind(color);
         background-color: transparent;
         border: 1px solid v-bind(color);
-        border-radius: 10px;
+        width: 40px;
         font-family: monospace;
         font-size: large;
         font-weight: bold;

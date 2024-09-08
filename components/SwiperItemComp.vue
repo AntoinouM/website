@@ -149,11 +149,11 @@
         }
     }
 
-    .item.prev_active {
+    .next .item.prev_active {
         z-index: 1;
     }
 
-    .item .image-container .image {
+    .next .item .image-container .image {
         animation: effectNext .8s ease-in-out 1 forwards;
     }
 
@@ -165,19 +165,50 @@
         }
     }
 
-    .item.active .image-container {
+    .next .item.active .image-container {
         --transform-from: 400px;
     }
 
-    .item.prev_active .image-container {
+    .next .item.prev_active .image-container {
         z-index: 3;
         --transform-from: 0px;
         overflow: hidden;
     }
 
-    .item.next_active .image-container {
+    .next .item.next_active .image-container {
         z-index: 3;
         --transform-from: calc(400px * 2);
+    }
+
+    /* prev animation */
+    .prev .item .image-container .image {
+        animation: effectPrev .8s ease-in-out 1 forwards;
+    }
+    .prev .item.active .image-container {
+        --transform-from: calc(400px * -1);
+        overflow: hidden;
+    }
+
+    .prev .item.prev_active .image-container {
+        z-index: 3;
+        --transform-from: 0px;
+    }
+
+    .prev .item.next_active .image-container {
+        z-index: 3;
+        --transform-from: 400px;
+    }
+
+    .prev .item.next_active .main-content {
+        opacity: 0;
+    }
+
+    @keyframes effectPrev {
+        from {
+            transform: translateX(calc(var(--transform-from)));
+        } to {
+            transform: translateX(calc(var(--transform-from) + 400px));
+        }
     }
 
 </style>

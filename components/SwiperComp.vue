@@ -33,18 +33,23 @@
             swiper.value.classList.remove('prev');
             swiper.value.classList.add('next');
 
-            active =active + 1 >= countItem ? 0 : active + 1;
-            prev_active =active - 1 < 0 ? countItem -1 : active - 1;
-            next_active =active + 1 >= countItem ? 0 : active + 1;
+            active = active + 1 >= countItem ? 0 : active + 1;
+            prev_active = active - 1 < 0 ? countItem -1 : active - 1;
+            next_active = active + 1 >= countItem ? 0 : active + 1;
             changePositionArray()
-
-            swiperItemsImages.value.forEach((div) => {
-                resetAnim(div)
-            })
         } else {
             swiper.value.classList.remove('next');
             swiper.value.classList.add('prev');
+
+            active = active - 1 < 0 ? countItem - 1 : active - 1;
+            prev_active = active + 1 >= countItem ? 0 : active + 1;
+            next_active = prev_active + 1 >= countItem ? 0 : prev_active + 1;
+            changePositionArray()
         }
+
+        swiperItemsImages.value.forEach((div) => {
+            resetAnim(div)
+        })
     }
 
     function changePositionArray() {
@@ -146,7 +151,7 @@
         opacity: .6;
 
         display: grid;
-        grid-template-columns: repeat(2, 40px);
+        grid-template-columns: repeat(2, 40px) $spacer-1;
         grid-template-rows: 40px;
         justify-content: end;
         gap: 10px;
