@@ -4,12 +4,15 @@
     const swiperContainer = ref(null);
     const swiperItems = ref([])
     const swiperItemsImages = ref([]);
+    const swiperFigCaptions = ref([]);
 
     let countItem;
     let active = 1;
     let prev_active = null;
     let next_active = null;
     let autoplay = ref(null);
+
+    let animationIsPlaying = ref(false);
 
     const positionArray = ref(['prev_active', 'active', 'next_active', null]);
     const arrTestPos = ref(['50%', '65%', '0%', '20%'])
@@ -26,12 +29,24 @@
         swiperItems.value = swiperContainer.value.children;
         Array.from(swiperItems.value).forEach(item => {
             swiperItemsImages.value.push(item.children[0].children[1].children[0])
+            swiperFigCaptions.value.push(item.children[0].children[1].children[1])
         })
         countItem = swiperItems.value.length;
         if (props.autoplay) autoplay.value = props.autoplay
+
+        swiperItemsImages.value.forEach((div) => {
+            addListener(div, 'animationstart', () => {animationIsPlaying.value = true})
+            addListener(div, 'animationend', () => {animationIsPlaying.value = false})
+        })
     })
 
+    function addListener(el, name, callback) {
+        el.addEventListener(name, callback)
+    }
+
     function manageActiveIndex(e) {
+        if (animationIsPlaying.value) return;
+
         if (e === 'next') {
             swiper.value.classList.remove('prev');
             swiper.value.classList.add('next');
@@ -52,6 +67,9 @@
 
         swiperItemsImages.value.forEach((div) => {
             resetAnim(div)
+        })
+        swiperFigCaptions.value.forEach((fc) => {
+            resetAnim(fc)
         })
 
         if (!autoplay.value) return;

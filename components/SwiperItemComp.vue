@@ -101,6 +101,7 @@
                 padding: $spacer-4;
                 display: flex;
                 flex-direction: column;
+                gap: $spacer-3;
                 justify-content: end;
                 align-items: center;
 
@@ -116,6 +117,14 @@
                     -moz-box-shadow: -2px 5px 10px 0px rgba(0,0,0,0.6);
                     box-shadow: -2px 5px 10px 0px rgba(0,0,0,0.6);
 
+                }
+
+                & figcaption {
+                    width: 70%;
+                    text-align: right;
+                    text-transform: uppercase;
+                    letter-spacing: .2em;
+                    margin-bottom: calc(#{$spacer-1} * -1);
                 }
             }
         }
@@ -166,6 +175,7 @@
         z-index: 1;
     }
 
+    .next .item .image-container figcaption,
     .next .item .image-container .image {
         animation: effectNext .8s ease-in-out 1 forwards;
     }
@@ -194,6 +204,7 @@
     }
 
     /* prev animation */
+    .prev .item .image-container figcaption,
     .prev .item .image-container .image {
         animation: effectPrev .8s ease-in-out 1 forwards;
     }
