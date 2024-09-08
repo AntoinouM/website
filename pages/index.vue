@@ -34,6 +34,7 @@
                 <SwiperComp
                     v-if="servicesLoaded"
                     :resources="resources"
+                    :autoplay="8000"
                 />
             </section>
             <section 

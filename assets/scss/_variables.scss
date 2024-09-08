@@ -124,6 +124,10 @@ $breakpoints: (
 );
 // @debug map.get($breakpoints, "s"); => 576
 
+$swiper-item-width: 400px;
+$swiper-calculate: calc(3/2);
+
+
 
 /* IMPORTS */
 @import 'mixins';

@@ -9,6 +9,7 @@
     let active = 1;
     let prev_active = null;
     let next_active = null;
+    let autoplay = ref(null);
 
     const positionArray = ref(['prev_active', 'active', 'next_active', null]);
     const arrTestPos = ref(['50%', '65%', '0%', '20%'])
@@ -17,7 +18,8 @@
         resources: {
             type: Array,
             required: true,
-        }
+        },
+        autoplay: Number,
     })
 
     onMounted(() => {
@@ -26,6 +28,7 @@
             swiperItemsImages.value.push(item.children[0].children[1].children[0])
         })
         countItem = swiperItems.value.length;
+        if (props.autoplay) autoplay.value = props.autoplay
     })
 
     function manageActiveIndex(e) {
@@ -50,6 +53,12 @@
         swiperItemsImages.value.forEach((div) => {
             resetAnim(div)
         })
+
+        if (!autoplay.value) return;
+        clearInterval(autoPlayInterval)
+        autoPlayInterval = setInterval(() => {
+            manageActiveIndex('next')
+        }, autoplay.value)
     }
 
     function changePositionArray() {
@@ -71,6 +80,10 @@
         el.offsetWidth;
         el.style.animation = ''
     }
+
+    let autoPlayInterval = setInterval(() => {
+        manageActiveIndex('next')
+    }, autoplay.value)
 
 </script>
 
@@ -96,9 +109,7 @@
 </template>
 
 <style lang="scss" scoped>
-    
-    $item-width: 400px;
-    $calculate: calc(3/2);
+
     $border-color: rgba(255, 255, 255, 0.2);
 
     .swiper-container {
@@ -114,11 +125,11 @@
     
         &::before {
             position: absolute;
-            width: $item-width;
+            width: $swiper-item-width;
             height: 100%;
             content: '';
             top: 0;
-            left: calc(100% - calc($item-width) * $calculate);
+            left: calc(100% - calc($swiper-item-width) * $swiper-calculate);
             border-left: 1px solid $border-color;
             border-right: 1px solid $border-color;
             z-index: 10;
@@ -131,10 +142,10 @@
             left: 50px;
             content: '';
             background-color: $white;
-            width: calc($item-width * 0.8);   
-            height: calc($item-width * 0.6);
-            border-radius: calc($item-width * 0.04) calc($item-width * 0.1) calc($item-width * 0.22) calc($item-width * 0.46);
-            filter: blur(calc($item-width * 0.3));
+            width: calc($swiper-item-width * 0.8);   
+            height: calc($swiper-item-width * 0.6);
+            border-radius: calc($swiper-item-width * 0.04) calc($swiper-item-width * 0.1) calc($swiper-item-width * 0.22) calc($swiper-item-width * 0.46);
+            filter: blur(calc($swiper-item-width * 0.3));
             opacity: .9;
             z-index: 10;
             pointer-events: none;
@@ -145,7 +156,7 @@
     .arrows {
         position: absolute;
         bottom: 1rem;
-        width: calc(100% - calc($item-width * $calculate));
+        width: calc(100% - calc($swiper-item-width * $swiper-calculate));
         height: fit-content;
         z-index: 10;
         opacity: .6;

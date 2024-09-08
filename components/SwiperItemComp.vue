@@ -68,19 +68,19 @@
             & .main-content {
                 height: 100%;
                 display: grid;
-                grid-template-columns: calc(100% - calc($item-width * $calculate));
+                grid-template-columns: calc(100% - calc($swiper-item-width * $swiper-calculate));
 
                 /* parallax */
                 background-attachment: fixed;
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-position: center;
-                opacity: .7;
-                filter: blur(8px) grayscale(70%);
-                -webkit-filter: blur(8px) grayscale(70%);
+                filter: blur(20px) grayscale(70%);
+                -webkit-filter: blur(12px) grayscale(70%);
 
                 & .content {
                     padding: 150px $spacer-4 $spacer-4 80px;
+                    z-index: 20;
 
                     & .description {
                         margin-top: $spacer-4;
@@ -93,7 +93,7 @@
                 height: 100%;
                 width: $item-width;
                 top: 0;
-                left: calc(100% - calc($item-width * $calculate));
+                left: calc(100% - calc($swiper-item-width * $swiper-calculate));
                 padding: $spacer-4;
                 display: flex;
                 flex-direction: column;
@@ -161,12 +161,12 @@
         from {
             transform: translateX(calc(var(--transform-from)));
         } to {
-            transform: translateX(calc(var(--transform-from) - 400px));
+            transform: translateX(calc(var(--transform-from) - $swiper-item-width));
         }
     }
 
     .next .item.active .image-container {
-        --transform-from: 400px;
+        --transform-from: #{$swiper-item-width};
     }
 
     .next .item.prev_active .image-container {
@@ -177,7 +177,7 @@
 
     .next .item.next_active .image-container {
         z-index: 3;
-        --transform-from: calc(400px * 2);
+        --transform-from: calc(#{$swiper-item-width} * 2);
     }
 
     /* prev animation */
@@ -185,7 +185,7 @@
         animation: effectPrev .8s ease-in-out 1 forwards;
     }
     .prev .item.active .image-container {
-        --transform-from: calc(400px * -1);
+        --transform-from: calc(#{$swiper-item-width} * -1);
         overflow: hidden;
     }
 
@@ -196,7 +196,7 @@
 
     .prev .item.next_active .image-container {
         z-index: 3;
-        --transform-from: 400px;
+        --transform-from: #{$swiper-item-width};
     }
 
     .prev .item.next_active .main-content {
@@ -207,7 +207,7 @@
         from {
             transform: translateX(calc(var(--transform-from)));
         } to {
-            transform: translateX(calc(var(--transform-from) + 400px));
+            transform: translateX(calc(var(--transform-from) + #{$swiper-item-width}));
         }
     }
 
