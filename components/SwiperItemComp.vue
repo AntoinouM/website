@@ -17,6 +17,10 @@
         imgStart: String,
     })
 
+    const imgURL = computed(() => {
+        return `url(${props.resource.src})`;
+    })
+
     onUpdated(() => {
         imageEl.value.style.animation = 'none';
         void imageEl.value.style;
@@ -30,7 +34,6 @@
     <div class="swiper-item">
         <article class="item" :class="position">
                 <div class="main-content"
-                    :style="{'background-image': `url(${resource.src})`}"
                 >
                     <div class="content">
                         <h2 class="title1">Activity title</h2>
@@ -47,8 +50,6 @@
 
 <style lang="scss" scoped>
 
-    $item-width: 400px;
-    $calculate: calc(3/2);
     $border-color: $white;
     
     .swiper-item {
@@ -68,15 +69,25 @@
             & .main-content {
                 height: 100%;
                 display: grid;
-                grid-template-columns: calc(100% - calc($swiper-item-width * $swiper-calculate));
+                grid-template-columns: calc(100% - calc(#{$swiper-item-width} * #{$swiper-calculate}));
+                overflow: hidden;
+                position: relative;
+                box-shadow: none;
+                transform: scale(1);
 
-                /* parallax */
-                background-attachment: fixed;
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-                filter: blur(20px) grayscale(70%);
-                -webkit-filter: blur(12px) grayscale(70%);
+                &::before {
+                    content: '';
+                    position: fixed;
+                    width: 100%;
+                    height: 100%;
+                    background-color: $white;
+                    background-image: v-bind(imgURL);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                    filter: blur(20px) grayscale(70%);
+                    -webkit-filter: blur(12px) grayscale(70%);
+                }
 
                 & .content {
                     padding: 150px $spacer-4 $spacer-4 80px;
@@ -91,9 +102,9 @@
             & .image-container {
                 position: absolute;
                 height: 100%;
-                width: $item-width;
+                width: $swiper-item-width;
                 top: 0;
-                left: calc(100% - calc($swiper-item-width * $swiper-calculate));
+                left: calc(100% - calc(#{$swiper-item-width} * #{$swiper-calculate}));
                 padding: $spacer-4;
                 display: flex;
                 flex-direction: column;
