@@ -275,7 +275,7 @@
         overflow: hidden;
 
         @include breakpoint-max-width(md) {
-            --transform-from: -50px;
+            --transform-from: -12%;
             z-index: 2;
         }
     }
@@ -312,13 +312,17 @@
             --transform-from: calc(#{$swiper-item-width} * -0.8);
         }
         @include breakpoint-max-width(md) {
-            --transform-from: calc(100%);
+            --transform-from: calc(100% * -1);
         }
     }
 
     .prev .item.prev_active .image-container {
         z-index: 3;
-        --transform-from: 10%;
+        --transform-from: 0px;
+
+        @include breakpoint-max-width(md) {
+            --transform-from: 12%;
+        }
     }
 
     .prev .item.next_active .image-container {
@@ -329,7 +333,7 @@
             --transform-from: calc(#{$swiper-item-width} * 0.8);
         }
         @include breakpoint-max-width(md) {
-            --transform-from: calc(100%);
+            display: none;
         }
     }
 
