@@ -146,7 +146,7 @@
         opacity: .6;
 
         display: grid;
-        grid-template-columns: repeat(2, 40px);
+        grid-template-columns: repeat(2, 40px) $spacer-2;
         grid-template-rows: 40px;
         justify-content: end;
         gap: 10px;

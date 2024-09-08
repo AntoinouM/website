@@ -17,6 +17,10 @@
         imgStart: String,
     })
 
+    const imgUrl = computed(() => {
+        return `url(${props.resource.src})`
+    })
+
     onUpdated(() => {
         imageEl.value.style.animation = 'none';
         void imageEl.value.style;
@@ -30,7 +34,6 @@
     <div class="swiper-item">
         <article class="item" :class="position">
                 <div class="main-content"
-                    :style="{'background-image': `url(${resource.src})`}"
                 >
                     <div class="content">
                         <h2 class="title1">Activity title</h2>
@@ -46,6 +49,10 @@
 </template>
 
 <style lang="scss" scoped>
+
+    :root{
+        --item-width: 400px
+    }
 
     $item-width: 400px;
     $calculate: calc(3/2);
@@ -70,17 +77,30 @@
                 display: grid;
                 grid-template-columns: calc(100% - calc($item-width * $calculate));
 
-                /* parallax */
-                background-attachment: fixed;
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-                opacity: .7;
-                filter: blur(8px) grayscale(70%);
-                -webkit-filter: blur(8px) grayscale(70%);
+                &::before {
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    pointer-events: none;
+                    z-index: 1;
+
+                    /* parallax */
+                    background-image: v-bind(imgUrl);
+                    background-attachment: fixed;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                    opacity: .8;
+                    filter: blur(8px) grayscale(70%);
+                    -webkit-filter: blur(8px) grayscale(70%);
+                }
 
                 & .content {
-                    padding: 150px $spacer-4 $spacer-4 80px;
+                    padding: 120px $spacer-4 $spacer-4 80px;
+                    z-index: 20;
 
                     & .description {
                         margin-top: $spacer-4;
