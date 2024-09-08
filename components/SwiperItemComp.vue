@@ -159,6 +159,23 @@
 
     .item .main-content .content {
         z-index: 1;
+        opacity: 0;
+    }
+
+    .item.active .main-content .content {
+        opacity: 1;
+    }
+
+    .item.prev_active .main-content .content {
+        animation: changeOpacity 1s ease-in 1 forwards;
+    }
+
+    @keyframes changeOpacity {
+        from {
+            opacity: 1;
+        } to {
+            opacity: 0;
+        }
     }
 
     .item.prev_active,
