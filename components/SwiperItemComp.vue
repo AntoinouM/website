@@ -21,27 +21,21 @@
         return `url(${props.resource.src})`;
     })
 
-    onUpdated(() => {
-        imageEl.value.style.animation = 'none';
-        void imageEl.value.style;
-        imageEl.value.style.animation = '';
-    })
-
 </script>
 
 <template>
     
     <div class="swiper-item">
         <article class="item" :class="position">
-                <div class="main-content"
-                >
+                <div class="main-content">
                     <div class="content">
-                        <h2 class="title1">Activity title</h2>
+                        <h2 class="title1">{{ resource.src }}</h2>
                         <p class="description">Eu consuat eu et quis laboris enim Lorem cupidatat. Enim minim consectetur veniam elit. Laborum aute labore reprehenderit ad non eiusmod ad cupidatat est reprehenderit eiusmod culpa ipsum. Elit eu sunt anim duis cupidatat est consequat et.</p>
                     </div>
                 </div>
                 <figure class="image-container">
                     <div ref="imageEl" class="image" :style="{'background-image': `url(${resource.src})`}"></div>
+                    <figcaption>{{ resource.key }}</figcaption>
                 </figure>
             </article>
     </div>
@@ -72,16 +66,15 @@
                 grid-template-columns: calc(100% - calc(#{$swiper-item-width} * #{$swiper-calculate}));
                 overflow: hidden;
                 position: relative;
-                box-shadow: none;
-                transform: scale(1);
 
                 &::before {
                     content: '';
-                    position: fixed;
+                    position: absolute;
                     width: 100%;
                     height: 100%;
                     background-color: $white;
                     background-image: v-bind(imgURL);
+                    background-attachment: fixed;
                     background-repeat: no-repeat;
                     background-size: cover;
                     background-position: center;
@@ -131,6 +124,15 @@
     // animation purpose
     .item {
         display: none;
+    }
+
+    .item .main-content .content {
+        opacity: 0;
+        transition: opacity .8s ease-out;
+    }
+
+    .item.active .main-content .content {
+        opacity: 1;
     }
 
     .item.prev_active,
