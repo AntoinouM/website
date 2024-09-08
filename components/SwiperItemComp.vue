@@ -36,12 +36,13 @@
                 <div class="main-content"
                 >
                     <div class="content">
-                        <h2 class="title1">Activity title</h2>
+                        <h2 class="title1">{{ resource.key }}</h2>
                         <p class="description">Eu consuat eu et quis laboris enim Lorem cupidatat. Enim minim consectetur veniam elit. Laborum aute labore reprehenderit ad non eiusmod ad cupidatat est reprehenderit eiusmod culpa ipsum. Elit eu sunt anim duis cupidatat est consequat et.</p>
                     </div>
                 </div>
                 <figure class="image-container">
                     <div ref="imageEl" class="image" :style="{'background-image': `url(${resource.src})`}"></div>
+                    <figcaption>{{ resource.key }}</figcaption>
                 </figure>
             </article>
     </div>
@@ -117,6 +118,7 @@
                 padding: $spacer-4;
                 display: flex;
                 flex-direction: column;
+                gap: $spacer-2;
                 justify-content: end;
                 align-items: center;
 
@@ -133,6 +135,13 @@
                     box-shadow: -2px 5px 10px 0px rgba(0,0,0,0.6);
 
                 }
+                & figcaption {
+                    width: 70%;
+                    margin-bottom: $spacer-1;
+                    margin-top: $spacer-2;
+                    text-align: center;
+                }
+
             }
         }
     }
@@ -150,6 +159,10 @@
 
     .item.active {
         z-index: 2;
+    }
+
+    .item .main-content .content {
+        z-index: 1;
     }
 
     .item.prev_active,
@@ -173,6 +186,7 @@
         z-index: 1;
     }
 
+    .item .image-container figcaption,
     .item .image-container .image {
         animation: effectNext .8s ease-in-out 1 forwards;
     }

@@ -4,6 +4,7 @@
     const swiperContainer = ref(null);
     const swiperItems = ref([])
     const swiperItemsImages = ref([]);
+    const swiperItemsCaptions = ref([]);
 
     let countItem;
     let active = 1;
@@ -24,6 +25,7 @@
         swiperItems.value = swiperContainer.value.children;
         Array.from(swiperItems.value).forEach(item => {
             swiperItemsImages.value.push(item.children[0].children[1].children[0])
+            swiperItemsCaptions.value.push(item.children[0].children[1].children[1])
         })
         countItem = swiperItems.value.length;
     })
@@ -40,6 +42,9 @@
 
             swiperItemsImages.value.forEach((div) => {
                 resetAnim(div)
+            })
+            swiperItemsCaptions.value.forEach((fC) => {
+                resetAnim(fC)
             })
         } else {
             swiper.value.classList.remove('next');
