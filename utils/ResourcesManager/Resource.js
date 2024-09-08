@@ -14,6 +14,8 @@ export default class Resource {
         _formatsList;
         /** @type {String} */
         _description;
+        /** @type {String} */
+        _name;
 
 
         /**
@@ -80,6 +82,11 @@ export default class Resource {
         get description() {
             return this._description;
         }
+
+        /** @returns {String} */
+        get name() {
+            return this._name;
+        }
     
         // SETTERS
         /** @param {String} key */
@@ -100,6 +107,11 @@ export default class Resource {
         /** @param {String} description */
         set description(description) {
             this._description = description;
+        }
+
+        /** @param {String} name */
+        set name(name) {
+            this._name = name;
         }
 
         // METHODS
