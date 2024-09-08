@@ -29,7 +29,7 @@
         <article class="item" :class="position">
                 <div class="main-content">
                     <div class="content">
-                        <h2 class="title1">{{ resource.src }}</h2>
+                        <h2 class="title1">Activity name</h2>
                         <p class="description">Eu consuat eu et quis laboris enim Lorem cupidatat. Enim minim consectetur veniam elit. Laborum aute labore reprehenderit ad non eiusmod ad cupidatat est reprehenderit eiusmod culpa ipsum. Elit eu sunt anim duis cupidatat est consequat et.</p>
                     </div>
                 </div>
@@ -43,8 +43,6 @@
 </template>
 
 <style lang="scss" scoped>
-
-    $border-color: $white;
     
     .swiper-item {
         position: absolute;
@@ -86,13 +84,39 @@
                     padding: 150px $spacer-4 $spacer-4 80px;
                     z-index: 20;
 
+                    & .title1 {
+                        display: flex;
+                        justify-content: start;
+
+                        @include breakpoint-max-width(lg) {
+                            font-size: 1.618em;
+                        }
+                    }
+
                     & .description {
                         margin-top: $spacer-4;
+                        position: relative;
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -70%);
+                            width: 120%;
+                            height: 180%;
+                            background-color: antiquewhite;
+                            border-radius: 60px 60% 27% 50px;
+                            opacity: .8;
+                            filter: blur(60px);
+                            z-index: -1;
+                        }
                     }
                 }
             }
 
             & .image-container {
+
                 position: absolute;
                 height: 100%;
                 width: $swiper-item-width;
