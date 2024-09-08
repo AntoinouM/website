@@ -5,6 +5,7 @@
     const swiperItems = ref([])
     const swiperItemsImages = ref([]);
     const swiperItemsCaptions = ref([]);
+    const swiperContents = ref([]);
 
     let countItem;
     let active = 1;
@@ -26,6 +27,7 @@
         Array.from(swiperItems.value).forEach(item => {
             swiperItemsImages.value.push(item.children[0].children[1].children[0])
             swiperItemsCaptions.value.push(item.children[0].children[1].children[1])
+            swiperContents.value.push(item.children[0].children[0].children[0])
         })
         countItem = swiperItems.value.length;
     })
@@ -45,6 +47,9 @@
             })
             swiperItemsCaptions.value.forEach((fC) => {
                 resetAnim(fC)
+            })
+            swiperContents.value.forEach((content) => {
+                resetAnim(content)
             })
         } else {
             swiper.value.classList.remove('next');
@@ -127,7 +132,8 @@
 
         &::after {
             position: absolute;
-            top: 50px;
+            top: 50%;
+            transform: translateY(-50%);
             left: 50px;
             content: '';
             background-color: $white;
@@ -136,7 +142,7 @@
             border-radius: calc($item-width * 0.04) calc($item-width * 0.1) calc($item-width * 0.22) calc($item-width * 0.46);
             filter: blur(calc($item-width * 0.3));
             opacity: .9;
-            z-index: 10;
+            z-index: 2;
             pointer-events: none;
 
         }

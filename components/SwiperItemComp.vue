@@ -100,7 +100,23 @@
                     z-index: 20;
 
                     & .description {
+                        padding: $spacer-2;
                         margin-top: $spacer-4;
+                        position: relative;
+                        z-index: 2;
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            left: -10%;
+                            width: 110%;
+                            height: 120%;
+                            background-color: $white;
+                            border-radius: 10% 5% 7% 21%;
+                            opacity: .7;
+                            filter: blur(50px);
+                            z-index: -1;
+                        }
                     }
                 }
             }
