@@ -25,7 +25,7 @@
 
 <template>
     
-    <div class="swiper-item">
+    <div class="swiper-item" draggable="false">
         <article class="item" :class="position">
                 <div class="main-content">
                     <div class="content">
@@ -33,7 +33,8 @@
                         <p class="description">Eu consuat eu et quis laboris enim Lorem cupidatat. Enim minim consectetur veniam elit. Laborum aute labore reprehenderit ad non eiusmod ad cupidatat est reprehenderit eiusmod culpa ipsum. Elit eu sunt anim duis cupidatat est consequat et.</p>
                     </div>
                 </div>
-                <figure class="image-container">
+                <figure class="image-container"
+                >
                     <div ref="imageEl" class="image" :style="{'background-image': `url(${resource.src})`}"></div>
                     <figcaption>{{ resource.key }}</figcaption>
                 </figure>
@@ -80,6 +81,9 @@
                     display: flex;
                     background-color: $salmon-red;
                     height: fit-content;
+                    flex-direction: column;
+                    justify-self: center;
+                    align-items: center;
                 }
 
                 &::before {
@@ -105,8 +109,24 @@
                     padding: 150px $spacer-4 $spacer-4 80px;
                     z-index: 20;
 
+                    &::after {
+                        position: absolute;
+                        content: '';
+                        height: .4rem;
+                        width: 40%;
+                        background-color: black;
+                        left: 80px;
+                        top: 120px;
+                        width: 25%;
+
+                        @include breakpoint-max-width(md) {
+                            top: calc(#{$spacer-8} - calc(.6rem * 2));
+                            left: $spacer-7;
+                        }
+                    }
+
                     @include breakpoint-max-width(md) {
-                        padding: $spacer-7;
+                        padding: $spacer-9 $spacer-7;
                     }
 
                     & .title1 {
@@ -152,6 +172,7 @@
                 gap: $spacer-3;
                 justify-content: end;
                 align-items: center;
+                pointer-events: all;
 
                 @include breakpoint-max-width(lg) {
                     width: calc(#{$swiper-item-width} * 0.8);
@@ -162,7 +183,7 @@
                     width: 100%;
                     height: 60%;
                     left: 0;
-                    top: 30%;
+                    top: 40%;
                 }
 
                 & .image {
@@ -184,7 +205,7 @@
                     text-align: right;
                     text-transform: uppercase;
                     letter-spacing: .2em;
-                    margin-bottom: calc(#{$spacer-1} * -1);
+                    margin-bottom: calc(#{$spacer-2});
 
                     @include breakpoint-max-width(md) {
                         text-align: center;
@@ -252,6 +273,19 @@
         }
     }
 
+    .next .item {
+        @include breakpoint-max-width(md) {
+            display: none;
+        }
+    }
+
+    .next .item.active,
+    .next .item.prev_active {
+        @include breakpoint-max-width(md) {
+            display: block;
+        }
+    }
+
     @keyframes effectNext {
         from {
             transform: translateX(calc(var(--transform-from)));
@@ -293,7 +327,7 @@
         overflow: hidden;
 
         @include breakpoint-max-width(md) {
-            --transform-from: -0%;
+            --transform-from: -10%;
             z-index: 2;
         }
     }
@@ -334,12 +368,25 @@
         }
     }
 
+    .prev .item {
+        @include breakpoint-max-width(md) {
+            display: none;
+        }
+    }
+
+    .prev .item.active,
+    .prev .item.prev_active {
+        @include breakpoint-max-width(md) {
+            display: block;
+        }
+    }
+
     .prev .item.prev_active .image-container {
         z-index: 3;
         --transform-from: 0px;
 
         @include breakpoint-max-width(md) {
-            --transform-from: 20%;
+            --transform-from: 10%;
         }
     }
 
