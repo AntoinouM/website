@@ -14,6 +14,10 @@ export default class Resource {
         _formatsList;
         /** @type {String} */
         _description;
+        /** @type {String} */
+        _name;
+        /** @type {String} */
+        _divers;
 
 
         /**
@@ -80,6 +84,16 @@ export default class Resource {
         get description() {
             return this._description;
         }
+
+        /** @returns {String} */
+        get name() {
+            return this._name;
+        }
+
+        /** @returns {String} */
+        get divers() {
+            return this._divers;
+        }
     
         // SETTERS
         /** @param {String} key */
@@ -100,6 +114,16 @@ export default class Resource {
         /** @param {String} description */
         set description(description) {
             this._description = description;
+        }
+
+        /** @param {String} name */
+        set name(name) {
+            this._name = name;
+        }
+    
+        /** @param {String} divers */
+        set divers(divers) {
+            this._divers = divers;
         }
 
         // METHODS

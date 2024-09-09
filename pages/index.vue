@@ -49,6 +49,25 @@
                 ref="section1"
                 class="section section1"
             >
+                <NavBar textColor="$white"/>
+                <video autoplay muted loop class="video-banner">
+                    <source src="/Cover/video-bali-ricefields.mp4" type="video/mp4">
+                </video>
+                <div class="content-container">
+                    <div class="logo">
+                        <img src="/Logo/logo-white.svg" alt="The Mind Retreat Logo">
+                        <div class="mind-text">
+                            <span>M</span>
+                            <span>I</span>
+                            <span>N</span>
+                            <span>D</span>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <div class="text-title">Are you ready to meet yourself?</div>
+                        <div class="text-core">Find transformation and peace at The Mind Retreats – your perfect mental health escape <b>in Bali.</b></div>
+                    </div>
+                </div>
             </section>
             <section 
                 ref="section2"
