@@ -13,3 +13,11 @@
       @error '`#{$key}` does not exist in the $breakpoints';
     }
   }
+
+@mixin generate-grid($nbCol, $nbRow, $gap) {
+    padding: $spacer-6 $spacer-8;
+    display: grid;
+    grid-template-columns: repeat($nbCol, 1fr);
+    grid-template-rows: repeat($nbRow, 1fr);
+    gap: $gap;
+}

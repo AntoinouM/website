@@ -1,3 +1,5 @@
 .section1 {
     background-color: $olive-green;
+
+    @include generate-grid(2, 2, 0)
 }
