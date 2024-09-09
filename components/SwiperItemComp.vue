@@ -58,6 +58,14 @@
             width: 100%;
             height: 100%;
 
+            @include breakpoint-max-width(md) {
+                display: flex;
+                flex-direction: column;
+                gap: $spacer-3;
+                justify-content: center;
+            }
+
+
             & .main-content {
                 height: 100%;
                 display: grid;
@@ -69,8 +77,9 @@
                     grid-template-columns: calc(100% - calc(#{$swiper-item-width} * 0.8));
                 }
                 @include breakpoint-max-width(md) {
-                    grid-template-columns: 0;
-                    display: none;
+                    display: flex;
+                    background-color: $salmon-red;
+                    height: fit-content;
                 }
 
                 &::before {
@@ -86,11 +95,19 @@
                     background-position: center;
                     filter: blur(20px) grayscale(70%);
                     -webkit-filter: blur(12px) grayscale(70%);
+
+                    @include breakpoint-max-width(md) {
+                        display: none;
+                    }
                 }
 
                 & .content {
                     padding: 150px $spacer-4 $spacer-4 80px;
                     z-index: 20;
+
+                    @include breakpoint-max-width(md) {
+                        padding: $spacer-7;
+                    }
 
                     & .title1 {
                         display: flex;
@@ -130,7 +147,6 @@
                 width: $swiper-item-width;
                 top: 0;
                 left: calc(100% - calc(#{$swiper-item-width} * #{$swiper-calculate}));
-                padding: $spacer-4;
                 display: flex;
                 flex-direction: column;
                 gap: $spacer-3;
@@ -144,7 +160,9 @@
 
                 @include breakpoint-max-width(md) {
                     width: 100%;
+                    height: 60%;
                     left: 0;
+                    top: 30%;
                 }
 
                 & .image {
@@ -275,7 +293,7 @@
         overflow: hidden;
 
         @include breakpoint-max-width(md) {
-            --transform-from: -12%;
+            --transform-from: -0%;
             z-index: 2;
         }
     }
@@ -321,7 +339,7 @@
         --transform-from: 0px;
 
         @include breakpoint-max-width(md) {
-            --transform-from: 12%;
+            --transform-from: 20%;
         }
     }
 

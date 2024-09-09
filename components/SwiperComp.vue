@@ -135,6 +135,10 @@
         height: 60vh;
         overflow: hidden;
         position: relative;
+        
+        @include breakpoint-max-width(md) {
+            height: 100vh;
+        }
     }
 
     .swiper-items-container {
@@ -144,7 +148,7 @@
         @include breakpoint-max-width(md) {
             display: flex;
             flex-direction: column;
-            height: 94%;
+            height: 90%;
         }
     
         &::before {
@@ -207,6 +211,7 @@
             position: relative;
             grid-template-columns: repeat(2, 40px);
             justify-content: center;
+            margin-top: $spacer-4;
         }
     }
 

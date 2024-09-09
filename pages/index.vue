@@ -47,14 +47,13 @@
 </template>
 
 <style lang="scss" scoped>
-    
-    .section {
+        .section {
         height: 100vh;
         max-width: 100%;
         box-sizing: border-box;
         color: $black;
 
-        @include breakpoint-max-width(s) {
+        @include breakpoint-max-width(md) {
             height: fit-content;
         }
     }
