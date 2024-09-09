@@ -3,6 +3,7 @@
     import Resource from '~/utils/ResourcesManager/Resource';
 
     const imageEl = ref(null);
+    const mainContent = ref(null);
 
     const props = defineProps({
         resource: {
@@ -21,13 +22,23 @@
         return `url(${props.resource.src})`;
     })
 
+    onMounted(() => {
+        let isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+               navigator.userAgent &&
+               navigator.userAgent.indexOf('CriOS') == -1 &&
+               navigator.userAgent.indexOf('FxiOS') == -1;
+        if (isSafari) {
+            mainContent.value.classList.add('ios');
+        }
+    })
+
 </script>
 
 <template>
     
     <div class="swiper-item" draggable="false">
         <article class="item" :class="position">
-                <div class="main-content">
+                <div class="main-content" ref="mainContent">
                     <div class="content">
                         <h2 class="title1">Activity name</h2>
                         <p class="description">Eu consuat eu et quis laboris enim Lorem cupidatat. Enim minim consectetur veniam elit. Laborum aute labore reprehenderit ad non eiusmod ad cupidatat est reprehenderit eiusmod culpa ipsum. Elit eu sunt anim duis cupidatat est consequat et.</p>
@@ -91,7 +102,7 @@
                     position: absolute;
                     width: 100%;
                     height: 100%;
-                    background-color: $white;
+                    background-color: $salmon-red;
                     background-image: v-bind(imgURL);
                     background-attachment: fixed;
                     background-repeat: no-repeat;
@@ -214,6 +225,14 @@
                 }
             }
         }
+    }
+
+    .ios {
+        &::before {
+            background-attachment: local !important;
+            background-image: none !important;
+            background-color: $olive-green !important;
+        } 
     }
 
     // animation purpose
