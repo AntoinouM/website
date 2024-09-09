@@ -1,5 +1,7 @@
 .section1 {
     background-color: $olive-green;
 
-    @include generate-grid(2, 2, 0)
+    @include breakpoint-max-width(s) {
+        width: 10%;
+    }
 }
