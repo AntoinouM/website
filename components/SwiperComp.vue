@@ -45,7 +45,7 @@
     }
 
     function manageActiveIndex(e) {
-        if (animationIsPlaying.value) return;
+        if (animationIsPlaying.value || !swiper.value) return;
 
         if (e === 'next') {
             swiper.value.classList.remove('prev');
