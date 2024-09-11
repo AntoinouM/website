@@ -49,27 +49,38 @@ export default class ResourceManager extends EventTarget {
     }
 
     /**
-     * @param {String} directory 
+     * @param {String|Array} directory 
      * @param {Array} listOfElements 
      * @returns {Promise<String>}
      */
     manageResources(directory, listOfElements) {
-        if (typeof directory === 'Array') {
+        if (Array.isArray(directory)) {
             // manage arr => promise.all
+            this.manageResourcesArrayOfDir(directory).then((message) => {
+                console.log(message)
+                this.emitEnd();
+            })
         } else {
             // manage single
+            this.manageResourcesSingleDir(directory, listOfElements).then((message) => {
+                console.log(message)
+                this.emitEnd();
+            })
         }
-
-        return new Promise ((resolve, reject) => {
-            this.declareResources(directory, listOfElements)
-                .then(() => {
-                    this.handleResourcesLoading().then((value) => {resolve(value)}) 
-                }
-            )
-        })
     }
 
     manageResourcesArrayOfDir(directories, listOfElements) {
+        return new Promise((resolve, reject) => {
+            const promisesOfArrayDir = [];
+
+            directories.forEach(dir => {
+                promisesOfArrayDir.push(this.manageResourcesSingleDir(dir));
+            })
+
+            Promise.all(promisesOfArrayDir).then((message) => {
+                resolve(`All resources have been loaded (${this.images.size} images, ${this.videos.size} videos)`)
+            })
+        })
 
     }
 
@@ -171,7 +182,6 @@ export default class ResourceManager extends EventTarget {
 
             Promise.all(promisesList)
                 .then(() => {
-                    this.emitEnd();
                     resolve(`All resources have been loaded (${this.images.size} images, ${this.videos.size} videos)`)
                 })
                 .catch((e) => reject(`${e}`));

@@ -25,7 +25,7 @@
             resources.value = resourceLoader.getFilteredArray('Services');
             servicesLoaded.value = true;
         })
-        resourceLoader.manageResources('Services')
+        resourceLoader.manageResources(['Services', 'Cover'])
 
         // define border effect for section3
         section3Observer = getScrollValueOfElement(section3.value, null);
