@@ -75,15 +75,19 @@
                 class="section section2"
             >
                 <div class="left-container">
-                    <img src="/Cover/women_looking_away.jpg" alt="">
+                    <div class="image-container"></div>
                 </div>
                 <div class="right-container">
-                    <div class="text">
-                        <div class="text-title">Welcome to Mind Retreats, where you'll discover the limitless power of your mind.</div>
-                        <div class="text-content">Are you feeling stuck in your ways or are you in need of change? Take action now and go on a journey of self-discovery and healing at one of our Retreats.</div>
+                    <div class="content-wrapper">
+                        <div class="text">
+                            <div class="text-title title3">Welcome to Mind Retreats, where you'll discover the limitless power of your mind.</div>
+                            <div class="text-content">Are you feeling stuck in your ways or are you in need of change? Take action now and go on a journey of self-discovery and healing at one of our Retreats.</div>
+                        </div>
+                        <div class="btn-container">
+                            <button class="btn-primary">Learn more about the Retreats</button>
+                            <button class="btn-secondary">Meet the host</button>
+                        </div>
                     </div>
-                    <button class="btn-primary">Learn more about the Retreats</button>
-                    <button class="btn-secondary">Meet the host</button>
                 </div>
             </section>
             <section 

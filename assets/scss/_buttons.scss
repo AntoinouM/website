@@ -1,0 +1,52 @@
+.btn-primary {
+  display: inline-block;
+  background-color: $olive-green;
+  box-sizing: border-box;
+  color: $white;
+  cursor: pointer;
+  padding: $spacer-3 $spacer-2;
+  border: none;
+  border-radius: .3em;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: .3s;
+  @include breakpoint-max-width(md) {
+    border-radius: 50px;
+  }
+}
+
+.btn-primary:hover {
+  background-color: rgba($color: $olive-green, $alpha: .7);
+}
+
+.btn-secondary {
+    background: transparent;
+    box-sizing: border-box;
+    color: $olive-green;
+    cursor: pointer;
+    padding: $spacer-3 $spacer-2;
+    border: 2px solid $olive-green;
+    border-radius: .3em;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    transition: .3s;
+    @include breakpoint-max-width(md) {
+      border-radius: 50px;
+    }
+  }
+  
+  .btn-secondary:hover {
+    background-color: rgba($color: $olive-green, $alpha: .7);
+  }
+
+@media (min-width: 1024px) {
+  .button-76 {
+    font-size: 1.5rem; /* 24px */
+    padding: 1rem 1.5rem;
+    line-height: 2rem; /* 32px */
+  }
+}
