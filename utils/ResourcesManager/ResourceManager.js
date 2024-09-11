@@ -57,13 +57,11 @@ export default class ResourceManager extends EventTarget {
         if (Array.isArray(directory)) {
             // manage arr => promise.all
             this.manageResourcesArrayOfDir(directory).then((message) => {
-                console.log(message)
                 this.emitEnd();
             })
         } else {
             // manage single
             this.manageResourcesSingleDir(directory, listOfElements).then((message) => {
-                console.log(message)
                 this.emitEnd();
             })
         }
