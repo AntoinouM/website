@@ -40,7 +40,8 @@
   }
   
   .btn-secondary:hover {
-    background-color: rgba($color: $olive-green, $alpha: .7);
+    border-color: rgba($color: $olive-green, $alpha: .7);
+    color: rgba($color: $olive-green, $alpha: .7);
   }
 
 @media (min-width: 1024px) {

@@ -5,18 +5,25 @@
 
     const resourceLoader = new ResourceManager();
 
+    const section2 = ref(null);
     const section3 = ref(null);
+    const svgLine = ref(null);
 
     const resources = ref([]);
     let servicesLoaded = ref(false);
 
+    let section2Observer = undefined;
     let section3Observer = undefined;
     let percentageValue = ref(0);
+    let section2Scroll = ref(0);
 
     const negativePercentage = computed(() => {
         return `${100-percentageValue.value.value}%`
     })
 
+    const section2ScrollValue = computed(() => {
+        return svgLine.value.getTotalLength() - (svgLine.value.getTotalLength() * (section2Scroll.value.value/100));
+    })
 
     onMounted(() => {
 
@@ -26,19 +33,34 @@
             servicesLoaded.value = true;
             console.log(e.detail.message)
         })
-        resourceLoader.manageResources(['Services', 'Cover'])
+        resourceLoader.manageResources(['Services', 'Cover', 'Resort'])
 
         // define border effect for section3
         section3Observer = getScrollValueOfElement(section3.value, null);
         percentageValue.value = toRaw(section3Observer.scrollVal);
 
+        // define svg effect for section2
+        section2Observer = getScrollValueOfElement(section2.value, null);
+        section2Scroll.value = toRaw(section2Observer.scrollVal);
+
+        // The start position of the drawing
+        svgLine.value.style.strokeDasharray = svgLine.value.getTotalLength();
+
+        // Hide the triangle by offsetting dash. Remove this line to show the triangle before scroll draw
+        //svgLine.value.style.strokeDashoffset = svgLine.value.getTotalLength();
+
+        // Reverse the drawing (when scrolling upwards)
+        svgLine.value.style.strokeDashoffset = svgLine.value.getTotalLength() - (svgLine.value.getTotalLength() * section2ScrollValue);
+
         // Cleanup observer on unmount
         onBeforeUnmount(() => {
-            if (section3.value) {
+            if (section3.value && section2.value) {
+                section2Observer.observer.unobserve(section2.value);
                 section3Observer.observer.unobserve(section3.value);
             }
         });
     })
+
     
 
 </script>
@@ -78,6 +100,9 @@
                     <div class="image-container"></div>
                 </div>
                 <div class="right-container">
+                    <svg ref="svg" class="svgEl">
+                        <path class="line" fill="none" ref="svgLine" d="M 0 0 L 0 1000"/>
+                    </svg>
                     <div class="content-wrapper">
                         <div class="text">
                             <div class="text-title title3">Welcome to Mind Retreats, where you'll discover the limitless power of your mind.</div>
@@ -142,5 +167,8 @@
         }
     }
 
+    .line {
+        stroke-dashoffset: v-bind(section2ScrollValue);
+    }
 
 </style>
