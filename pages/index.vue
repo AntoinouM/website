@@ -101,7 +101,7 @@
                 </div>
                 <div class="right-container">
                     <svg ref="svg" class="svgEl">
-                        <path class="line" fill="none" ref="svgLine" d="M 0 0 L 0 1000"/>
+                        <path class="line" fill="none" ref="svgLine" d="M 0 0 L 0 2000"/>
                     </svg>
                     <div class="content-wrapper">
                         <div class="text">
