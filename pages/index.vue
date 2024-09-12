@@ -200,7 +200,6 @@
                     v-if="resourcesLoaded"
                         :title="section4ActiveResource.name"
                         :body="section4ActiveResource.description"
-                        color="#fff"
                     />
                 </div>
             </section>

@@ -1,5 +1,5 @@
 .section4 {
-    background-color: $olive-green;
+    background-color: $salmon-red;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -8,6 +8,7 @@
 
     @include breakpoint-max-width(md) {
         flex-direction: column;
+        background-color: $olive-green;
     }
 }
 
@@ -51,8 +52,8 @@
     }
 
     &  .section4-title {
-        color: $white;
         font-weight: bold;
+        color: $night-blue;
 
         @include breakpoint-max-width(md) {
             display: none;

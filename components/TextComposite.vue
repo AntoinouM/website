@@ -24,7 +24,7 @@
 
     <div class="text-composite" ref="text">
         <h2 class="title2">{{ title }}</h2>
-        <p class="body">{{ body }}</p>
+        <p>{{ body }}</p>
         <slot></slot>
     </div>
     
@@ -35,10 +35,15 @@
     .text-composite {
         display: flex;
         flex-direction: column;
-        gap: $spacer-3;
+        gap: $spacer-5;
         position: relative;
-        color: v-bind(color);
+        color: inherit;
         animation: appear .9s ease-in-out 1 forwards;
+        color: $night-blue;
+
+        @include breakpoint-max-width(md) {
+            color: $white;
+        }
 
         &::before {
             content: '';
