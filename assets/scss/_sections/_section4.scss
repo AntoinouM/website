@@ -5,9 +5,17 @@
     justify-content: end;
 
     padding: $spacer-4;
+
+    @include breakpoint-max-width(md) {
+        height: 100dvh !important;
+    }
 }
 
 .swiper-element-wrapper {
     height: 80%;
     width: 60%;
+
+    @include breakpoint-max-width(md) {
+        width: 100%;
+    }
 }

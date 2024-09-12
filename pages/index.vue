@@ -46,6 +46,19 @@
         section2Observer = getScrollValueOfElement(section2.value, null);
         section2Scroll.value = toRaw(section2Observer.scrollVal);
 
+        // add breakpoints to swiper
+        Object.assign(resortSwiper.value, {
+            breakpoints: {
+                100: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 1.4,
+                }
+            }
+        })
+        resortSwiper.value.initialize()
+
         // The start position of the drawing
         // svgLine.value.style.strokeDasharray = svgLine.value.getTotalLength();
 
@@ -143,8 +156,8 @@
                     slides-per-view="1.4"
                     centered-slides="true"
                 >
-                    <swiper-slide v-for="resource in resourcesResort" :key="resource.key" class="resortSlide">
-                        <img :src="resource.src" :alt="resource.name">
+                    <swiper-slide v-for="resource in resourcesResort" :key="resource.key" class="resortSlide" lazy="true">
+                        <img :src="resource.src" :alt="resource.name" loading="lazy">
                     </swiper-slide>
                 </swiper-container>
             </div>

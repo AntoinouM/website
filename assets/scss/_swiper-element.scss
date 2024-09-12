@@ -5,6 +5,10 @@
     align-items: center;
 }
 
+.swiper-wrapper {
+    transition: .5s !important;
+}
+
 .resortSlide {
     text-align: center;
     font-size: 18px;
