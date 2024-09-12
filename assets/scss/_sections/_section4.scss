@@ -22,16 +22,40 @@
     }
 }
 
+.section4-title-mobile {
+    font-weight: bold;
+    display: none;
+    font-size: 1.2rem;
+    margin: $spacer-3 0 -2em 0;
+    color: $white;
+
+    @include breakpoint-max-width(md) {
+        display: block;
+    }
+}
+
 .section4-text {
     width: 40%;
-    height: fit-content;
+    height: 60%;
     padding: $spacer-4;
-    align-self: center;
-    margin-top: 30%;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    display: block;
 
     @include breakpoint-max-width(md) {
         width: 100%;
         height: fit-content;
         margin-top: $spacer-4;
     }
+
+    &  .section4-title {
+        color: $white;
+        font-weight: bold;
+
+        @include breakpoint-max-width(md) {
+            display: none;
+        }
+     }
 }

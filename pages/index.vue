@@ -178,6 +178,7 @@
                 ref="section4"
                 class="section section4"
             >
+                <h2 class="title2 section4-title-mobile">Explore our resort</h2>
                 <div class="swiper-element-wrapper">
                     <swiper-container class="resortSwiper" ref="resortSwiper"
                         space-between="30" 
@@ -194,6 +195,7 @@
                     </swiper-container>
                 </div>
                 <div class="section4-text">
+                    <h2 class="title2 section4-title">Explore our resort</h2>
                     <TextComposite
                     v-if="resourcesLoaded"
                         :title="section4ActiveResource.name"

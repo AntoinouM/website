@@ -39,6 +39,7 @@
     <div class="swiper-item" draggable="false">
         <article class="item" :class="position">
                 <div class="main-content" ref="mainContent">
+                    <h2 class="title2 section-title">What makes us special</h2>
                     <div class="content">
                         <h2 class="title1">Activity name</h2>
                         <p class="description">Eu consuat eu et quis laboris enim Lorem cupidatat. Enim minim consectetur veniam elit. Laborum aute labore reprehenderit ad non eiusmod ad cupidatat est reprehenderit eiusmod culpa ipsum. Elit eu sunt anim duis cupidatat est consequat et.</p>
@@ -97,6 +98,23 @@
                     align-items: center;
                 }
 
+                & .section-title {
+                    display: inline-block;
+                    z-index: 10;
+                    position: absolute;
+                    padding: $spacer-3 calc(#{$spacer-6} + #{$spacer-6});
+                    top: $spacer-5;
+                    background-color: rgba($color: $white, $alpha: .1);
+                    border-radius: 0 50px 50px 0;
+                    font-weight: bold;
+
+                    @include breakpoint-max-width(md) {
+                        padding: $spacer-3;
+                        font-size: 1.2rem;
+                        top: $spacer-2;
+                    }
+                }
+
                 &::before {
                     content: '';
                     position: absolute;
@@ -117,6 +135,7 @@
                 }
 
                 & .content {
+                    margin-top: $spacer-6;
                     padding: 150px $spacer-4 $spacer-4 80px;
                     z-index: 20;
 
@@ -127,11 +146,11 @@
                         width: 40%;
                         background-color: black;
                         left: 80px;
-                        top: 120px;
+                        top: calc(120px + #{$spacer-6});
                         width: 25%;
 
                         @include breakpoint-max-width(md) {
-                            top: calc(#{$spacer-8} - calc(.6rem * 2));
+                            top: calc(#{$spacer-10});
                             left: $spacer-7;
                         }
                     }
