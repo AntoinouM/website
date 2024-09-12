@@ -8,8 +8,10 @@
     const section2 = ref(null);
     const section3 = ref(null);
     const svgLine = ref(null);
+    const resortSwiper = ref(null);
 
-    const resources = ref([]);
+    const resourcesActivity = ref(undefined);
+    const resourcesResort = ref(undefined);
     let servicesLoaded = ref(false);
 
     let section2Observer = undefined;
@@ -21,15 +23,16 @@
         return `${100-percentageValue.value.value}%`
     })
 
-    const section2ScrollValue = computed(() => {
-        return svgLine.value.getTotalLength() - (svgLine.value.getTotalLength() * (section2Scroll.value.value/100));
-    })
+    // const section2ScrollValue = computed(() => {
+    //     return svgLine.value.getTotalLength() - (svgLine.value.getTotalLength() * (section2Scroll.value.value/100));
+    // })
 
     onMounted(() => {
 
         // manage resources
         resourceLoader.addEventListener('end', (e) => {
-            resources.value = resourceLoader.getFilteredArray('Services');
+            resourcesActivity.value = resourceLoader.getFilteredArray('Services');
+            resourcesResort.value = resourceLoader.getFilteredArray('Resort');
             servicesLoaded.value = true;
             console.log(e.detail.message)
         })
@@ -44,13 +47,13 @@
         section2Scroll.value = toRaw(section2Observer.scrollVal);
 
         // The start position of the drawing
-        svgLine.value.style.strokeDasharray = svgLine.value.getTotalLength();
+        // svgLine.value.style.strokeDasharray = svgLine.value.getTotalLength();
 
         // Hide the triangle by offsetting dash. Remove this line to show the triangle before scroll draw
         //svgLine.value.style.strokeDashoffset = svgLine.value.getTotalLength();
 
         // Reverse the drawing (when scrolling upwards)
-        svgLine.value.style.strokeDashoffset = svgLine.value.getTotalLength() - (svgLine.value.getTotalLength() * section2ScrollValue);
+        // svgLine.value.style.strokeDashoffset = svgLine.value.getTotalLength() - (svgLine.value.getTotalLength() * section2ScrollValue);
 
         // Cleanup observer on unmount
         onBeforeUnmount(() => {
@@ -100,9 +103,9 @@
                     <div class="image-container"></div>
                 </div>
                 <div class="right-container">
-                    <svg ref="svg" class="svgEl">
+                    <!-- <svg ref="svg" class="svgEl">
                         <path class="line" fill="none" ref="svgLine" d="M 0 0 L 0 2000"/>
-                    </svg>
+                    </svg> -->
                     <div class="content-wrapper">
                         <div class="text">
                             <div class="text-title title3">Welcome to Mind Retreats, where you'll discover the limitless power of your mind.</div>
@@ -122,7 +125,7 @@
                 <div class="section3-wrapper">
                     <SwiperComp
                     v-if="servicesLoaded"
-                    :resources="resources"
+                    :resources="resourcesActivity"
                     :autoplay="8000"
                     />
                 </div>
@@ -131,6 +134,20 @@
                 ref="section4"
                 class="section section4"
             >
+            <div class="swiper-element-wrapper">
+                <swiper-container class="resortSwiper" ref="resortSwiper"
+                    space-between="30" 
+                    pagination="true" 
+                    pagination-clickable="true"
+                    navigation="true"
+                    slides-per-view="1.4"
+                    centered-slides="true"
+                >
+                    <swiper-slide v-for="resource in resourcesResort" :key="resource.key" class="resortSlide">
+                        <img :src="resource.src" :alt="resource.name">
+                    </swiper-slide>
+                </swiper-container>
+            </div>
             </section>
         </div>
     </div>
@@ -167,8 +184,8 @@
         }
     }
 
-    .line {
-        stroke-dashoffset: v-bind(section2ScrollValue);
-    }
+    // .line {
+    //     stroke-dashoffset: v-bind(section2ScrollValue);
+    // }
 
 </style>

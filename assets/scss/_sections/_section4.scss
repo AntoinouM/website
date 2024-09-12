@@ -1,3 +1,13 @@
 .section4 {
     background-color: $salmon-red;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    padding: $spacer-4;
+}
+
+.swiper-element-wrapper {
+    height: 80%;
+    width: 60%;
 }
