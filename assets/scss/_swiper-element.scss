@@ -12,7 +12,7 @@
 .resortSlide {
     text-align: center;
     font-size: 18px;
-    background: #fff;
+    background: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,6 +29,11 @@
         height: 100%;
         object-fit: cover;
         filter: grayscale(.9);
+        opacity: .5;
+
+        @include breakpoint-max-width(md) {
+            object-fit: contain;
+        }
     }
 
     &.swiper-slide-active {
@@ -36,6 +41,7 @@
 
         & img {
             filter: grayscale(0);
+            opacity: 1;
         }
     }
 }

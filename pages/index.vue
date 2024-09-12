@@ -2,6 +2,7 @@
 
     import ResourceManager from '~/utils/ResourcesManager/ResourceManager';
     import getScrollValueOfElement from '~/utils/utilsFunctions';
+    import dataResort from '../public/data/resort.json';
 
     const resourceLoader = new ResourceManager();
 
@@ -10,14 +11,22 @@
     const svgLine = ref(null);
     const resortSwiper = ref(null);
 
+    // data
+    const data = {
+        resort: dataResort,
+        services: null,
+        retreats: null,
+    }
+
     const resourcesActivity = ref(undefined);
     const resourcesResort = ref(undefined);
-    let servicesLoaded = ref(false);
+    let resourcesLoaded = ref(false);
 
     let section2Observer = undefined;
     let section3Observer = undefined;
     let percentageValue = ref(0);
     let section2Scroll = ref(0);
+    let section4ActiveResource = ref(undefined);
 
     const negativePercentage = computed(() => {
         return `${100-percentageValue.value.value}%`
@@ -33,10 +42,14 @@
         resourceLoader.addEventListener('end', (e) => {
             resourcesActivity.value = resourceLoader.getFilteredArray('Services');
             resourcesResort.value = resourceLoader.getFilteredArray('Resort');
-            servicesLoaded.value = true;
+            section4ActiveResource.value = resourcesResort.value[0];
+            resourcesLoaded.value = true;
             console.log(e.detail.message)
+
+            assignJSONToResources(data.resort, resourcesResort.value)
         })
         resourceLoader.manageResources(['Services', 'Cover', 'Resort'])
+        console.log(dataResort)
 
         // define border effect for section3
         section3Observer = getScrollValueOfElement(section3.value, null);
@@ -52,12 +65,16 @@
                 100: {
                     slidesPerView: 1,
                 },
-                768: {
+                1200: {
                     slidesPerView: 1.4,
                 }
             },
         })
         resortSwiper.value.initialize()
+
+        resortSwiper.value.addEventListener('swiperslidechange', (event) => {
+            section4ActiveResource.value = resourcesResort.value[resortSwiper.value.swiper.realIndex];
+        });
 
         // The start position of the drawing
         // svgLine.value.style.strokeDasharray = svgLine.value.getTotalLength();
@@ -77,7 +94,21 @@
         });
     })
 
-    
+    /**
+     * @param {JSON} data
+     * @param {Array} array 
+     */
+    function assignJSONToResources(data, array) {
+        const map = new Map(Object.entries(data))
+
+        array.forEach(resource => {
+            if (!map.has(resource.src)) return;
+
+            resource.name = map.get(resource.src).name
+            resource.description = map.get(resource.src).description
+            resource.divers = map.get(resource.src).divers
+        })
+    }
 
 </script>
 
@@ -137,7 +168,7 @@
             >
                 <div class="section3-wrapper">
                     <SwiperComp
-                    v-if="servicesLoaded"
+                    v-if="resourcesLoaded"
                     :resources="resourcesActivity"
                     :autoplay="8000"
                     />
@@ -147,21 +178,29 @@
                 ref="section4"
                 class="section section4"
             >
-            <div class="swiper-element-wrapper">
-                <swiper-container class="resortSwiper" ref="resortSwiper"
-                    space-between="30" 
-                    pagination="true" 
-                    pagination-clickable="true"
-                    navigation="true"
-                    slides-per-view="1.4"
-                    centered-slides="true"
-                    speed="1000"
-                >
-                    <swiper-slide v-for="resource in resourcesResort" :key="resource.key" class="resortSlide" lazy="true">
-                        <img :src="resource.src" :alt="resource.name" loading="lazy">
-                    </swiper-slide>
-                </swiper-container>
-            </div>
+                <div class="swiper-element-wrapper">
+                    <swiper-container class="resortSwiper" ref="resortSwiper"
+                        space-between="30" 
+                        pagination="true" 
+                        pagination-clickable="true"
+                        navigation="true"
+                        slides-per-view="1.4"
+                        centered-slides="true"
+                        speed="1000"
+                    >
+                        <swiper-slide v-for="(resource, index) in resourcesResort" :key="index" class="resortSlide" lazy="true" @active-index-change="() => {console.log(index)}">
+                            <img :src="resource.src" :alt="resource.name" loading="lazy">
+                        </swiper-slide>
+                    </swiper-container>
+                </div>
+                <div class="section4-text">
+                    <TextComposite
+                    v-if="resourcesLoaded"
+                        :title="section4ActiveResource.name"
+                        :body="section4ActiveResource.description"
+                        color="#fff"
+                    />
+                </div>
             </section>
         </div>
     </div>

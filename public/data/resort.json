@@ -1,0 +1,42 @@
+{
+        "/Resort/agung.JPEG": {
+            "name" : "The mountain of Gods",
+            "description": "Admire from our resort the almighty presence of Mt. Agung: The mountain of Gods.",
+            "divers" : ""
+        },
+        "/Resort/drone-horizontal.JPG": {
+            "name" : "A hidden oasis",
+            "description": "Ideally located in the middle of rice-fields, our resort is a true oasis.",
+            "divers" : ""
+        },
+        "/Resort/drone-vertical.JPEG": {
+            "name" : "A hidden oasis",
+            "description": "Ideally located in the middle of rice-fields, our resort is a true oasis.",
+            "divers" : ""
+        },
+        "/Resort/pool1.JPEG": {
+            "name" : "Relaxing salted water pool",
+            "description": "Relax yourself in our salted water swimming-pool surrounded by luxurious nature.",
+            "divers" : ""
+        },
+        "/Resort/pool2.JPG": {
+            "name" : "Relaxing salted water pool",            
+            "description": "Relax yourself in our salted water swimming-pool surrounded by luxurious nature.",
+            "divers" : ""
+        },
+        "/Resort/pool3.JPEG": {
+            "name" : "Relaxing salted water pool",            
+            "description": "Relax yourself in our salted water swimming-pool surrounded by luxurious nature.",
+            "divers" : ""
+        },
+        "/Resort/rooftop.JPG": {
+            "name" : "Secluded areas",
+            "description": "Meditate on our roof-top terrasse with nothing but calming nature as neighbor.",
+            "divers" : ""
+        },
+        "/Resort/tisna.JPEG": {
+            "name" : "A foot into Balinese culture",
+            "description": "Experience a true Balinese experience far away from the agitation among local people.",
+            "divers" : ""
+        }
+}
