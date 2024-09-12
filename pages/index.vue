@@ -55,7 +55,7 @@
                 768: {
                     slidesPerView: 1.4,
                 }
-            }
+            },
         })
         resortSwiper.value.initialize()
 
@@ -155,6 +155,7 @@
                     navigation="true"
                     slides-per-view="1.4"
                     centered-slides="true"
+                    speed="1000"
                 >
                     <swiper-slide v-for="resource in resourcesResort" :key="resource.key" class="resortSlide" lazy="true">
                         <img :src="resource.src" :alt="resource.name" loading="lazy">

@@ -2,7 +2,6 @@
     background-color: $salmon-red;
     display: flex;
     align-items: center;
-    justify-content: end;
 
     padding: $spacer-4;
 
@@ -14,6 +13,7 @@
 .swiper-element-wrapper {
     height: 80%;
     width: 60%;
+    justify-self: flex-start;
 
     @include breakpoint-max-width(md) {
         width: 100%;
