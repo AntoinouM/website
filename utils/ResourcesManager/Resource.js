@@ -125,7 +125,6 @@ export default class Resource {
         set divers(divers) {
             this._divers = divers;
         }
-
         // METHODS
         /**
          * @param {String} formatStr
