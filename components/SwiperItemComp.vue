@@ -104,8 +104,6 @@
                     position: absolute;
                     padding: $spacer-3 calc(#{$spacer-6} + #{$spacer-6});
                     top: $spacer-5;
-                    background-color: rgba($color: $white, $alpha: .1);
-                    border-radius: 0 50px 50px 0;
                     font-weight: bold;
 
                     @include breakpoint-max-width(md) {
@@ -126,8 +124,8 @@
                     background-repeat: no-repeat;
                     background-size: cover;
                     background-position: center;
-                    filter: blur(20px) grayscale(70%);
-                    -webkit-filter: blur(12px) grayscale(70%);
+                    filter: blur(10px) grayscale(70%);
+                    -webkit-filter: blur(10px) grayscale(70%);
 
                     @include breakpoint-max-width(md) {
                         display: none;
