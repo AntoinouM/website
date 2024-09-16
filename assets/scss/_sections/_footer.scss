@@ -1,0 +1,64 @@
+footer {
+    display: flex;
+    flex-direction: row;
+    gap: $spacer-4;
+    padding: 1rem 10%;
+    background-color: $night-blue;
+    justify-content: space-around;
+    color: $egg-white;
+
+    & .title4 {
+        margin-bottom: $spacer-3;
+    }
+
+    @include breakpoint-max-width(xl) {
+        flex-direction: column;
+    }
+}
+
+.social {
+    display: flex;
+    flex-direction: row;
+    gap: $spacer-3;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+footer .logo {
+    width: 30px;
+    height: 30px;
+}
+
+.logo-path {
+    stroke: none;
+    fill: $egg-white;
+}
+
+.contact, 
+.brand,
+.navigation {
+    padding: .5em;
+    display: flex;
+    flex-direction: column;
+    gap: $spacer-3;
+}
+
+footer .navigation p {
+    text-decoration: none;
+    color: $egg-white;
+    font-size: .9rem;
+}
+
+.mr-logo {
+    width: 80px;
+    align-self: center;
+}
+
+.mr-logo-path {
+    stroke: $egg-white;
+}
+
+.brand p {
+    font-size: .8rem;
+    text-align: center;
+}

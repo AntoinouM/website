@@ -28,5 +28,10 @@ export default defineNuxtConfig({
       baseURL: process.env.BASE_URL,
       deployURL: process.env.DEPLOY_URL,
     }
+  },
+  router: {
+    options: {
+      scrollBehaviorType: 'smooth'
+    }
   }
 })

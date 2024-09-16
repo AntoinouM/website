@@ -27,6 +27,11 @@
         <img src="/Logo/logo-black.svg" alt="The Mind Retreat Logo">
         <form ref="form" action="#" class="form-block">
             <slot></slot>
+            <div class="terms">
+                <input id="confirm" type="checkbox" />
+                <label for="confirm">I have read and agreed to the </label>
+                <a href="" class="terms-link">Terms and conditions</a>
+            </div>
             <button type="submit" class="btn-primary btn-submit">Send Message</button>
         </form>
     </div>
@@ -103,8 +108,12 @@
         }
     }
 
+    .terms {
+        align-self: center;
+    }
+
     .btn-submit {
-        align-self: flex-end;
+        align-self: center;
         width: 200px;
 
         @include breakpoint-max-width(md) {
