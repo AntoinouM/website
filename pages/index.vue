@@ -207,7 +207,9 @@
                 class="section section5"
                 ref="section5"
             >
-                
+            <FormComp title="Contact Us">
+                <ContactForm></ContactForm>
+            </FormComp>
             </section>
         </div>
     </div>
