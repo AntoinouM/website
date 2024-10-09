@@ -32,7 +32,7 @@
                 <label for="confirm">I have read and agreed to the </label>
                 <a href="" class="terms-link">Terms and conditions</a>
             </div>
-            <button type="submit" class="btn-primary btn-submit">Send Message</button>
+            <button type="submit" class="btn-primary btn-submit" @click="console.log('form sent')">Send Message</button>
         </form>
     </div>
     

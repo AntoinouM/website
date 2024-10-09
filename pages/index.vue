@@ -8,6 +8,7 @@
 
     const section2 = ref(null);
     const section3 = ref(null);
+    const section5 = ref(null);
     const svgLine = ref(null);
     const resortSwiper = ref(null);
 
@@ -135,8 +136,9 @@
                     </div>
                     <div class="text">
                         <div class="text-title">Are you ready to meet yourself?</div>
-                        <div class="text-core">Find transformation and peace at The Mind Retreats – your perfect mental health escape <b>in Bali.</b></div>
+                        <div class="text-core">Find transformation and peace at <b>The Mind Retreats</b> – your perfect <b>mental health</b> escape in <b>Bali.</b></div>
                     </div>
+                    <button class="btn-primary" @click="section5.scrollIntoView()">Book your free Orientation call</button>
                 </div>
             </section>
             <section 
