@@ -191,9 +191,10 @@
             & .image-container {
 
                 position: absolute;
-                height: 100%;
+                height: 90%;
                 width: $swiper-item-width;
-                top: 0;
+                top: 50%;
+                transform: translateY(-50%);
                 left: calc(100% - calc(#{$swiper-item-width} * #{$swiper-calculate}));
                 display: flex;
                 flex-direction: column;
@@ -212,6 +213,7 @@
                     height: 60%;
                     left: 0;
                     top: 40%;
+                    transform: translateY(0);
                 }
 
                 & .image {

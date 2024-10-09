@@ -49,7 +49,6 @@
             assignJSONToResources(data.resort, resourcesResort.value)
         })
         resourceLoader.manageResources(['Services', 'Cover', 'Resort'])
-        console.log(dataResort)
 
         // define border effect for section3
         section3Observer = getScrollValueOfElement(section3.value, null);

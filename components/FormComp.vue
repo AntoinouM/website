@@ -41,6 +41,7 @@
 <style lang="scss" scoped>
 
     .form-container {
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -48,7 +49,18 @@
         gap: $spacer-6;
 
         & img {
-            width: 100px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30%;
+            height: auto;
+            opacity: 0.1;
+            z-index: 0;
+
+            @include breakpoint-max-width(md) {
+                width: 80%;
+            }
         }
 
         @include breakpoint-max-width(md) {
@@ -62,6 +74,7 @@
         width: fit-content;
         color: $night-blue;
         margin-bottom: $spacer-2;
+        z-index: 2;
 
         position: relative;
 
@@ -101,6 +114,7 @@
         display: flex;
         flex-direction: column;
         gap: $spacer-9;
+        z-index: 2;
 
         @include breakpoint-max-width(md) {
             width: 80%;
