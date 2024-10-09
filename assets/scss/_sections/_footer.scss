@@ -22,6 +22,10 @@ footer {
     gap: $spacer-3;
     align-items: center;
     flex-wrap: nowrap;
+
+    @include breakpoint-max-width(xl) {
+        justify-content: center;
+    }
 }
 
 footer .logo {
@@ -34,6 +38,10 @@ footer .logo {
     fill: $egg-white;
 }
 
+.navigation {
+    text-align: end;
+}
+
 .contact, 
 .brand,
 .navigation {
@@ -41,6 +49,14 @@ footer .logo {
     display: flex;
     flex-direction: column;
     gap: $spacer-3;
+    flex-grow: 1;
+    width: 30%;
+
+    @include breakpoint-max-width(xl) {
+        justify-content: center;
+        text-align: center;
+        width: auto;
+    }
 }
 
 footer .navigation p {
