@@ -52,9 +52,9 @@
         stroke: $olive-green;
         stroke-width: 2;
         position: absolute;
-        top: -5%;
+        top: -1vh;
         left: 50%;
-        height: 120%;
+        height: 102vh;
         @include breakpoint-max-width(md) {
             display: none;
         }

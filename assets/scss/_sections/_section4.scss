@@ -60,3 +60,11 @@
         }
      }
 }
+
+.section4-btn {
+    width: 90%;
+
+    @include breakpoint-max-width(md) {
+        border: 1px solid $egg-white;
+    }
+}

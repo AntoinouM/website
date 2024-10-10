@@ -12,7 +12,6 @@
     const text = ref(null);
 
     onUpdated(() => {
-        console.log('up')
         text.value.style.animation = 'none';
         text.value.offsetWidth;
         text.value.style.animation = '';

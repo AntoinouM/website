@@ -3,6 +3,7 @@
     import ResourceManager from '~/utils/ResourcesManager/ResourceManager';
     import getScrollValueOfElement from '~/utils/utilsFunctions';
     import dataResort from '../public/data/resort.json';
+    import dataServices from '../public/data/services.json';
 
     const resourceLoader = new ResourceManager();
 
@@ -15,7 +16,7 @@
     // data
     const data = {
         resort: dataResort,
-        services: null,
+        services: dataServices,
         retreats: null,
     }
 
@@ -33,9 +34,10 @@
         return `${100-percentageValue.value.value}%`
     })
 
-    // const section2ScrollValue = computed(() => {
-    //     return svgLine.value.getTotalLength() - (svgLine.value.getTotalLength() * (section2Scroll.value.value/100));
-    // })
+    // SVG drawing
+    const section2ScrollValue = computed(() => {
+        return svgLine.value.getTotalLength() - (svgLine.value.getTotalLength() * (section2Scroll.value.value/100));
+    })
 
     onMounted(() => {
 
@@ -48,6 +50,7 @@
             console.log(e.detail.message)
 
             assignJSONToResources(data.resort, resourcesResort.value)
+            assignJSONToResources(data.services, resourcesActivity.value)
         })
         resourceLoader.manageResources(['Services', 'Cover', 'Resort'])
 
@@ -80,10 +83,10 @@
         // svgLine.value.style.strokeDasharray = svgLine.value.getTotalLength();
 
         // Hide the triangle by offsetting dash. Remove this line to show the triangle before scroll draw
-        //svgLine.value.style.strokeDashoffset = svgLine.value.getTotalLength();
+        // svgLine.value.style.strokeDashoffset = svgLine.value.getTotalLength();
 
         // Reverse the drawing (when scrolling upwards)
-        // svgLine.value.style.strokeDashoffset = svgLine.value.getTotalLength() - (svgLine.value.getTotalLength() * section2ScrollValue);
+        // svgLine.value.style.strokeDashoffset = svgLine.value.getTotalLength() - (svgLine.value.getTotalLength() * section2ScrollValue.value);
 
         // Cleanup observer on unmount
         onBeforeUnmount(() => {
@@ -121,7 +124,7 @@
                 id="section1"
             >
                 <NavBar textColor="$white"/>
-                <video autoplay muted loop class="video-banner">
+                <video autoplay muted playsinline loop class="video-banner">
                     <source src="/Cover/video-bali-ricefields.mp4" type="video/mp4">
                 </video>
                 <div class="content-container">
@@ -150,17 +153,14 @@
                     <div class="image-container"></div>
                 </div>
                 <div class="right-container">
-                    <!-- <svg ref="svg" class="svgEl">
-                        <path class="line" fill="none" ref="svgLine" d="M 0 0 L 0 2000"/>
-                    </svg> -->
                     <div class="content-wrapper">
                         <div class="text">
-                            <div class="text-title title3">Welcome to Mind Retreats, where you'll discover the limitless power of your mind.</div>
+                            <div class="text-title title2">Welcome to Mind Retreats, where you'll discover the limitless power of your mind.</div>
                             <div class="text-content">Are you feeling stuck in your ways or are you in need of change? Take action now and go on a journey of self-discovery and healing at one of our Retreats.</div>
                         </div>
                         <div class="btn-container">
                             <button class="btn-primary">Learn more about the Retreats</button>
-                            <button class="btn-secondary">Meet the host</button>
+                            <button class="btn-secondary">Meet the Host</button>
                         </div>
                     </div>
                 </div>
@@ -188,7 +188,6 @@
                     <swiper-container class="resortSwiper" ref="resortSwiper"
                         space-between="30" 
                         pagination="true" 
-                        pagination-clickable="true"
                         navigation="true"
                         slides-per-view="1.4"
                         centered-slides="true"
@@ -201,6 +200,7 @@
                 </div>
                 <div class="section4-text">
                     <h2 class="title2 section4-title">Explore our resort</h2>
+                    <button class="btn-primary section4-btn" @click="navigateTo('https://www.instagram.com/the.mind.retreats/', {external: true, open: {target: '_blank',}})">See more</button>
                     <TextComposite
                     v-if="resourcesLoaded"
                         :title="section4ActiveResource.name"
@@ -220,11 +220,11 @@
             <footer>
                 <div class="contact">
                     <h3 class="title4">Let's connect</h3>
-                    <div class="social">
+                    <div @click="navigateTo('https://www.instagram.com/the.mind.retreats/', {external: true, open: {target: '_blank',}})" class="social">
                         <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path class="logo-path insta" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                         <p class="social-text">@themindretreats</p>
                     </div>
-                    <div class="social">
+                    <div @click="navigateTo('mailto:suryane.maria@gmx.at', {external: true, open: {target: '_blank',}})" class="social">
                         <svg xmlns="http://www.w3.org/2000/svg" class="logo" viewBox="0 0 24 24"><path class="logo-path email" d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg> 
                         <p class="social-text">themindretreats@gmail.com</p>
                     </div>
@@ -279,9 +279,5 @@
             border-radius: 0;
         }
     }
-
-    // .line {
-    //     stroke-dashoffset: v-bind(section2ScrollValue);
-    // }
 
 </style>

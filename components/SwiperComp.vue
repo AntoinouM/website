@@ -26,6 +26,7 @@
     })
 
     onMounted(() => {
+        console.log(props.resources)
         swiperItems.value = swiperContainer.value.children;
         Array.from(swiperItems.value).forEach(item => {
             swiperItemsImages.value.push(item.children[0].children[1].children[0])
@@ -132,7 +133,7 @@
 
     .swiper-container {
         width: 100%;
-        height: 60vh;
+        height: 70vh;
         overflow: hidden;
         position: relative;
         
