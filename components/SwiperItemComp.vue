@@ -99,7 +99,7 @@
                 }
 
                 & .section-title {
-                    display: inline-block;
+                    display: block;
                     z-index: 10;
                     position: absolute;
                     padding: $spacer-3 calc(#{$spacer-6} + #{$spacer-6});
@@ -160,6 +160,7 @@
                     & .title1 {
                         display: flex;
                         justify-content: start;
+                        z-index: 20;
 
                         @include breakpoint-max-width(lg) {
                             font-size: 1.618em;
@@ -266,6 +267,7 @@
 
     .item.active .main-content .content {
         opacity: 1;
+        z-index: 30;
     }
 
     .item.prev_active,
