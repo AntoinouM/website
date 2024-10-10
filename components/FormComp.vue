@@ -30,7 +30,7 @@
             <div class="terms">
                 <input id="confirm" type="checkbox" />
                 <label for="confirm">I have read and agreed to the </label>
-                <a href="" class="terms-link">Terms and conditions</a>
+                <NuxtLink class="terms-link" to="/termsAndConditions">Terms and conditions</NuxtLink>
             </div>
             <button type="submit" class="btn-primary btn-submit" @click="console.log('form sent')">Send Message</button>
         </form>
@@ -124,6 +124,9 @@
 
     .terms {
         align-self: center;
+        display: flex;
+        align-content: center;
+        gap: $spacer-3;
     }
 
     .btn-submit {
@@ -134,6 +137,11 @@
             width: 100%;
             margin-bottom: $spacer-4;
         }
+    }
+
+    input[type='checkbox'] {
+        height: 24px;
+        width: 24px;
     }
 
 </style>

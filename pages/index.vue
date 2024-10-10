@@ -217,7 +217,7 @@
                 <ContactForm></ContactForm>
             </FormComp>
             </section>
-            <footer>
+            <footer ref="footer" id="footer">
                 <div class="contact">
                     <h3 class="title4">Let's connect</h3>
                     <div @click="navigateTo('https://www.instagram.com/the.mind.retreats/', {external: true, open: {target: '_blank',}})" class="social">
@@ -231,7 +231,7 @@
                 </div>
                 <div class="brand">
                     <h3 class="title4">The mind retreats</h3>
-                    <svg class="mr-logo" viewBox="0 0 435 411" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg @click="navigateTo('#section1')" class="mr-logo" viewBox="0 0 435 411" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path class="mr-logo-path" d="M30 180.5V7.41419C30 6.52329 31.0771 6.07713 31.7071 6.70709L229.293 204.293C229.683 204.683 230.317 204.683 230.707 204.293L428.293 6.7071C428.923 6.07713 430 6.52329 430 7.4142V403.086C430 403.977 428.923 404.423 428.293 403.793L229.5 205M30 180.5C16.1929 180.5 5 191.693 5 205.5C5 219.307 16.1929 230.5 30 230.5M30 180.5C43.8071 180.5 55 191.693 55 205.5C55 219.307 43.8071 230.5 30 230.5M30 230.5L30 405M152 404.5V6.49998C152 5.9477 152.467 5.49983 153.02 5.50184C303.221 6.04887 352 127.479 352 206.5C352 303.78 303.221 405.042 153.02 405.498C152.467 405.5 152 405.052 152 404.5Z" stroke="white" stroke-width="10" stroke-linecap="round"/>
                     </svg>
                     <p>Your perfect mental health escape in Bali</p>

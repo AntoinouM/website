@@ -14,13 +14,13 @@
     <div class="nav-wrapper">
       <nav class="navbar">        
         <ul :class="{mobileNav: mobileNav}" class="nav nav-items">
-          <li class="nav-item"><a href="#">Retreat</a></li>
-          <li class="nav-item"><a href="#">Accommodation</a></li>
+          <li class="nav-item"><a href="#section3">Retreat</a></li>
+          <li class="nav-item"><a href="#section4">Accommodation</a></li>
         </ul>
         <img src="/Logo/logo-white.svg" alt="The Mind Retreat Logo">
         <ul :class="{mobileNav: mobileNav}" class="nav nav-items nav-items-second">
           <li class="nav-item"><a href="#">Therapy</a></li>
-          <li class="nav-item"><a href="#">Hypnotherapy</a></li>
+          <li class="nav-item"><a href="#footer">Contact</a></li>
         </ul>
         <div @click="burgerShow = !burgerShow; mobileNav = !mobileNav" :class="{ open: burgerShow }" class="menu-toggle" ref="mobile-menu">
           <span class="bar"></span>
