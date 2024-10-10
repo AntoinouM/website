@@ -1,42 +1,32 @@
 {
-    "/Resort/agung.JPEG": {
-        "name" : "The mountain of Gods",
-        "description": "Admire from our resort the almighty presence of Mt. Agung: The mountain of Gods.",
+    "/Services/activities.jpg": {
+        "name" : "Iconic Activities",
+        "description": "Get the chance to explore the stunning countryside and culture of Bali, or visit some of the most iconic sightseeings.",
         "divers" : ""
     },
-    "/Resort/drone-horizontal.JPG": {
-        "name" : "A hidden oasis",
-        "description": "Ideally located in the middle of rice-fields, our resort is a true oasis.",
+    "/Services/breakfast.jpeg": {
+        "name" : "Delicious Breakfast and regional produced Dinner",
+        "description": "A delicious Brunch as well as great nutritious vegan/vegetarian dinner will be provided.",
         "divers" : ""
     },
-    "/Resort/drone-vertical.JPEG": {
-        "name" : "A hidden oasis",
-        "description": "Ideally located in the middle of rice-fields, our resort is a true oasis.",
+    "/Services/connections.jpg": {
+        "name" : "Connect with beautiful people",
+        "description": "Learn with others and connect and interact with like-minded people from around the globe.",
         "divers" : ""
     },
-    "/Resort/pool1.JPEG": {
-        "name" : "Relaxing salted water pool",
-        "description": "Relax yourself in our salted water swimming-pool surrounded by luxurious nature.",
+    "/Services/hypnosis.jpg": {
+        "name" : "Private Hypnotherapy",
+        "description": "Rapid Transformational Hypnotherapy™ offers quick results through subconscious reprogramming with a skilled hypnotherapist. It effectively addresses issues like smoking addiction, nail-biting, public speaking anxiety, self-acceptance, and phobias.",
         "divers" : ""
     },
-    "/Resort/pool2.JPG": {
-        "name" : "Relaxing salted water pool",            
-        "description": "Relax yourself in our salted water swimming-pool surrounded by luxurious nature.",
+    "/Services/massage.jpg": {
+        "name" : "Authentic Balinese Massages",            
+        "description": "Enjoy a true, healing Balinese Massage at the Pool or at your Room or at the Rooftop Terrace, by one of the local Balinese Masseuses, who are trained over generations with the same wisdom.",
         "divers" : ""
     },
-    "/Resort/pool3.JPEG": {
-        "name" : "Relaxing salted water pool",            
-        "description": "Relax yourself in our salted water swimming-pool surrounded by luxurious nature.",
-        "divers" : ""
-    },
-    "/Resort/rooftop.JPG": {
-        "name" : "Secluded areas",
-        "description": "Meditate on our roof-top terrasse with nothing but calming nature as neighbor.",
-        "divers" : ""
-    },
-    "/Resort/tisna.JPEG": {
-        "name" : "A foot into Balinese culture",
-        "description": "Experience a true Balinese experience far away from the agitation among local people.",
+    "/Services/morning_movement.jpg": {
+        "name" : "Daily Morning Movement",            
+        "description": "Connect with yourself and your body through Meditative morning movements. Slow morning Yoga flows or intuitive dancing meditations, as well as morning stretching, or conscious walks will be part of the program.",
         "divers" : ""
     }
 }

@@ -41,14 +41,15 @@
                 <div class="main-content" ref="mainContent">
                     <h2 class="title2 section-title">What makes us special</h2>
                     <div class="content">
-                        <h2 class="title1">Activity name</h2>
-                        <p class="description">Eu consuat eu et quis laboris enim Lorem cupidatat. Enim minim consectetur veniam elit. Laborum aute labore reprehenderit ad non eiusmod ad cupidatat est reprehenderit eiusmod culpa ipsum. Elit eu sunt anim duis cupidatat est consequat et.</p>
+                        <h2 class="title1">{{  resource.name  }}</h2>
+                        <p class="description">{{ resource.description }}</p>
+                        <button class="btn-primary btn">Explore</button>
                     </div>
                 </div>
                 <figure class="image-container"
                 >
                     <div ref="imageEl" class="image" :style="{'background-image': `url(${resource.src})`}"></div>
-                    <figcaption>{{ resource.key }}</figcaption>
+                    <figcaption>{{ resource.name }}</figcaption>
                 </figure>
             </article>
     </div>
@@ -63,6 +64,10 @@
         left: 0;
         width: 100%;
         height: 100%;
+
+        @include breakpoint-max-width(md) {
+            height: fit-content;
+        }
     
         & .item {
             position: absolute;
@@ -124,6 +129,7 @@
                     background-repeat: no-repeat;
                     background-size: cover;
                     background-position: center;
+                    transform: translateX(-1);
                     filter: blur(10px) grayscale(70%);
                     -webkit-filter: blur(10px) grayscale(70%);
 
@@ -136,6 +142,14 @@
                     margin-top: $spacer-6;
                     padding: 150px $spacer-4 $spacer-4 80px;
                     z-index: 20;
+                    position: relative;
+
+                    @include breakpoint-max-width(md) {
+                        padding: $spacer-6 $spacer-7;
+                        display: flex;
+                        flex-direction: column;
+                        gap: $spacer-2;
+                    }
 
                     &::after {
                         position: absolute;
@@ -144,18 +158,31 @@
                         width: 40%;
                         background-color: black;
                         left: 80px;
-                        top: calc(120px + #{$spacer-6});
+                        top: calc(150px / 2);
                         width: 25%;
 
                         @include breakpoint-max-width(md) {
-                            top: calc(#{$spacer-10});
+                            top: calc(64px / 2);
                             left: $spacer-7;
                         }
                     }
 
+
+                & .btn {
+                    z-index: 20;
+                    position: absolute;
+                    bottom: $spacer-9;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 50%;
+
                     @include breakpoint-max-width(md) {
-                        padding: $spacer-9 $spacer-7;
+                        position: relative !important;
+                        width: 90%;
+                        bottom: auto;
+                        margin-top: $spacer-2;
                     }
+                }
 
                     & .title1 {
                         display: flex;
@@ -206,14 +233,14 @@
 
                 @include breakpoint-max-width(lg) {
                     width: calc(#{$swiper-item-width} * 0.8);
-                    left: calc(100% - calc(#{$swiper-item-width} * 0.8));
+                    position: relative;
                 }
 
                 @include breakpoint-max-width(md) {
                     width: 100%;
-                    height: 60%;
+                    height: 40vh;
                     left: 0;
-                    top: 40%;
+                    top: auto;
                     transform: translateY(0);
                 }
 
@@ -278,7 +305,12 @@
 
     .item.active {
         z-index: 2;
+
+        & >  .btn {
+            display: block;
+        }
     }
+
 
     .item.prev_active,
     .item.next_active {

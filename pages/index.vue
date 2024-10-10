@@ -105,6 +105,7 @@
         const map = new Map(Object.entries(data))
 
         array.forEach(resource => {
+            console.log(map.has(resource.src))
             if (!map.has(resource.src)) return;
 
             resource.name = map.get(resource.src).name
@@ -154,6 +155,7 @@
                 </div>
                 <div class="right-container">
                     <div class="content-wrapper">
+                        <svg class="svg" xmlns="http://www.w3.org/2000/svg"><path class="svgEl" d="M257.39910765506613 6.278026525214898C281.165922840613 38.26606760823289 395.0672645967979 133.18385134541552 399.9999987683474 198.2062730233228C404.9327329398969 263.22869470123 305.8295936983604 363.3781759977693 286.995512684363 396.4125565926586 "></path></svg>
                         <div class="text">
                             <div class="text-title title2">Welcome to Mind Retreats, where you'll discover the limitless power of your mind.</div>
                             <div class="text-content">Are you feeling stuck in your ways or are you in need of change? Take action now and go on a journey of self-discovery and healing at one of our Retreats.</div>
