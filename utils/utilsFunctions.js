@@ -1,4 +1,4 @@
-export default function getScrollValueOfElement(element, container) {
+function getScrollValueOfElement(element, container) {
 
     let observer = undefined;
     let scrollVal = ref(0);
@@ -33,3 +33,20 @@ export default function getScrollValueOfElement(element, container) {
         scrollVal,
     };
 }
+
+    /**
+     * @param {JSON} data
+     * @param {Array} array 
+     */
+function assignJSONToResources(data, array) {
+    const map = new Map(Object.entries(data))
+    array.forEach(resource => {
+        console.log(map.has(resource.src))
+        if (!map.has(resource.src)) return;
+        resource.name = map.get(resource.src).name
+        resource.description = map.get(resource.src).description
+        resource.divers = map.get(resource.src).divers
+    })
+}
+
+export {assignJSONToResources, getScrollValueOfElement}

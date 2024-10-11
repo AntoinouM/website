@@ -17,9 +17,9 @@ $mobile-gap: $spacer-6;
 
 .navbar {
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
     overflow: hidden;
     padding: 0 $spacer-4;
 
@@ -31,6 +31,12 @@ $mobile-gap: $spacer-6;
 .navbar > img {
     width: auto;
     height: $navbar-height * 0.7;
+    justify-self: center;
+    align-self: center;
+
+    @include breakpoint-max-width(lg) {
+        justify-self: start;
+    }
 }
 
 .mobileNav {
@@ -45,6 +51,7 @@ $mobile-gap: $spacer-6;
     list-style: none;
     justify-content: space-evenly;
     padding: 0;
+    align-self: center;
 
     @include breakpoint-max-width(md) {
         position: fixed;
@@ -119,6 +126,10 @@ $mobile-gap: $spacer-6;
   
   @include breakpoint-max-width(md) {
       display: block;
+      grid-column: 3 / span 1;
+      grid-row: 1 / span 1;
+      align-self: center;
+      justify-self: end;
   }
 }
 

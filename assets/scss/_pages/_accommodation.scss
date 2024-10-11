@@ -1,0 +1,30 @@
+.accommodation--content-container {
+    color: $night-blue;
+    display: flex;
+    flex-direction: column;
+    gap: $spacer-3;
+    justify-content: center;
+    align-items: start;
+    padding: $spacer-8;
+
+    & > p {
+        padding: $spacer-3 $spacer-4;
+    }
+}
+
+.text {
+
+    &-intro {
+        border: 1px solid $night-blue;
+        border-radius: 10px;
+
+    }
+
+    &-title {
+        padding: $spacer-3 $spacer-4;
+    }
+
+    &-service--intro {
+        
+    }
+}

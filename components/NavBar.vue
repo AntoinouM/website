@@ -15,7 +15,7 @@
       <nav class="navbar">        
         <ul :class="{mobileNav: mobileNav}" class="nav nav-items">
           <li class="nav-item"><a href="#section3">Retreat</a></li>
-          <li class="nav-item"><a href="#section4">Accommodation</a></li>
+          <li class="nav-item"><NuxtLink to="/accomodation">Accommodation</NuxtLink></li>
         </ul>
         <img src="/Logo/logo-white.svg" alt="The Mind Retreat Logo">
         <ul :class="{mobileNav: mobileNav}" class="nav nav-items nav-items-second">

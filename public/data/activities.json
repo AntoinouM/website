@@ -1,0 +1,42 @@
+{
+    "/public/Activities/1": {
+        "name": "Tirta Gangga/Ujung",
+        "description": "Explore the enchanting water palaces of Ujung and Tirta Gangga in Bali. Ujung Water Palace, with its stunning blend of Balinese and European architecture, offers serene water gardens and elegant bridges. Nearby, Tirta Gangga captivates with its sacred water pools, lush gardens, and intricate stone carvings. Both locations provide a tranquil escape and a glimpse into Bali's royal heritage, perfect for a peaceful retreat.",
+        "divers": ""
+    },
+    "/public/Activities/2": {
+        "name": "White sand Beaches",
+        "description": "Immerse yourself in a day of bliss on one of Bali's pristine white sand beaches. Bask in the warm sun, listen to the soothing sounds of the ocean, and take a refreshing dip in the crystal-clear waters. Indulge in a delicious lunch of freshly caught fish, grilled to perfection right on the beach. For ultimate relaxation, treat yourself to a soothing massage or a fresh young Coconut. Whether you're lounging, building sandcastles, or exploring vibrant marine life while snorkeling, a day at the white sand beach promises pure relaxation and unforgettable moments in paradise.",
+        "divers": ""
+    },
+    "/public/Activities/3": {
+        "name": "Dinner and Balinese Dance",
+        "description": "Enjoying a delicious dinner while watching a traditional Balinese dance performance is a delightful option you might want to consider.",
+        "divers": ""
+    },
+    "/public/Activities/4": {
+        "name": "Samsara Living Museum",
+        "description": "Discover the rich cultural heritage of Bali at the Samsara Living Museum. This unique museum offers an immersive experience into traditional Balinese life, showcasing authentic rituals, crafts, and daily activities. Visitors can engage with interactive exhibits, participate in workshops, and witness live demonstrations that bring Bali's history and customs to life. Nestled in a serene environment, the museum provides a tranquil escape and a deep connection to Bali's ancestral roots. A visit to the Samsara Living Museum promises an enlightening and memorable journey through Balinese history.",
+        "divers": "Learn more about Samsara Living Museum(Link)"
+    },
+    "/public/Activities/5": {
+        "name": "Spa Visit and Shopping at Candi Dasa",
+        "description": "Treat yourself to a perfect blend of shopping and relaxation in Candi Dasa. Explore charming boutiques offering unique local crafts and souvenirs, then unwind at one of the serene spas with a rejuvenating massage or beauty treatment. Let the stress melt away as you enjoy a day dedicated to pampering.",
+        "divers": ""
+    },
+    "/public/Activities/6": {
+        "name": "Ricefield Trekking and traditional Village Tenganan (included in Price)",
+        "description": "When you go on this picturesque hike through Bali's lush rice fields, you'll encounter breathtaking landscapes and vibrant greenery. Conclude your journey with a visit to the traditional Tenganan Village, one of Bali's oldest and best-preserved communities. Here, you can immerse yourself in the rich cultural heritage, witnessing traditional crafts, rituals, and unique architecture.",
+        "divers": ""
+    },
+    "/public/Activities/7": {
+        "name": "Monkey Temple",
+        "description": "Discover the charm of a small monkey temple nestled in the heart of Bali's lush landscape. This serene sanctuary is home to playful monkeys that roam freely among ancient stone carvings and sacred shrines. Visitors can observe these fascinating creatures up close while exploring the temple's tranquil grounds.",
+        "divers": ""
+    },
+    "/public/Activities/8": {
+        "name": "Waterfall tour (Gembleng Waterfall/Jagasatru)",
+        "description": "On this waterfall tour to Bali's gems, Gembleng Waterfall and Jagasatru Waterfall you will get the opportunity to visit two Waterfalls which are not yet overcrowded by tourists. Marvel at the cascading waters and pristine natural beauty as you hike through lush jungles to these almost secluded spots.",
+        "divers": ""
+    }
+}
