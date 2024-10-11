@@ -6,6 +6,7 @@
 
     <div class="accommodation-container">
 
+        <NavBar textColor="$white"/>
 
 
     </div>
