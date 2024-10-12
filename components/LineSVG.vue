@@ -4,7 +4,6 @@
 
     })
 
-    console.log(getCurrentInstance().parent)
 
 </script>
 

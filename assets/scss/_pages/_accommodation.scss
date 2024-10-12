@@ -23,8 +23,55 @@
     &-title {
         padding: $spacer-3 $spacer-4;
     }
+}
 
-    &-service--intro {
-        
+.acc-swiper {
+
+    &--container {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: $spacer-4;
+        padding-right: $spacer-8;
+        padding-left: $spacer-8;
+        margin-bottom: $spacer-4;
+    }
+
+    width: 100%;
+    height: 60vh;
+
+    &--slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        align-self: center !important;
+        transition: all .8s ease-out;
+        padding: $spacer-4;
+        padding-bottom: $spacer-8;
+
+        & img {
+            display: block;
+            width: 55%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        &--text {
+            width: 45%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: $spacer-3 $spacer-4;
+        }
+
+        &--description {
+            text-align: justify;
+        }
+
     }
 }

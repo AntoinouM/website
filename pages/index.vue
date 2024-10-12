@@ -2,8 +2,8 @@
 
     import ResourceManager from '~/utils/ResourcesManager/ResourceManager';
     import {getScrollValueOfElement, assignJSONToResources} from '~/utils/utilsFunctions';
-    import dataResort from '../public/data/resort.json';
-    import dataServices from '../public/data/services.json';
+    import dataResort from '~/public/data/resort.json';
+    import dataServices from '~/public/data/services.json';
 
     const resourceLoader = new ResourceManager();
 
@@ -178,7 +178,7 @@
                         centered-slides="true"
                         speed="1000"
                     >
-                        <swiper-slide v-for="(resource, index) in resourcesResort" :key="index" class="resortSlide" lazy="true" @active-index-change="() => {console.log(index)}">
+                        <swiper-slide v-for="(resource, index) in resourcesResort" :key="index" class="resortSlide" lazy="true">
                             <img :src="resource.src" :alt="resource.name" loading="lazy">
                         </swiper-slide>
                     </swiper-container>

@@ -1,4 +1,23 @@
 <script setup>
+    import {getScrollValueOfElement, assignJSONToResources} from '~/utils/utilsFunctions';
+    import dataActivities from '~/public/data/activities.json';
+    import ResourceManager from '~/utils/ResourcesManager/ResourceManager';
+
+    const resourceLoader = new ResourceManager();
+    const resourcesActivity = ref(undefined);
+    let resourcesLoaded = ref(false);
+
+    onMounted(() => {
+        // manage resources
+        resourceLoader.addEventListener('end', (e) => {
+            resourcesActivity.value = resourceLoader.getFilteredArray('Activities');
+            resourcesLoaded.value = true;
+            console.log(e.detail.message)
+            assignJSONToResources(dataActivities, resourcesActivity.value)
+            console.log(resourcesActivity.value)
+        })
+        resourceLoader.manageResources(['Activities'])
+    })
 
 </script>
 
@@ -16,7 +35,24 @@
                 With additional costs Dana Bali offers laundry service, Motorbike rental, private drivers, Massages, small choice of meals and drinks as well as taxi service.<br/><br/>Towels will be refreshed as needed, and bedsheets will be changed every five nights to support our environmental efforts. Throughout the day, enjoy complimentary water, Balinese coffee, tea, and fresh fruits.<br/><br/><b>Activities and Sightseeing Spots around Dana Bali Ricefield Villa</b><br/><br/>Despite being a serene oasis, Dana Bali Ricefield Villas lays close to beautiful sightseeing spots. We will organize exclusive tours for our retreat guests to enjoy during their stay. These tours are not included in the package price; you will need to cover entrance fees and taxi costs...
             </p>
         </div>
-
+        <div class="acc-swiper--container">
+            <swiper-container class="acc-swiper" ref="swiper"
+                space-between="30" 
+                pagination="true" 
+                navigation="true"
+                slides-per-view="1"
+                centered-slides="true"
+                speed="1000"
+            >
+                <swiper-slide v-for="(resource, index) in resourcesActivity" :key="index" class="acc-swiper--slide" lazy="true">
+                    <img :src="resource.src" :alt="resource.name" loading="lazy">
+                    <div class="acc-swiper--slide--text">
+                        <h2 class="title3">{{ resource.name }}</h2>
+                        <p class="acc-swiper--slide--description">{{ resource.description }}</p>
+                    </div>
+                </swiper-slide>
+            </swiper-container>
+        </div>
     </div>
     
 </template>
