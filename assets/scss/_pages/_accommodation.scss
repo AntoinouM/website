@@ -1,3 +1,7 @@
+section {
+    padding: $spacer-8;
+}
+
 .accommodation--content-container {
     color: $night-blue;
     display: flex;
@@ -5,7 +9,22 @@
     gap: $spacer-3;
     justify-content: center;
     align-items: start;
-    padding: $spacer-8;
+    background-color: $salmon-red;
+
+    & > p {
+        padding: $spacer-3 $spacer-4;
+    }
+}
+
+.accommodation--service-container {
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    gap: $spacer-3;
+    justify-content: center;
+    align-items: start;
+    padding-top: 0;
+    background-color: $olive-green;
 
     & > p {
         padding: $spacer-3 $spacer-4;
@@ -13,13 +32,6 @@
 }
 
 .text {
-
-    &-intro {
-        border: 1px solid $night-blue;
-        border-radius: 10px;
-        background-color: rgba($egg-white, 0.2);
-    }
-
     &-title {
         padding: $spacer-3 $spacer-4;
     }
